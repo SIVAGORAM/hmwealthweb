@@ -1253,17 +1253,17 @@ Modeled at: https://hmwealth.in/calculators`;
       </div>
 
       {/* ======================================================================
-          3. Mandatory Statutory Regulatory Compliance Disclaimer (PART 4)
+          3. Mandatory Statutory Regulatory Compliance Disclaimer
           ====================================================================== */}
       <div className="rounded-2xl border border-line/80 bg-white p-4 shadow-xs sm:p-5">
         <div className="flex items-start gap-3">
           <ShieldCheck className="size-5 shrink-0 text-brand mt-0.5" />
           <div className="flex flex-col gap-1 text-xs leading-relaxed text-body">
             <span className="font-bold uppercase tracking-wider text-ink">
-              Disclaimer
+              Statutory Assumptions &amp; Disclosures
             </span>
             <p>
-              Calculator results are for illustration only and assume a constant rate of return. Mutual Fund investments are subject to market risks, read all scheme related documents carefully. Past performance may or may not be sustained in the future and is not a guarantee of future returns. Tax benefits are subject to prevailing tax laws.
+              Calculator illustrations assume a constant rate of return and are for educational illustration only. They do not account for market fluctuations, scheme Total Expense Ratios (TER), exit loads, or prevailing income tax rates, and do not represent a guarantee of future returns. Mutual Fund investments are subject to market risks; read all scheme related documents carefully. Past performance may or may not be sustained in the future. HM Wealth is an AMFI-registered Mutual Fund Distributor (ARN-341412) and does not provide investment advisory services.
             </p>
           </div>
         </div>

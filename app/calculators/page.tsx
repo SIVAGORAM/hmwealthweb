@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { ChevronRight, Info } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { WealthStudio } from "@/components/calculators/WealthStudio";
 import { Container } from "@/components/ui/kit";
 import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
@@ -76,17 +76,6 @@ export default function CalculatorsPage() {
                 Book Free Consultation
               </Link>
             </div>
-          </div>
-
-          {/* Statutory Disclaimer & Disclosures (AMFI / SEBI Mandatory) */}
-          <div className="mt-5 rounded-2xl border border-line bg-white p-5 text-xs text-body leading-relaxed">
-            <div className="flex items-center gap-1.5 font-bold text-ink mb-1">
-              <Info className="size-3.5 text-gold" />
-              <h3>Statutory Assumptions &amp; Disclosures</h3>
-            </div>
-            <p>
-              Calculator illustrations assume a constant rate of return and do not account for market fluctuations, scheme Total Expense Ratios (TER), exit loads, or prevailing income tax rates. Projections are purely illustrative and do not represent a guarantee of future returns. Mutual Fund investments are subject to market risks; read all scheme related documents carefully. HM Wealth is an AMFI-registered Mutual Fund Distributor (ARN-341412) and does not provide investment advisory services.
-            </p>
           </div>
         </Container>
       </section>
