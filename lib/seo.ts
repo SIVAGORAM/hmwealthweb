@@ -21,10 +21,12 @@ export interface RouteSeoConfig {
   noIndex?: boolean;
 }
 
-// 1. Central site configuration dynamically resolving NEXT_PUBLIC_SITE_URL
+// 1. Central site configuration with canonical production domain
+export const PRODUCTION_URL = "https://hmwealth.in";
+
 export const SITE_CONFIG = {
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://hmwealth.in").replace(/\/+$/, ""),
-  domain: (process.env.NEXT_PUBLIC_SITE_URL || "https://hmwealth.in").replace(/\/+$/, ""),
+  url: PRODUCTION_URL,
+  domain: PRODUCTION_URL,
   name: "HM Wealth",
   tagline: "AMFI-registered Mutual Fund Distributor",
   arn: "ARN-341412",
@@ -32,10 +34,10 @@ export const SITE_CONFIG = {
   type: "website" as const,
   twitterCard: "summary_large_image" as const,
   defaultOgImage: {
-    url: "/images/brand/hm-wealth-logo-transparent.png",
-    width: 1024,
-    height: 229,
-    alt: "HM Wealth - Helps You Manage & Multiply",
+    url: "/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
 };
 
@@ -75,12 +77,12 @@ export const CORE_ROUTES_SEO = {
   home: {
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
-      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options, use our SIP calculator and learn about products suited to your financial goals.",
+      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
     path: "/",
     priority: 1.0,
     changeFrequency: "daily" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "HM Wealth - Helps You Manage & Multiply",
+    ogImage: "/og-image.png",
+    ogImageAlt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   about: {
     title: "About HM Wealth | AMFI Mutual Fund Distributor ARN-341412",
@@ -89,8 +91,8 @@ export const CORE_ROUTES_SEO = {
     path: "/about",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "About HM Wealth AMFI Registration",
+    ogImage: "/og-image.png",
+    ogImageAlt: "About HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   calculators: {
     title: "Financial SIP & Wealth Calculators Online | HM Wealth",
@@ -99,8 +101,8 @@ export const CORE_ROUTES_SEO = {
     path: "/calculators",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Financial SIP & Wealth Calculators Online",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Financial SIP & Wealth Calculators Online — HM Wealth",
   },
   contact: {
     title: "Contact HM Wealth | Connect with Our Mutual Fund Desk",
@@ -109,7 +111,7 @@ export const CORE_ROUTES_SEO = {
     path: "/contact",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
+    ogImage: "/og-image.png",
     ogImageAlt: "Contact HM Wealth Support Desk",
   },
   investments: {
@@ -119,8 +121,8 @@ export const CORE_ROUTES_SEO = {
     path: "/investments",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Mutual Fund Investment Schemes and SIP Plans",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Mutual Fund Investment Schemes and SIP Plans — HM Wealth",
   },
   insurance: {
     title: "Family & Business Insurance Protection | HM Wealth",
@@ -129,8 +131,8 @@ export const CORE_ROUTES_SEO = {
     path: "/insurance",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Family and Business Insurance Protection",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Family and Business Insurance Protection — HM Wealth",
   },
   products: {
     title: "Investment & Insurance Products Catalog | HM Wealth",
@@ -139,8 +141,8 @@ export const CORE_ROUTES_SEO = {
     path: "/products",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Investment and Insurance Products Catalog",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Investment and Insurance Products Catalog — HM Wealth",
   },
   productMutualFunds: {
     title: "Mutual Funds & SIP Distribution Services | HM Wealth",
@@ -189,8 +191,8 @@ export const CORE_ROUTES_SEO = {
     path: "/services",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Mutual Fund Distribution and Client Guidance Services",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Mutual Fund Distribution and Client Guidance Services — HM Wealth",
   },
   serviceFinancialEducation: {
     title: "Financial Education & Investor Literacy | HM Wealth",
@@ -249,8 +251,8 @@ export const CORE_ROUTES_SEO = {
     path: "/important-links",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Important Investor Links Directory",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Important Investor Links Directory — HM Wealth",
   },
   investorGrievance: {
     title: "Investor Grievance Redressal Mechanism | HM Wealth",
@@ -259,8 +261,8 @@ export const CORE_ROUTES_SEO = {
     path: "/investor-grievance",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Investor Grievance Redressal Mechanism",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Investor Grievance Redressal Mechanism — HM Wealth",
   },
   riskFactors: {
     title: "Mandatory Statutory Investment Risk Factors | HM Wealth",
@@ -269,8 +271,8 @@ export const CORE_ROUTES_SEO = {
     path: "/risk-factors",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
-    ogImageAlt: "Mandatory Statutory Investment Risk Factors",
+    ogImage: "/og-image.png",
+    ogImageAlt: "Mandatory Statutory Investment Risk Factors — HM Wealth",
   },
   privacyPolicy: {
     title: "Privacy Policy & Investor Data Security | HM Wealth",
@@ -279,7 +281,7 @@ export const CORE_ROUTES_SEO = {
     path: "/privacy-policy",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
+    ogImage: "/og-image.png",
     ogImageAlt: "HM Wealth Privacy Policy and Data Security",
   },
   termsConditions: {
@@ -289,7 +291,7 @@ export const CORE_ROUTES_SEO = {
     path: "/terms-conditions",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/images/brand/hm-wealth-logo-transparent.png",
+    ogImage: "/og-image.png",
     ogImageAlt: "HM Wealth Terms and Conditions of Service",
   },
 } as const satisfies Record<string, RouteSeoConfig>;
@@ -352,10 +354,11 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
   const ogImageUrl = config.ogImage
     ? toAbsoluteUrl(config.ogImage)
     : toAbsoluteUrl(SITE_CONFIG.defaultOgImage.url);
-  const ogImageAlt = config.ogImageAlt ?? config.title;
+  const ogImageAlt = config.ogImageAlt ?? SITE_CONFIG.defaultOgImage.alt;
   const isNoIndex = Boolean(config.noIndex);
 
   return {
+    metadataBase: new URL(PRODUCTION_URL),
     title: { absolute: config.title },
     description: config.description,
     alternates: {
@@ -371,20 +374,19 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
       images: [
         {
           url: ogImageUrl,
+          width: 1200,
+          height: 630,
           alt: ogImageAlt,
-          ...(config.ogImage
-            ? {}
-            : {
-                width: SITE_CONFIG.defaultOgImage.width,
-                height: SITE_CONFIG.defaultOgImage.height,
-              }),
         },
       ],
     },
     twitter: {
       card: SITE_CONFIG.twitterCard,
       title: config.title,
-      description: config.description,
+      description:
+        config.path === "/"
+          ? "Explore mutual funds, SIP investments and insurance with HM Wealth."
+          : config.description,
       images: [ogImageUrl],
     },
     robots: {

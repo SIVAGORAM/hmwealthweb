@@ -24,47 +24,37 @@ export function JsonLd({ data }: JsonLdProps): ReactElement {
 
 /**
  * Generates Schema.org Organization structured data.
- * Validated against Google Rich Results standards.
+ * Validated against Google Search Central guidelines.
+ * Uses official brand name, production URL, and official brand logo.
  */
 export function getOrganizationSchema() {
-  const orgUrl = toAbsoluteUrl("/");
-  const logoUrl = brandContent.logo;
+  const orgUrl = "https://hmwealth.in/";
+  const logoUrl = "https://hmwealth.in/images/brand/hm-wealth-logo-transparent.png";
 
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${orgUrl}#organization`,
-    name: brandContent.name,
-    legalName: brandContent.legalName,
-    slogan: brandContent.slogan,
+    name: "HM Wealth",
     url: orgUrl,
     logo: {
       "@type": "ImageObject",
       url: logoUrl,
-      width: 980,
-      height: 191,
+      width: 1024,
+      height: 229,
     },
     image: logoUrl,
-    description: SITE_CONFIG.tagline,
-    sameAs: brandContent.sameAs,
+    description: "AMFI-registered Mutual Fund Distributor",
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: brandContent.phone,
-        contactType: "customer service",
-        email: brandContent.email,
+        telephone: "+91 96181 01040",
+        contactType: "customer support",
+        email: "info@hmwealth.in",
         areaServed: "IN",
         availableLanguage: ["English", "Hindi", "Telugu"],
       },
     ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: brandContent.address.streetAddress,
-      addressLocality: brandContent.address.addressLocality,
-      addressRegion: brandContent.address.addressRegion,
-      postalCode: brandContent.address.postalCode,
-      addressCountry: brandContent.address.addressCountry,
-    },
   };
 }
 

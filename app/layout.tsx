@@ -19,15 +19,15 @@ import { CookieConsentBanner } from "@/components/consent/CookieConsentBanner";
 import { CookiePreferencesModal } from "@/components/consent/CookiePreferencesModal";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_CONFIG.url),
+  metadataBase: new URL("https://hmwealth.in"),
   title: {
     default: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     template: `%s | ${site.name}`,
   },
   description:
-    "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options, use our SIP calculator and learn about products suited to your financial goals.",
+    "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
   alternates: {
-    canonical: toAbsoluteUrl("/"),
+    canonical: "https://hmwealth.in/",
   },
   robots: {
     index: true,
@@ -43,8 +43,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
@@ -55,19 +57,19 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
+    type: "website",
+    siteName: "HM Wealth",
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
-      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options, use our SIP calculator and learn about products suited to your financial goals.",
-    url: toAbsoluteUrl("/"),
-    siteName: site.name,
+      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
+    url: "https://hmwealth.in/",
     locale: "en_IN",
-    type: "website",
     images: [
       {
-        url: "/images/brand/hm-wealth-logo-transparent.png",
-        width: 1024,
-        height: 229,
-        alt: `${site.name} - Helps You Manage & Multiply`,
+        url: "https://hmwealth.in/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
       },
     ],
   },
@@ -75,8 +77,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
-      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options, use our SIP calculator and learn about products suited to your financial goals.",
-    images: ["/images/brand/hm-wealth-logo-transparent.png"],
+      "Explore mutual funds, SIP investments and insurance with HM Wealth.",
+    images: ["https://hmwealth.in/og-image.png"],
   },
 };
 
