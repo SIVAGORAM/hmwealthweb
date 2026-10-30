@@ -3,6 +3,7 @@ import { offeringHref, products, services } from "@/lib/offerings";
 import { Mail, Phone, MessageCircle, ArrowUp, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import { AmfiBadge, MutualFundsSahiHaiBadge } from "@/components/ui/AmfiBadge";
 import { Container } from "@/components/ui/kit";
 import { disclosures, registrations, site } from "@/lib/site";
 import { CookiePreferencesButton } from "@/components/consent/CookiePreferencesButton";
@@ -47,27 +48,14 @@ export function Footer() {
         <Container className="pb-8 pt-4 sm:pb-10 sm:pt-6">
           {/* ---------- brand + links ---------- */}
           <div className="grid gap-14 lg:grid-cols-[1.15fr_2fr]">
-            <div className="flex max-w-sm flex-col gap-6">
+            <div className="flex max-w-sm flex-col gap-5">
               <Logo />
               <p className="text-[15px] leading-relaxed text-body">
                 Mutual funds and insurance for families and business owners, explained in plain words and reviewed every year.
               </p>
-              <div className="flex flex-col gap-2.5">
-                <p className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-brand">Follow us</p>
+              <div className="flex flex-col gap-2 pt-1">
+                <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-brand">Follow us</p>
                 <SocialLinks />
-              </div>
-              <div className="rounded-2xl border border-line bg-white p-4 backdrop-blur">
-                <p className="text-[13px] font-semibold uppercase leading-relaxed tracking-[0.03em] text-body">
-                  {registrations.lines[0]}
-                </p>
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
-                  <p className="flex items-center gap-2 whitespace-nowrap text-[13.5px] font-extrabold uppercase tracking-[0.08em] text-brand">
-                    {registrations.products[0]}<span className="h-3.5 w-[2px] rounded-full bg-brand/60" />{registrations.products[1]}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-mint px-2.5 py-1 text-[13px] font-bold text-brand-dark ring-1 ring-brand/20">
-                    <ShieldCheck className="size-3.5 text-brand" />Verified MFD
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -132,6 +120,42 @@ export function Footer() {
                 Back to top
               </span>
             </a>
+          </div>
+
+          {/* ---------- Official AMFI Accreditation & Distribution Credentials Plaque ---------- */}
+          <div className="mt-7 rounded-3xl border border-line bg-gradient-to-b from-white via-soft/40 to-white p-5 sm:p-7 shadow-xs backdrop-blur">
+            <div className="flex flex-col items-center justify-between gap-4 md:flex-row md:gap-8">
+              {/* Left Badge / Mobile Group */}
+              <div className="flex w-full items-center justify-around md:w-auto md:justify-start">
+                <AmfiBadge />
+                <div className="md:hidden">
+                  <MutualFundsSahiHaiBadge />
+                </div>
+              </div>
+
+              {/* Center Credentials Lockup */}
+              <div className="flex flex-col items-center justify-center text-center">
+                <p className="text-[12px] sm:text-[13.5px] font-extrabold uppercase tracking-wide text-ink sm:tracking-widest">
+                  AMFI REGISTERED MUTUAL FUND DISTRIBUTOR
+                </p>
+                <p className="mt-1 text-[20px] sm:text-[23px] font-black tracking-wide text-brand tnum">
+                  ARN – 341412
+                </p>
+                <div className="mt-1 flex items-center gap-2 text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.16em] text-ink">
+                  <span>MUTUAL FUND</span>
+                  <span className="h-3.5 w-[2px] rounded-full bg-brand/70" />
+                  <span>INSURANCE</span>
+                </div>
+                <p className="mt-1.5 text-[12.5px] sm:text-[13px] font-bold text-body">
+                  {site.founder} <span className="font-medium text-body/75">(Founder &amp; Principal MFD)</span>
+                </p>
+              </div>
+
+              {/* Right Badge (Desktop) */}
+              <div className="hidden md:flex shrink-0 items-center justify-center">
+                <MutualFundsSahiHaiBadge />
+              </div>
+            </div>
           </div>
 
           {/* ---------- disclosures ---------- */}
