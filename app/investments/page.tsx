@@ -240,7 +240,7 @@ export default function InvestmentsPage() {
             {/* Left Content */}
             <div className="flex flex-col gap-3.5 sm:gap-4">
               {/* small badge */}
-              <div className="inline-flex w-fit items-center gap-2.5 rounded-full border border-brand/20 bg-white/90 px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-[0_2px_12px_-4px_rgba(11,122,85,0.2)] backdrop-blur-md">
+              <div className="inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-brand/20 bg-white/90 px-4 py-1 text-[11.5px] sm:text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-[0_2px_12px_-4px_rgba(11,122,85,0.2)] backdrop-blur-md whitespace-nowrap">
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-60" />
                   <span className="relative inline-flex size-2 rounded-full bg-brand" />

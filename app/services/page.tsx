@@ -29,8 +29,8 @@ export default function ServicesPage() {
               <ChevronRight className="size-3.5 text-body/50" />
               <span className="font-bold text-ink">Services</span>
             </nav>
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/90 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-brand shadow-xs">
-              <ShieldCheck className="size-3.5" />
+            <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-brand/20 bg-white/95 px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-brand shadow-xs whitespace-nowrap sm:text-xs">
+              <ShieldCheck className="size-3.5 shrink-0" />
               Client-First Assistance
             </div>
             <h1 className="mt-3 text-[32px] font-extrabold leading-[1.05] tracking-[-0.04em] text-ink sm:text-[48px]">

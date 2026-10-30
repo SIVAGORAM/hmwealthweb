@@ -110,9 +110,11 @@ export default function AboutPage() {
                   <ChevronRight className="size-3.5 text-body/50" />
                   <span className="font-bold text-ink">About Us</span>
                 </nav>
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-brand/20 bg-white/90 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-brand shadow-xs">
-                  <ShieldCheck className="size-3.5" />
-                  AMFI-Registered MFD ({site.arn})
+                <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-brand/20 bg-white/95 px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-brand shadow-xs whitespace-nowrap sm:text-xs">
+                  <ShieldCheck className="size-3.5 shrink-0" />
+                  <span>AMFI-Registered MFD</span>
+                  <span className="hidden sm:inline text-brand/40">·</span>
+                  <span className="hidden sm:inline">{site.arn}</span>
                 </div>
                 <h1 className="text-[30px] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink sm:text-[44px]">
                   Guiding your wealth.{" "}
@@ -123,20 +125,23 @@ export default function AboutPage() {
                 <p className="max-w-[56ch] text-[15px] leading-relaxed text-body sm:text-[16.5px]">
                   HM Wealth is an AMFI-registered Mutual Fund Distributor helping individuals, families, and businesses work towards their financial goals with confidence. We are the bridge between investors and Asset Management Companies (AMCs), with every interaction guided by transparency and compliance.
                 </p>
-                <div className="grid gap-2.5 pt-1 sm:flex sm:flex-wrap">
+                <div className="flex flex-col gap-2.5 pt-1 sm:flex-row sm:flex-wrap">
                   <Link
                     href="/contact"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-[14.5px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(11,122,85,0.6)] transition hover:bg-brand-dark"
+                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 text-[14px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(11,122,85,0.6)] transition hover:bg-brand-dark active:scale-[0.99] sm:w-auto sm:min-h-11 sm:text-[14.5px]"
                   >
-                    <Phone className="size-4" />Schedule an Introduction Call<ArrowRight className="size-4" />
+                    <Phone className="size-4 shrink-0" />
+                    <span className="whitespace-nowrap">Schedule a Free Call</span>
+                    <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                   <a
                     href={site.whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-line bg-white px-5 text-[14.5px] font-bold text-ink transition hover:border-brand hover:text-brand"
+                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-line bg-white px-5 text-[14px] font-bold text-ink shadow-2xs transition hover:border-brand hover:text-brand active:scale-[0.99] sm:w-auto sm:min-h-11 sm:text-[14.5px]"
                   >
-                    <MessageCircle className="size-4 text-emerald-600" />WhatsApp Us
+                    <MessageCircle className="size-4 shrink-0 text-emerald-600 transition-transform group-hover:scale-110" />
+                    <span className="whitespace-nowrap">WhatsApp Us</span>
                   </a>
                 </div>
               </div>
@@ -413,22 +418,23 @@ export default function AboutPage() {
               Book a free, 20-minute introductory call. No sales pressure, just an honest conversation about your goals and how to achieve them.
             </p>
 
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-4 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3">
               <Link
                 href="/contact"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand px-5 text-[14px] font-bold text-white shadow-xs transition hover:bg-brand-dark"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand px-6 text-[14px] font-bold text-white shadow-xs transition hover:bg-brand-dark sm:w-auto sm:min-h-11"
               >
-                <span>Schedule an Introduction Call</span>
-                <ArrowRight className="size-4" />
+                <Phone className="size-4 shrink-0" />
+                <span className="whitespace-nowrap">Schedule a Free Call</span>
+                <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
                 href={site.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand/30 bg-white px-5 text-[14px] font-bold text-ink transition hover:bg-mint hover:border-brand"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-brand/30 bg-white px-6 text-[14px] font-bold text-ink transition hover:bg-mint hover:border-brand sm:w-auto sm:min-h-11"
               >
-                <MessageCircle className="size-4 text-emerald-600" />
-                <span>WhatsApp Us Directly</span>
+                <MessageCircle className="size-4 shrink-0 text-emerald-600" />
+                <span className="whitespace-nowrap">WhatsApp Us Directly</span>
               </a>
             </div>
 
