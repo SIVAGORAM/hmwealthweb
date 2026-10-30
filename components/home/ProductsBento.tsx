@@ -153,7 +153,7 @@ export function ProductsBento() {
           </Reveal>
 
           {/* 6 · Health insurance */}
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="col-span-2 xs:col-span-1">
             <Link href="/products/health-insurance" className={cn(tile, "border border-line bg-gradient-to-br from-[#fff1ec] to-white shadow-card hover:shadow-lift")}>
               <div className="flex items-start justify-between">
                 <span className="flex size-10 items-center justify-center rounded-xl bg-white sm:size-12 sm:rounded-2xl text-[#d6662f] shadow-sm"><HeartPulse className="size-5 sm:size-6" /></span>
@@ -171,7 +171,7 @@ export function ProductsBento() {
           </Reveal>
 
           {/* 7 · General insurance */}
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="col-span-2 xs:col-span-1">
             <Link href="/products/general-insurance" className={cn(tile, "border border-line bg-gradient-to-br from-[#eaf2ff] to-white shadow-card hover:shadow-lift")}>
               <div className="flex items-start justify-between">
                 <div className="flex -space-x-2">

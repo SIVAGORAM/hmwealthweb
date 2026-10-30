@@ -42,7 +42,7 @@ export function GoalsExplorer() {
         {/* compact photo bento */}
         <div className="mt-2 sm:mt-2.5 grid auto-rows-[190px] grid-cols-2 gap-2.5 xs:auto-rows-[210px] sm:auto-rows-[250px] sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {GOALS.map((g, i) => (
-            <Reveal key={g.t} delay={i * 0.05} className={WIDE.includes(i) ? "col-span-2" : ""}>
+            <Reveal key={g.t} delay={i * 0.05} className={WIDE.includes(i) ? "col-span-2" : "col-span-2 xs:col-span-1"}>
               <Link href={`/calculators?c=${g.calc}`} className="group relative isolate flex h-full flex-col justify-between overflow-hidden rounded-[22px] p-3 text-white sm:rounded-[26px] sm:p-5">
                 <ProtectedImage src={g.photo.src} alt={g.photo.alt} fill sizes="(min-width:1024px) 50vw, 100vw"
                   className="-z-20 object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110" style={{ objectPosition: g.pos }} />

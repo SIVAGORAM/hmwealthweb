@@ -85,11 +85,11 @@ export function ChatWidget() {
     }
   }, [open, start]);
 
-  // Auto popup after 2.5 seconds on visit or page refresh
+  // Show gentle teaser greeting after 3.5s (non-intrusive, keeps main page visible)
   useEffect(() => {
     const t = setTimeout(() => {
-      setOpen(true);
-    }, 2500);
+      setTeaser(true);
+    }, 3500);
     return () => clearTimeout(t);
   }, []);
 
@@ -210,7 +210,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.96 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex h-[min(410px,calc(100svh-96px))] w-[calc(100vw-1.75rem)] max-w-[316px] origin-bottom-right flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_20px_50px_-12px_rgba(4,38,28,0.32)] ring-1 ring-line/80"
+            className="flex h-[min(410px,calc(100svh-96px))] w-[calc(100vw-1.5rem)] max-w-[316px] origin-bottom-right flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_20px_50px_-12px_rgba(4,38,28,0.32)] ring-1 ring-line/80"
           >
             {/* Modern Light Executive Header */}
             <div className="relative border-b border-line/80 bg-white/98 px-3.5 py-2.5 backdrop-blur-xs">
@@ -492,14 +492,14 @@ export function ChatWidget() {
           }}
           aria-label={open ? "Close assistance" : `Chat with ${site.name} Assistance`}
           aria-expanded={open}
-          className="group relative flex size-12 sm:size-13 items-center justify-center rounded-full bg-gradient-to-br from-brand-deep via-brand to-brand-bright text-white shadow-[0_8px_25px_-4px_rgba(11,122,85,0.45)] ring-2 ring-white/90 transition-all duration-200 hover:scale-105 active:scale-95"
+          className="group relative flex size-11 xs:size-12 sm:size-13 items-center justify-center rounded-full bg-gradient-to-br from-brand-deep via-brand to-brand-bright text-white shadow-[0_8px_25px_-4px_rgba(11,122,85,0.45)] ring-2 ring-white/90 transition-all duration-200 hover:scale-105 active:scale-95"
         >
           {open ? (
             <X className="size-5 transition-transform duration-200" />
           ) : (
             <span className="relative flex items-center justify-center">
               {/* Premium modern concierge chat icon */}
-              <MessageCircleMore className="size-6 text-white transition-transform duration-200 group-hover:scale-110" />
+              <MessageCircleMore className="size-5 xs:size-6 text-white transition-transform duration-200 group-hover:scale-110" />
 
               {/* Small blinking live radar indicator */}
               <span className="absolute -top-1 -right-1 flex size-3">

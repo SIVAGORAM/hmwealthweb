@@ -251,18 +251,18 @@ function MobileRegBanner({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "border-t border-slate-100 bg-[#f8faf9] px-4 py-2 text-center transition-colors",
+        "border-t border-slate-100 bg-[#f8faf9] px-2.5 py-1.5 xs:px-4 xs:py-2 text-center transition-colors",
         className
       )}
     >
-      <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-1 uppercase">
-        <p className="text-[10.5px] font-bold tracking-[0.06em] text-slate-500 leading-none">
+      <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-0.5 xs:gap-1 uppercase">
+        <p className="text-[9.5px] xs:text-[10.5px] font-bold tracking-[0.04em] xs:tracking-[0.06em] text-slate-500 leading-tight">
           {registrations.lines[0]}
         </p>
-        <p className="text-[12px] font-black tracking-wide text-slate-900 leading-none">
+        <p className="text-[11px] xs:text-[12px] font-black tracking-wide text-slate-900 leading-tight">
           {site.arn.replace("-", " – ")}
         </p>
-        <div className="flex items-center justify-center gap-2 text-[11px] font-black tracking-[0.08em] text-[#179672] leading-none">
+        <div className="flex items-center justify-center gap-1.5 xs:gap-2 text-[10px] xs:text-[11px] font-black tracking-[0.06em] xs:tracking-[0.08em] text-[#179672] leading-tight">
           <span>{registrations.products[0]}</span>
           <span className="text-[#e0a92e] font-black select-none" aria-hidden>
             |
@@ -312,37 +312,37 @@ export function Navbar() {
       {/* ======================================================================
           1. TOP EXECUTIVE HEADER ROW: Logo, AMFI Credentials, Store Apps & Login
           ====================================================================== */}
-      <div className="mx-auto flex h-[66px] max-w-[1520px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-6 lg:h-[76px] lg:px-8">
+      <div className="mx-auto flex h-[58px] xs:h-[64px] sm:h-[72px] lg:h-[76px] max-w-[1520px] items-center justify-between gap-2 xs:gap-3 px-2.5 xs:px-4 sm:px-6 lg:px-8">
         {/* Brand logo + AMFI credentials */}
         <div className="flex min-w-0 shrink-0 items-center gap-3 sm:gap-5">
           <Logo priority />
-          <DesktopRegBlock className="hidden md:flex" />
+          <DesktopRegBlock className="hidden lg:flex" />
         </div>
 
         {/* Right side CTA actions */}
         <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
           {/* Apple App Store Badge */}
-          <AppleStoreBadge className="hidden md:flex" />
+          <AppleStoreBadge className="hidden xl:flex" />
 
           {/* Google Play Store Badge */}
-          <PlayStoreBadge className="hidden md:flex" />
+          <PlayStoreBadge className="hidden xl:flex" />
 
           {/* Direct phone desk shortcut */}
           <a
             href={site.phoneHref}
             aria-label={`Call ${site.phone}`}
             title={`Direct Phone Desk: ${site.phone}`}
-            className="group hidden size-[38px] items-center justify-center rounded-xl border border-brand/20 bg-mint/50 text-[#179672] shadow-2xs transition hover:border-[#179672] hover:bg-[#179672] hover:text-white hover:scale-105 active:scale-95 sm:flex"
+            className="group hidden size-[34px] sm:size-[38px] items-center justify-center rounded-xl border border-brand/20 bg-mint/50 text-[#179672] shadow-2xs transition hover:border-[#179672] hover:bg-[#179672] hover:text-white hover:scale-105 active:scale-95 sm:flex"
           >
-            <Phone className="size-[15px] transition-transform group-hover:scale-110" />
+            <Phone className="size-[14px] sm:size-[15px] transition-transform group-hover:scale-110" />
           </a>
 
           {/* Book a call button */}
           <Link
             href="/contact"
-            className="group relative hidden h-[38px] items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-xl bg-slate-900 px-3.5 text-[13px] font-bold text-white shadow-xs transition hover:bg-[#179672] active:scale-[0.99] min-[980px]:inline-flex xl:px-4 xl:text-[13.5px]"
+            className="group relative hidden h-[34px] sm:h-[38px] items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-xl bg-slate-900 px-3 sm:px-3.5 xl:px-4 text-[12px] sm:text-[13px] xl:text-[13.5px] font-bold text-white shadow-xs transition hover:bg-[#179672] active:scale-[0.99] sm:inline-flex"
           >
-            <CalendarDays className="size-3.5 text-white/80 group-hover:text-white" />
+            <CalendarDays className="size-3 sm:size-3.5 text-white/80 group-hover:text-white" />
             <span>Book a call</span>
           </Link>
 
@@ -351,9 +351,9 @@ export function Navbar() {
             href={site.loginUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-[38px] items-center gap-1.5 whitespace-nowrap rounded-xl bg-gradient-to-r from-[#179672] to-[#2cb98f] px-4 text-[13px] font-extrabold text-white shadow-[0_4px_14px_-2px_rgba(23,150,114,0.4)] transition hover:from-[#147a5d] hover:to-[#179672] hover:shadow-md active:scale-[0.99] sm:px-4.5 sm:text-[13.5px]"
+            className="group inline-flex h-[32px] xs:h-[34px] sm:h-[38px] items-center gap-1 xs:gap-1.5 whitespace-nowrap rounded-xl bg-gradient-to-r from-[#179672] to-[#2cb98f] px-2.5 xs:px-3.5 sm:px-4.5 text-[11.5px] xs:text-[12.5px] sm:text-[13.5px] font-extrabold text-white shadow-[0_4px_14px_-2px_rgba(23,150,114,0.4)] transition hover:from-[#147a5d] hover:to-[#179672] hover:shadow-md active:scale-[0.99]"
           >
-            <User className="size-3.5 transition-transform group-hover:scale-110" />
+            <User className="size-3 xs:size-3.5 transition-transform group-hover:scale-110" />
             <span>Login</span>
           </a>
 
@@ -364,9 +364,9 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className="flex size-[38px] items-center justify-center rounded-xl border border-line/80 bg-white text-ink transition hover:border-brand/40 hover:bg-soft active:scale-95 lg:hidden"
+            className="flex size-[32px] xs:size-[36px] sm:size-[38px] items-center justify-center rounded-xl border border-line/80 bg-white text-ink transition hover:border-brand/40 hover:bg-soft active:scale-95 lg:hidden"
           >
-            {open ? <X className="size-5 text-ink" /> : <Menu className="size-5 text-ink" />}
+            {open ? <X className="size-4 xs:size-5 text-ink" /> : <Menu className="size-4 xs:size-5 text-ink" />}
           </button>
         </div>
       </div>
@@ -407,7 +407,7 @@ export function Navbar() {
       </div>
 
       {/* Responsive AMFI Registration Banner (Mobile & Tablet) */}
-      <MobileRegBanner className="md:hidden" />
+      <MobileRegBanner className="lg:hidden" />
 
       {/* ======================================================================
           3. MOBILE DRAWER NAVIGATION MENU

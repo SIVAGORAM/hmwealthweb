@@ -110,7 +110,7 @@ export default function AboutPage() {
                   <ChevronRight className="size-3.5 text-body/50" />
                   <span className="font-bold text-ink">About Us</span>
                 </nav>
-                <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-brand/20 bg-white/95 px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-brand shadow-xs whitespace-nowrap sm:text-xs">
+                <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-brand/20 bg-white/95 px-3 py-1 text-[10px] xs:text-[11.5px] sm:text-xs font-bold uppercase tracking-wider text-brand shadow-xs">
                   <ShieldCheck className="size-3.5 shrink-0" />
                   <span>AMFI-Registered Mutual Fund Distributor</span>
                 </div>

@@ -165,9 +165,9 @@ export function Hero() {
         </div>
 
         {/* ---------- content ---------- */}
-        <Container className="relative flex flex-1 flex-col justify-end gap-3 pb-5 pt-[190px] xs:pt-[220px] sm:pt-[290px] sm:gap-4 sm:pb-7 lg:justify-center lg:pb-12 lg:pt-8">
+        <Container className="relative flex flex-1 flex-col justify-end gap-3 pb-5 pt-[180px] xs:pt-[210px] sm:pt-[280px] sm:gap-4 sm:pb-7 lg:justify-center lg:pb-12 lg:pt-8">
           <div className="max-w-[680px]">
-            <h1 className="text-[32px] font-extrabold leading-[1.04] tracking-[-0.04em] text-ink xs:text-[38px] sm:text-[60px] xl:text-[68px]">
+            <h1 className="text-[26px] xs:text-[32px] sm:text-[56px] xl:text-[68px] font-extrabold leading-[1.04] tracking-[-0.04em] text-ink">
               <motion.span {...enter(0.15)} className="block">Invest today for</motion.span>
               <motion.span {...enter(0.25)} className="relative block max-w-full overflow-hidden pb-[0.12em] text-[0.82em] sm:text-[1em]">
                 <span aria-hidden className="invisible block whitespace-nowrap">your family’s safety</span>
@@ -193,13 +193,13 @@ export function Hero() {
             </motion.p>
 
             <motion.div {...enter(0.45)} className="mt-6 sm:mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
-              <Link href="/contact" className="group relative inline-flex min-h-12 sm:min-h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-brand px-7 text-[15.5px] font-bold text-white shadow-[0_20px_40px_-15px_rgba(11,122,85,0.55)] transition hover:-translate-y-0.5 sm:w-auto">
+              <Link href="/contact" className="group relative inline-flex min-h-11 sm:min-h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-brand px-5 sm:px-7 text-[14px] sm:text-[15.5px] font-bold text-white shadow-[0_20px_40px_-15px_rgba(11,122,85,0.55)] transition hover:-translate-y-0.5 sm:w-auto">
                 <span aria-hidden className="absolute inset-y-0 left-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/25 to-transparent" />
                 <Sparkles className="relative size-[18px] text-white" />
                 <span className="relative">Start your SIP</span>
                 <ArrowRight className="relative size-[18px] transition group-hover:translate-x-1" />
               </Link>
-              <Link href="/calculators" className="inline-flex min-h-12 sm:min-h-14 w-full items-center justify-center gap-2 rounded-2xl border border-line bg-white px-6 text-[15.5px] font-bold text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-brand/40 sm:w-auto">
+              <Link href="/calculators" className="inline-flex min-h-11 sm:min-h-14 w-full items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 sm:px-6 text-[14px] sm:text-[15.5px] font-bold text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-brand/40 sm:w-auto">
                 <PlayCircle className="size-[18px]" /> Try SIP calculator
               </Link>
             </motion.div>

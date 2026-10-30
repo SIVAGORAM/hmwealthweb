@@ -25,16 +25,16 @@ export function TrustStrip() {
     <Container className="relative z-10 my-3.5 sm:my-5">
       {/* gradient hairline border */}
       <div className="rounded-[22px] bg-[linear-gradient(120deg,rgba(25,195,138,0.45),rgba(227,235,231,0.9)_30%,rgba(227,235,231,0.9)_70%,rgba(242,179,61,0.45))] p-px shadow-[0_18px_40px_-28px_rgba(5,59,42,0.45)]">
-        <div className="grid grid-cols-2 gap-1.5 rounded-[21px] bg-white/95 p-1.5 sm:gap-1 sm:p-2 backdrop-blur lg:grid-cols-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-1.5 rounded-[21px] bg-white/95 p-1.5 sm:gap-1 sm:p-2 backdrop-blur md:grid-cols-4">
           {items.map(({ icon: I, t, d }, i) => (
-            <div key={t} className="group relative flex flex-col items-start gap-2 rounded-2xl bg-soft/70 px-3 py-3 transition-colors hover:bg-soft sm:flex-row sm:items-center sm:gap-3 sm:bg-transparent sm:px-4 sm:py-2.5">
-              {i > 0 && <span aria-hidden className="absolute left-0 top-1/2 hidden h-8 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-line to-transparent lg:block" />}
+            <div key={t} className="group relative flex flex-row items-center gap-2.5 rounded-2xl bg-soft/70 px-3 py-2.5 transition-colors hover:bg-soft sm:px-4 sm:py-2.5">
+              {i > 0 && <span aria-hidden className="absolute left-0 top-1/2 hidden h-8 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-line to-transparent md:block" />}
               <span className="relative flex size-8 sm:size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-bright to-brand-dark text-white shadow-[0_6px_14px_-6px_rgba(11,122,85,0.8)] ring-2 sm:ring-4 ring-mint transition-transform duration-300 group-hover:scale-110">
                 <I className="size-4 sm:size-[17px]" strokeWidth={2.2} />
               </span>
               <span className="min-w-0 leading-tight">
-                <span className="block text-[13.5px] sm:text-[14px] font-bold text-ink">{t}</span>
-                <span className="mt-0.5 block text-[11.5px] sm:text-[12.5px] font-medium text-body">{d}</span>
+                <span className="block text-[13px] sm:text-[14px] font-bold text-ink truncate sm:whitespace-normal">{t}</span>
+                <span className="mt-0.5 block text-[11px] sm:text-[12.5px] font-medium text-body truncate sm:whitespace-normal">{d}</span>
               </span>
             </div>
           ))}

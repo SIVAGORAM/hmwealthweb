@@ -25,12 +25,12 @@ export function Logo({
       aria-label={`${site.name}, home`}
       className={cn("group inline-flex shrink-0 items-center transition-opacity hover:opacity-95", className)}
     >
-      <div className={cn("relative h-9 sm:h-10 lg:h-11 w-auto aspect-[980/191]", light && "brightness-0 invert")}>
+      <div className={cn("relative h-7 xs:h-8 sm:h-9 lg:h-10 xl:h-11 w-auto aspect-[980/191] shrink-0", light && "brightness-0 invert")}>
         <ProtectedImage
           src="/images/brand/hm-wealth-logo.png"
           alt="HM Wealth - Helps You Manage & Multiply"
           fill
-          sizes="(min-width: 640px) 240px, 190px"
+          sizes="(min-width: 1280px) 240px, (min-width: 640px) 190px, 150px"
           className="size-full object-contain object-left transition-transform duration-300 group-hover:scale-[1.02]"
           priority={priority}
         />
