@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+// Disable anonymous Next.js telemetry across local and cloud CI builds
+process.env.NEXT_TELEMETRY_DISABLED = "1";
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
