@@ -4,7 +4,7 @@
 **HM Wealth** (`https://hmwealth.in`) is a production-grade, compliance-first marketing and lead-generation website for an **AMFI-registered Mutual Fund Distributor** and **IRDAI-licensed insurance partner** based in India.
 
 - **Founder:** Hari Sarvotham A
-- **AMFI Registration:** ARN-341412 (Mutual Fund Distributor & SIF Distributor)
+- **AMFI Registration:** ARN-341412 (Mutual Fund Distributor)
 - **Target Audience:** Indian retail investors, families, salaried professionals, business owners, and NRIs (Non-Resident Indians) seeking guidance on mutual funds, SIPs, life & health insurance, and sovereign/digital gold.
 
 ## 2. Business & Regulatory Model

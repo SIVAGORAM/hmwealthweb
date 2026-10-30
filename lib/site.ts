@@ -14,13 +14,15 @@ export const site = {
   hours: "Mon – Fri: 9:30 AM – 6:30 PM | Sat: 10:00 AM – 2:00 PM (IST)",
   address: "Financial District, Gachibowli, Hyderabad, Telangana – 500032",
   founder: "Hari Sarvotham A",
+  playStoreUrl: "https://play.google.com/store/apps/details?id=com.ifa.now.app&hl=en_IN",
+  appStoreUrl: "https://apps.apple.com/us/app/my-planner-finance-solved/id6446684872",
+  loginUrl: "https://my-planner.in/login",
 };
 
 // Shown in the navbar, adhering to SEBI/AMFI MFD nomenclature.
 export const registrations = {
   lines: [
     "AMFI REGISTERED MUTUAL FUND DISTRIBUTOR",
-    "AMFI REGISTERED SIF DISTRIBUTOR",
   ],
   products: ["MUTUAL FUND", "INSURANCE"],
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
 import { TrustStrip, Products, SipSection, Goals, HowItWorks, WhyUs, FounderNote } from "@/components/home/HomeSections";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { SixStepProcess } from "@/components/home/SixStepProcess";
 import { Faq } from "@/components/sections/Faq";
 import { MessageCircleQuestion } from "lucide-react";
 import { Container } from "@/components/ui/kit";
@@ -43,6 +44,7 @@ export default function HomePage() {
       <SipSection />
       <Goals />
       <HowItWorks />
+      <SixStepProcess />
       <WhyUs />
       <FounderNote />
       <section className="relative isolate overflow-hidden bg-soft py-5 sm:py-8">

@@ -53,7 +53,7 @@ export function Footer() {
               </p>
               <div className="rounded-2xl border border-line bg-white p-4 backdrop-blur">
                 <p className="text-[13px] font-semibold uppercase leading-relaxed tracking-[0.03em] text-body">
-                  {registrations.lines[0]}<br />{registrations.lines[1]}
+                  {registrations.lines[0]}
                 </p>
                 <div className="mt-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
                   <p className="flex items-center gap-2 whitespace-nowrap text-[13.5px] font-extrabold uppercase tracking-[0.08em] text-brand">
