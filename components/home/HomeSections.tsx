@@ -47,7 +47,6 @@ export function TrustStrip() {
 const products: { icon: typeof TrendingUp; tint: Tint; t: string; d: string; href: string }[] = [
   { icon: TrendingUp, tint: "green", t: "Mutual funds", d: "Equity, debt, hybrid and index funds chosen for your goal and time horizon.", href: "/products/mutual-funds" },
   { icon: CalendarClock, tint: "sky", t: "SIP", d: "Invest a fixed amount every month, from ₹500. Pause or raise it any time.", href: "/products/mutual-funds" },
-  { icon: Receipt, tint: "lilac", t: "Tax saving (ELSS)", d: "Equity funds with a 3-year lock-in that can reduce your tax, as per law.", href: "/products/mutual-funds" },
   { icon: ShieldCheck, tint: "peach", t: "Insurance", d: "Term life, health, motor and business cover compared across insurers.", href: "/products/life-insurance" },
   { icon: Coins, tint: "gold", t: "Gold", d: "Gold ETFs and gold funds, with no lockers, purity checks or making charges.", href: "/products/mutual-funds" },
   { icon: Globe2, tint: "green", t: "NRI investing", d: "Invest in Indian mutual funds through your NRE or NRO account.", href: "/products/mutual-funds" },
@@ -105,7 +104,6 @@ const goals: { icon: typeof HomeIcon; tint: Tint; t: string; time: string; d: st
   { icon: GraduationCap, tint: "lilac", t: "Child’s education", time: "5 to 15 years", d: "Start early with equity funds and move to safer funds near the date.", calc: "goal" },
   { icon: Sunset, tint: "peach", t: "Retirement", time: "15+ years", d: "Grow a corpus with SIPs now, then draw a monthly income with SWP.", calc: "stepup" },
   { icon: LifeBuoy, tint: "green", t: "Emergency fund", time: "Any time", d: "Keep 6 months of expenses in liquid funds you can access quickly.", calc: "lumpsum" },
-  { icon: Receipt, tint: "gold", t: "Save tax", time: "3-year lock-in", d: "ELSS funds that can lower your tax under the rules that apply to you.", calc: "sip" },
   { icon: Landmark, tint: "sky", t: "Long-term wealth", time: "7+ years", d: "Index and flexi-cap funds for steady growth over many years.", calc: "sip" },
 ];
 

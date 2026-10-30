@@ -10,7 +10,7 @@ const LEVELS = [
   { name: "Moderate", color: "#f2c94c", text: "Some movement over months. Typically short-duration debt and conservative hybrid funds." },
   { name: "Moderately high", color: "#f2a03d", text: "Noticeable swings over a year. Typically balanced advantage and some hybrid funds." },
   { name: "High", color: "#e8743b", text: "Large swings over a year or two. Typically aggressive hybrid and gold funds." },
-  { name: "Very high", color: "#d64545", text: "Sharp falls are possible in the short term. Typically equity, index and ELSS funds, suited to 5 years or more." },
+  { name: "Very high", color: "#d64545", text: "Sharp falls are possible in the short term. Typically equity and index funds, suited to 5 years or more." },
 ];
 
 /** SEBI-style semicircular riskometer with six levels. */

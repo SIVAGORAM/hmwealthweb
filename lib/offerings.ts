@@ -39,7 +39,7 @@ export const products: Offering[] = [
     seoTitle: "Mutual Funds & SIP Distribution Services | HM Wealth",
     seoDescription:
       "Distributing equity, debt, and hybrid mutual fund schemes from leading AMCs. Start a monthly SIP or lump sum investment with transparent distributor guidance.",
-    menu: "SIP, lump sum and tax-saving funds",
+    menu: "SIP and lump sum investing",
     icon: PiggyBank,
     tint: "green",
     hero: p("mf-coin-jar", "A small plant growing from a jar of coins", "50% 60%"),

@@ -58,7 +58,7 @@ const steps = [
   },
 ];
 
-type PlanId = "equity" | "debt" | "hybrid" | "elss" | "nri";
+type PlanId = "equity" | "debt" | "hybrid" | "nri";
 
 const plans: {
   id: PlanId;
@@ -121,24 +121,9 @@ const plans: {
     statHighlight: "Cushioned Against Volatility",
   },
   {
-    id: "elss",
-    name: "Save Tax & Grow (ELSS Tax Saver)",
-    category: "4. ELSS Tax Saver",
-    badge: "Section 80C Benefit",
-    bestFor: "Anyone paying income tax under the old tax regime (Section 80C).",
-    howItWorks: "Save up to ₹46,800 in tax every year while growing your money in the market.",
-    whyChoose: "Only has a 3-year lock-in—the shortest among all tax-saving options in India.",
-    icon: Receipt,
-    tint: "gold",
-    allocation: { stocks: 90, bonds: 10 },
-    horizonYears: "3-Year Lock-in",
-    riskRating: "Equity Growth + Tax Shield",
-    statHighlight: "Save up to ₹46,800 Tax / yr",
-  },
-  {
     id: "nri",
     name: "NRI Investment Desk (For Indians Abroad)",
-    category: "5. NRI Desk",
+    category: "4. NRI Desk",
     badge: "For Indians Abroad",
     bestFor: "Non-Resident Indians who want to invest back home in India.",
     howItWorks: "100% paperless account setup with full support for NRE and NRO bank accounts.",

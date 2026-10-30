@@ -115,23 +115,8 @@ export function ProductsBento() {
             </Link>
           </Reveal>
 
-          {/* 3 · ELSS */}
-          <Reveal delay={0.1}>
-            <Link href="/products/mutual-funds" className={cn(tile, "border border-line bg-gradient-to-br from-[#f3efff] to-white shadow-card hover:shadow-lift")}>
-              <div className="flex items-start justify-between">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-white sm:size-12 sm:rounded-2xl text-[#6b4fd1] shadow-sm"><Receipt className="size-5 sm:size-6" /></span>
-                <Go />
-              </div>
-              <div className="mt-auto pt-6 sm:pt-8">
-                <p className="text-[34px] sm:text-[44px] font-extrabold leading-none tracking-[-0.04em] text-[#6b4fd1]">3 yrs</p>
-                <h3 className="mt-1.5 text-[15px] font-bold text-ink sm:mt-2 sm:text-lg">Tax saving (ELSS)</h3>
-                <p className="mt-1 text-[12px] leading-snug text-body sm:text-[14px] sm:leading-relaxed">Shortest lock-in among tax-saving options, as per law.</p>
-              </div>
-            </Link>
-          </Reveal>
-
-          {/* 4 · Gold */}
-          <Reveal delay={0.15}>
+          {/* 3 · Gold */}
+          <Reveal className="col-span-2" delay={0.1}>
             <Link href="/products/mutual-funds" className={cn(tile, "bg-[linear-gradient(145deg,#fff4d6_0%,#f7d77c_55%,#e3a92c_100%)] shadow-[0_20px_40px_-24px_rgba(201,138,18,0.8)]")}>
               <div aria-hidden className="absolute -right-8 -top-8 size-40 rounded-full border-[14px] border-white/30" />
               <div aria-hidden className="absolute -right-2 -top-2 size-24 rounded-full border-[10px] border-white/25" />

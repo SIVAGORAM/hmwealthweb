@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Home as HomeIcon, GraduationCap, Sunset, LifeBuoy, Receipt, Landmark, Target, Clock } from "lucide-react";
+import { ArrowUpRight, Home as HomeIcon, GraduationCap, Sunset, LifeBuoy, Landmark, Target, Clock } from "lucide-react";
 import { Container } from "@/components/ui/kit";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProtectedImage } from "@/components/ui/ProtectedImage";
@@ -10,17 +10,15 @@ const GOALS = [
     d: "Start early with equity funds and move to safer funds as admission year nears.", calc: "education", accent: "#6b4fd1", soft: "#f0ecff" },
   { icon: HomeIcon, t: "Dream home", time: "3 to 7 years", photo: photos.home, pos: "60% 40%",
     d: "Build your down-payment with a mix that stays steady as the date comes closer.", calc: "goal", accent: "#2f6fd6", soft: "#e8f1ff" },
-  { icon: Sunset, t: "Retirement", time: "15+ years", photo: photos.seniors, pos: "55% 25%",
+  { icon: Sunset, t: "Retirement", time: "15+ years", photo: photos.retirementHero, pos: "64% 40%",
     d: "Grow a corpus with SIPs now, then draw a monthly income with SWP.", calc: "retirement", accent: "#d6662f", soft: "#fff0e8" },
   { icon: LifeBuoy, t: "Emergency fund", time: "Any time", photo: photos.motherDaughter, pos: "50% 25%",
     d: "Keep about 6 months of expenses in funds you can access quickly.", calc: "lumpsum", accent: "#0b7a55", soft: "#e7f6ef" },
-  { icon: Receipt, t: "Save tax", time: "3-year lock-in", photo: photos.professional, pos: "50% 30%",
-    d: "ELSS funds that can lower your tax under the rules that apply to you.", calc: "sip", accent: "#b07a10", soft: "#fff6e0" },
   { icon: Landmark, t: "Long-term wealth", time: "7+ years", photo: photos.wealthCouple, pos: "50% 35%",
     d: "Index and flexi-cap funds for steady growth across many years.", calc: "sip", accent: "#0f8a8a", soft: "#e4f6f6" },
 ];
 
-const WIDE = [0, 5]; // tiles that span two columns
+const WIDE = [0, 3, 4]; // tiles that span two columns
 
 export function GoalsExplorer() {
   return (

@@ -30,6 +30,7 @@ import {
   Copy,
   ChevronDown,
   ChevronUp,
+  ShoppingBag,
 } from "lucide-react";
 import {
   calculateSIP,
@@ -131,9 +132,9 @@ export function WealthStudio() {
     else { setActiveCategory("cashflow"); setActiveCashflow(k as CashflowCalc); }
   };
 
-  // Global Inflation Toggle
-  const showInflation = false; // inflation toggle removed for simplicity
-  const inflationRate = 6; // 6% standard India inflation
+  // Inflation Adjustment State (Realtime Purchasing Power)
+  const [showInflation, setShowInflation] = useState<boolean>(true);
+  const [inflationRate, setInflationRate] = useState<number>(6); // 6% standard long-term India CPI inflation
 
   // Interactive View Toggles
   const [showGrowthTable, setShowGrowthTable] = useState<boolean>(false);
@@ -661,6 +662,60 @@ Modeled at: https://hmwealth.in/calculators`;
                   onChange={setSipYears}
                   helperText="Longer periods show more compounding"
                 />
+
+                {/* Inflation Adjustment Control Section */}
+                <div className="rounded-2xl border border-line bg-soft/60 p-4 transition-all">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex size-7 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700">
+                        <ShoppingBag className="size-4" />
+                      </span>
+                      <div>
+                        <span className="text-[13px] font-bold text-ink">Adjust for Inflation</span>
+                        <p className="text-[11px] text-body">Estimate purchasing power in today&apos;s money</p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={showInflation}
+                      aria-label="Toggle inflation adjustment"
+                      onClick={() => setShowInflation((v) => !v)}
+                      className={cn(
+                        "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none",
+                        showInflation ? "bg-brand" : "bg-slate-300"
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "pointer-events-none inline-block size-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out",
+                          showInflation ? "translate-x-5" : "translate-x-0"
+                        )}
+                      />
+                    </button>
+                  </div>
+
+                  {showInflation && (
+                    <div className="mt-3.5 border-t border-line/60 pt-3">
+                      <DualControl
+                        id="sip-inflation-rate"
+                        label="Expected Annual Inflation"
+                        value={inflationRate}
+                        min={3}
+                        max={10}
+                        step={0.5}
+                        unit="percent"
+                        quickChips={[
+                          { label: "5%", addValue: 5 - inflationRate },
+                          { label: "6% (Avg)", addValue: 6 - inflationRate },
+                          { label: "7%", addValue: 7 - inflationRate },
+                        ]}
+                        onChange={setInflationRate}
+                        helperText="Historical long-term Indian CPI inflation averages ~6%"
+                      />
+                    </div>
+                  )}
+                </div>
               </>
             )}
 
@@ -1216,6 +1271,7 @@ Modeled at: https://hmwealth.in/calculators`;
                 ] : [
                   { l: "Amount invested", v: n(r.investedCapital) },
                   { l: "Estimated gains", v: `+${n(r.wealthGain)}`, tone: "gain" },
+                  ...(showInflation && typeof r.realValue === "number" ? [{ l: `Inflation-adjusted (${inflationRate}%)`, v: n(r.realValue) }] : []),
                   ...(r.finalMonthly ? [{ l: "Final monthly SIP", v: n(r.finalMonthly) }] : []),
                 ];
               return (
@@ -1229,6 +1285,43 @@ Modeled at: https://hmwealth.in/calculators`;
                 </dl>
               );
             })()}
+
+            {/* Dedicated Inflation-Adjusted Corpus Section */}
+            {showInflation && typeof currentResult.realValue === "number" && !currentResult.isEMI && !currentResult.isSWP && (
+              <div className="mt-4 rounded-2xl border border-amber-200/90 bg-gradient-to-br from-amber-50/70 via-white to-amber-50/30 p-4 shadow-2xs">
+                <div className="flex items-center justify-between gap-2 border-b border-amber-200/60 pb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="flex size-6 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700">
+                      <ShoppingBag className="size-3.5" />
+                    </span>
+                    <span className="text-[11.5px] font-extrabold uppercase tracking-wider text-amber-950">
+                      Inflation-Adjusted Corpus
+                    </span>
+                  </div>
+                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10.5px] font-bold text-amber-800">
+                    @{inflationRate}% p.a.
+                  </span>
+                </div>
+
+                <div className="mt-2.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="text-[26px] sm:text-[30px] font-black tracking-tight text-amber-950 tnum">
+                    {formatCurrency(currentResult.realValue)}
+                  </span>
+                  <span className="text-xs font-semibold text-amber-800/90">
+                    today&apos;s purchasing power
+                  </span>
+                </div>
+
+                <p className="mt-1 text-[12px] leading-relaxed text-amber-900/80">
+                  Due to {inflationRate}% annual inflation, your projected {formatCurrency(currentResult.primaryValue)} after {currentResult.years} years will have the purchasing power of <strong>{formatCurrency(currentResult.realValue)}</strong> in today&apos;s money.
+                  {currentResult.realValue > currentResult.investedCapital ? (
+                    <span className="text-emerald-700 font-semibold">
+                      {" "}Your investment still beats inflation by {formatCurrency(currentResult.realValue - currentResult.investedCapital)} in real wealth creation!
+                    </span>
+                  ) : null}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* B. Distinct Dual Gradient Growth Chart */}
