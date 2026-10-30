@@ -5,10 +5,10 @@
  */
 
 export const RETURN_LIMITS = {
-  equity: { min: 1, max: 20, def: 12, step: 0.5 },
-  swp: { min: 1, max: 15, def: 8, step: 0.5 },
-  emi: { min: 5, max: 20, def: 8.5, step: 0.1 },
-  inflation: { min: 3, max: 12, def: 6, step: 0.5 },
+  equity: { min: 1, max: 30, maxInput: 50, def: 12, step: 0.5 },
+  swp: { min: 1, max: 20, maxInput: 30, def: 8, step: 0.5 },
+  emi: { min: 4, max: 25, maxInput: 35, def: 8.5, step: 0.1 },
+  inflation: { min: 2, max: 15, maxInput: 25, def: 6, step: 0.5 },
 } as const;
 
 export interface SIPResult {

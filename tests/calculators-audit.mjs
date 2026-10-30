@@ -183,10 +183,11 @@ assert(formatCurrency(45000) === "₹45,000", "formatCurrency handles Thousands 
 // 11. Centralized Return Limits Audit
 // -----------------------------------------------------------------------------
 console.log("\n--- 11. Return Limits Configuration Audit ---");
-assert(RETURN_LIMITS.equity.max === 20, "Equity return limit max is 20%");
-assert(RETURN_LIMITS.swp.max === 15, "SWP return limit max is 15%");
-assert(RETURN_LIMITS.emi.max === 20, "EMI rate limit max is 20%");
-assert(RETURN_LIMITS.inflation.max === 12, "Inflation rate limit max is 12%");
+assert(RETURN_LIMITS.equity.max === 30, "Equity return limit max is 30%");
+assert(RETURN_LIMITS.equity.maxInput === 50, "Equity return manual input ceiling is 50%");
+assert(RETURN_LIMITS.swp.max === 20, "SWP return limit max is 20%");
+assert(RETURN_LIMITS.emi.max === 25, "EMI rate limit max is 25%");
+assert(RETURN_LIMITS.inflation.max === 15, "Inflation rate limit max is 15%");
 
 // -----------------------------------------------------------------------------
 // SUMMARY

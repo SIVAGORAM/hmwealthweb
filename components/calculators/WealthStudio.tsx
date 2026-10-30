@@ -632,14 +632,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Monthly Investment Amount"
                   value={sipMonthly}
                   min={500}
-                  max={200000}
+                  max={1000000}
                   step={500}
                   unit="currency"
                   quickChips={[
-                    { label: "₹1k", addValue: 1000 },
                     { label: "₹5k", addValue: 5000 },
                     { label: "₹10k", addValue: 10000 },
                     { label: "₹25k", addValue: 25000 },
+                    { label: "₹50k", addValue: 50000 },
                   ]}
                   onChange={setSipMonthly}
                   helperText="Start with what is comfortable"
@@ -657,6 +657,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - sipRate },
                     { label: "12%", addValue: 12 - sipRate },
                     { label: "15%", addValue: 15 - sipRate },
+                    { label: "20%", addValue: 20 - sipRate },
                   ]}
                   onChange={setSipRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -667,7 +668,7 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Investment Time Horizon"
                   value={sipYears}
                   min={1}
-                  max={40}
+                  max={50}
                   step={1}
                   unit="years"
                   quickChips={[
@@ -688,14 +689,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="stepup-monthly"
                   label="Starting Monthly SIP"
                   value={stepUpMonthly}
-                  min={1000}
-                  max={200000}
+                  min={500}
+                  max={1000000}
                   step={500}
                   unit="currency"
                   quickChips={[
                     { label: "₹5k", addValue: 5000 },
                     { label: "₹10k", addValue: 10000 },
                     { label: "₹25k", addValue: 25000 },
+                    { label: "₹50k", addValue: 50000 },
                   ]}
                   onChange={setStepUpMonthly}
                 />
@@ -705,13 +707,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Annual Step-Up Hike"
                   value={stepUpPercent}
                   min={1}
-                  max={30}
+                  max={50}
                   step={1}
                   unit="percent"
                   quickChips={[
                     { label: "5%", addValue: 5 - stepUpPercent },
                     { label: "10%", addValue: 10 - stepUpPercent },
                     { label: "15%", addValue: 15 - stepUpPercent },
+                    { label: "20%", addValue: 20 - stepUpPercent },
                   ]}
                   onChange={setStepUpPercent}
                   helperText="Match your annual salary increments"
@@ -729,6 +732,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - stepUpRate },
                     { label: "12%", addValue: 12 - stepUpRate },
                     { label: "15%", addValue: 15 - stepUpRate },
+                    { label: "20%", addValue: 20 - stepUpRate },
                   ]}
                   onChange={setStepUpRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -739,7 +743,7 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Time Period"
                   value={stepUpYears}
                   min={1}
-                  max={40}
+                  max={50}
                   step={1}
                   unit="years"
                   quickChips={[
@@ -759,14 +763,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="lump-amount"
                   label="Total One-Time Deposit"
                   value={lumpAmount}
-                  min={10000}
-                  max={10000000}
+                  min={5000}
+                  max={100000000}
                   step={10000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹50k", addValue: 50000 },
                     { label: "+₹1L", addValue: 100000 },
                     { label: "+₹5L", addValue: 500000 },
+                    { label: "+₹10L", addValue: 1000000 },
+                    { label: "+₹25L", addValue: 2500000 },
                   ]}
                   onChange={setLumpAmount}
                 />
@@ -783,6 +788,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - lumpRate },
                     { label: "12%", addValue: 12 - lumpRate },
                     { label: "15%", addValue: 15 - lumpRate },
+                    { label: "20%", addValue: 20 - lumpRate },
                   ]}
                   onChange={setLumpRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -793,12 +799,13 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Tenure / Duration"
                   value={lumpYears}
                   min={1}
-                  max={40}
+                  max={50}
                   step={1}
                   unit="years"
                   quickChips={[
-                    { label: "+3 yrs", addValue: 3 },
+                    { label: "+1 yr", addValue: 1 },
                     { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
                   ]}
                   onChange={setLumpYears}
                 />
@@ -813,13 +820,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Annual Investment Amount"
                   value={annualAmount}
                   min={10000}
-                  max={2500000}
+                  max={25000000}
                   step={5000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹25k", addValue: 25000 },
                     { label: "+₹50k", addValue: 50000 },
                     { label: "+₹1L", addValue: 100000 },
+                    { label: "+₹5L", addValue: 500000 },
+                    { label: "+₹10L", addValue: 1000000 },
                   ]}
                   onChange={setAnnualAmount}
                   helperText="e.g. Annual bonus or dividend"
@@ -837,6 +845,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - annualRate },
                     { label: "12%", addValue: 12 - annualRate },
                     { label: "15%", addValue: 15 - annualRate },
+                    { label: "20%", addValue: 20 - annualRate },
                   ]}
                   onChange={setAnnualRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -847,9 +856,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Investment Years"
                   value={annualYears}
                   min={1}
-                  max={40}
+                  max={50}
                   step={1}
                   unit="years"
+                  quickChips={[
+                    { label: "+1 yr", addValue: 1 },
+                    { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
+                  ]}
                   onChange={setAnnualYears}
                 />
               </>
@@ -863,13 +877,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Target Wealth Goal (Future Corpus)"
                   value={targetCorpus}
                   min={100000}
-                  max={100000000}
+                  max={250000000}
                   step={50000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹5L", addValue: 500000 },
                     { label: "+₹10L", addValue: 1000000 },
                     { label: "+₹25L", addValue: 2500000 },
+                    { label: "+₹50L", addValue: 5000000 },
+                    { label: "+₹1Cr", addValue: 10000000 },
                   ]}
                   onChange={setTargetCorpus}
                   helperText="Goal for home, wedding, or venture"
@@ -887,6 +902,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - targetRate },
                     { label: "12%", addValue: 12 - targetRate },
                     { label: "15%", addValue: 15 - targetRate },
+                    { label: "20%", addValue: 20 - targetRate },
                   ]}
                   onChange={setTargetRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -897,12 +913,13 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Years Left to Reach Goal"
                   value={targetYears}
                   min={1}
-                  max={40}
+                  max={50}
                   step={1}
                   unit="years"
                   quickChips={[
                     { label: "+2 yrs", addValue: 2 },
                     { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
                   ]}
                   onChange={setTargetYears}
                 />
@@ -951,13 +968,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="monthly-expense"
                   label="Current Monthly Living Expense"
                   value={currentMonthlyExpense}
-                  min={10000}
-                  max={500000}
+                  min={5000}
+                  max={1500000}
                   step={2000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹5k", addValue: 5000 },
                     { label: "+₹10k", addValue: 10000 },
+                    { label: "+₹25k", addValue: 25000 },
+                    { label: "+₹50k", addValue: 50000 },
+                    { label: "+₹1L", addValue: 100000 },
                   ]}
                   onChange={setCurrentMonthlyExpense}
                   helperText="Household expenses in today's terms"
@@ -968,7 +987,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     id="pre-return"
                     label="Pre-Retirement Return"
                     value={preRetirementReturn}
-                    min={6}
+                    min={4}
                     max={RETURN_LIMITS.equity.max}
                     step={0.5}
                     unit="percent"
@@ -981,7 +1000,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     label="Post-Retirement Return"
                     value={postRetirementReturn}
                     min={4}
-                    max={12}
+                    max={18}
                     step={0.5}
                     unit="percent"
                     onChange={setPostRetirementReturn}
@@ -1022,13 +1041,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="education-cost"
                   label="Cost of Course (In Today's Money)"
                   value={currentEducationCost}
-                  min={500000}
-                  max={20000000}
+                  min={200000}
+                  max={50000000}
                   step={50000}
                   unit="currency"
                   quickChips={[
                     { label: "+₹5L", addValue: 500000 },
                     { label: "+₹10L", addValue: 1000000 },
+                    { label: "+₹25L", addValue: 2500000 },
                   ]}
                   onChange={setCurrentEducationCost}
                   helperText="Tuition + accommodation in today's rates"
@@ -1040,7 +1060,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     label="Education Inflation"
                     value={educationInflation}
                     min={4}
-                    max={14}
+                    max={18}
                     step={0.5}
                     unit="percent"
                     onChange={setEducationInflation}
@@ -1051,7 +1071,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     id="education-return"
                     label="Expected Return"
                     value={educationReturn}
-                    min={6}
+                    min={4}
                     max={RETURN_LIMITS.equity.max}
                     step={0.5}
                     unit="percent"
@@ -1069,13 +1089,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="swp-principal"
                   label="Total Capital to Invest"
                   value={swpPrincipal}
-                  min={500000}
-                  max={50000000}
+                  min={100000}
+                  max={250000000}
                   step={50000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹5L", addValue: 500000 },
                     { label: "+₹10L", addValue: 1000000 },
+                    { label: "+₹25L", addValue: 2500000 },
+                    { label: "+₹50L", addValue: 5000000 },
+                    { label: "+₹1Cr", addValue: 10000000 },
                   ]}
                   onChange={setSwpPrincipal}
                 />
@@ -1084,14 +1106,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="swp-withdrawal"
                   label="Monthly Income Withdrawal"
                   value={swpWithdrawal}
-                  min={2000}
-                  max={500000}
+                  min={1000}
+                  max={2500000}
                   step={1000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹5k", addValue: 5000 },
                     { label: "+₹10k", addValue: 10000 },
                     { label: "+₹25k", addValue: 25000 },
+                    { label: "+₹50k", addValue: 50000 },
+                    { label: "+₹1L", addValue: 100000 },
                   ]}
                   onChange={setSwpWithdrawal}
                   helperText="Choose a withdrawal you are comfortable with"
@@ -1109,6 +1132,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "7%", addValue: 7 - swpRate },
                     { label: "8%", addValue: 8 - swpRate },
                     { label: "10%", addValue: 10 - swpRate },
+                    { label: "12%", addValue: 12 - swpRate },
                   ]}
                   onChange={setSwpRate}
                   helperText="Assumed post-retirement portfolio return"
@@ -1119,9 +1143,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Withdrawal Timeframe"
                   value={swpYears}
                   min={1}
-                  max={30}
+                  max={50}
                   step={1}
                   unit="years"
+                  quickChips={[
+                    { label: "+1 yr", addValue: 1 },
+                    { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
+                  ]}
                   onChange={setSwpYears}
                 />
               </>
@@ -1135,12 +1164,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Future Target Corpus Needed"
                   value={targetLumpCorpus}
                   min={100000}
-                  max={100000000}
+                  max={250000000}
                   step={50000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹5L", addValue: 500000 },
                     { label: "+₹10L", addValue: 1000000 },
+                    { label: "+₹25L", addValue: 2500000 },
+                    { label: "+₹50L", addValue: 5000000 },
+                    { label: "+₹1Cr", addValue: 10000000 },
                   ]}
                   onChange={setTargetLumpCorpus}
                 />
@@ -1157,6 +1188,7 @@ Modeled at: https://hmwealth.in/calculators`;
                     { label: "10%", addValue: 10 - targetLumpRate },
                     { label: "12%", addValue: 12 - targetLumpRate },
                     { label: "15%", addValue: 15 - targetLumpRate },
+                    { label: "20%", addValue: 20 - targetLumpRate },
                   ]}
                   onChange={setTargetLumpRate}
                   helperText="Assumed annual rate for illustration. Returns are not guaranteed."
@@ -1167,9 +1199,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Years until Required"
                   value={targetLumpYears}
                   min={1}
-                  max={30}
+                  max={50}
                   step={1}
                   unit="years"
+                  quickChips={[
+                    { label: "+1 yr", addValue: 1 },
+                    { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
+                  ]}
                   onChange={setTargetLumpYears}
                 />
               </>
@@ -1183,13 +1220,14 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Loan Amount Required"
                   value={emiPrincipal}
                   min={100000}
-                  max={50000000}
+                  max={250000000}
                   step={50000}
                   unit="currency"
                   quickChips={[
-                    { label: "+₹2L", addValue: 200000 },
-                    { label: "+₹5L", addValue: 500000 },
                     { label: "+₹10L", addValue: 1000000 },
+                    { label: "+₹25L", addValue: 2500000 },
+                    { label: "+₹50L", addValue: 5000000 },
+                    { label: "+₹1Cr", addValue: 10000000 },
                   ]}
                   onChange={setEmiPrincipal}
                   helperText="Home, Car or Personal Loan"
@@ -1199,14 +1237,15 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="emi-rate"
                   label="Annual Interest Rate (Reducing)"
                   value={emiRate}
-                  min={5}
-                  max={18}
+                  min={RETURN_LIMITS.emi.min}
+                  max={RETURN_LIMITS.emi.max}
                   step={0.1}
                   unit="percent"
                   quickChips={[
                     { label: "8.5%", addValue: 8.5 - emiRate },
                     { label: "9.0%", addValue: 9.0 - emiRate },
                     { label: "9.5%", addValue: 9.5 - emiRate },
+                    { label: "10.5%", addValue: 10.5 - emiRate },
                   ]}
                   onChange={setEmiRate}
                 />
@@ -1216,12 +1255,13 @@ Modeled at: https://hmwealth.in/calculators`;
                   label="Loan Tenure"
                   value={emiYears}
                   min={1}
-                  max={30}
+                  max={40}
                   step={1}
                   unit="years"
                   quickChips={[
                     { label: "+1 yr", addValue: 1 },
                     { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
                   ]}
                   onChange={setEmiYears}
                 />
@@ -1275,6 +1315,7 @@ Modeled at: https://hmwealth.in/calculators`;
                         { label: "5%", addValue: 5 - inflationRate },
                         { label: "6% (Avg)", addValue: 6 - inflationRate },
                         { label: "7%", addValue: 7 - inflationRate },
+                        { label: "8%", addValue: 8 - inflationRate },
                       ]}
                       onChange={setInflationRate}
                       helperText="Historical long-term Indian CPI inflation averages ~6%"

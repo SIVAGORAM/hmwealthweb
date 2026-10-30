@@ -226,20 +226,20 @@ export function SipCalculatorCard() {
               id="home-calc-amt"
               type="range"
               min={isSIP ? 500 : 10000}
-              max={isSIP ? 100000 : 1000000}
+              max={isSIP ? 1000000 : 50000000}
               step={isSIP ? 500 : 10000}
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
               className="range cursor-pointer"
               style={{
                 ["--fill" as string]: `${
-                  ((amount - (isSIP ? 500 : 10000)) / ((isSIP ? 100000 : 1000000) - (isSIP ? 500 : 10000))) * 100
+                  ((amount - (isSIP ? 500 : 10000)) / ((isSIP ? 1000000 : 50000000) - (isSIP ? 500 : 10000))) * 100
                 }%`,
               }}
             />
             <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>{formatCurrency(isSIP ? 500 : 10000)}</span>
-              <span>{formatCurrency(isSIP ? 100000 : 1000000)}</span>
+              <span>{formatCurrency(isSIP ? 1000000 : 50000000)}</span>
             </div>
           </div>
 
@@ -257,19 +257,19 @@ export function SipCalculatorCard() {
               id="home-calc-rate"
               type="range"
               min={1}
-              max={20}
+              max={30}
               step={0.5}
               value={rate}
               onChange={(e) => setRate(Number(e.target.value))}
               className="range cursor-pointer"
               style={{
-                ["--fill" as string]: `${((rate - 1) / 19) * 100}%`,
+                ["--fill" as string]: `${((rate - 1) / 29) * 100}%`,
               }}
             />
             <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>1% (Debt)</span>
-              <span>10% (Balanced)</span>
-              <span>20% (Aggressive)</span>
+              <span>15% (Balanced)</span>
+              <span>30% (Aggressive)</span>
             </div>
           </div>
 
@@ -287,19 +287,19 @@ export function SipCalculatorCard() {
               id="home-calc-yrs"
               type="range"
               min={1}
-              max={35}
+              max={40}
               step={1}
               value={years}
               onChange={(e) => setYears(Number(e.target.value))}
               className="range cursor-pointer"
               style={{
-                ["--fill" as string]: `${((years - 1) / 34) * 100}%`,
+                ["--fill" as string]: `${((years - 1) / 39) * 100}%`,
               }}
             />
             <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>1 Year</span>
-              <span>10 Years</span>
-              <span>35 Years</span>
+              <span>15 Years</span>
+              <span>40 Years</span>
             </div>
           </div>
 
