@@ -280,7 +280,7 @@ export function SixStepProcess() {
             </ol>
           </div>
 
-          <p className="mt-5 border-t border-line/80 pt-3 text-center text-[12px] sm:text-[12.5px] font-medium leading-relaxed text-slate-700">
+          <p className="mt-5 border-t border-slate-300 pt-3 text-center text-[12px] sm:text-[12.5px] font-semibold leading-relaxed text-slate-800">
             HM Wealth is an AMFI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks, read all scheme related documents carefully. The final investment decision is always yours.
           </p>
         </div>

@@ -229,10 +229,10 @@ function DesktopRegBlock({ className }: { className?: string }) {
         className
       )}
     >
-      <p className="text-[10px] xl:text-[10.5px] font-extrabold tracking-[0.06em] text-slate-900">
+      <p className="text-[10px] xl:text-[10.5px] font-black tracking-[0.06em] text-black">
         {registrations.lines[0]}
       </p>
-      <p className="mt-1 text-[12px] xl:text-[12.5px] font-black tracking-wide text-slate-900">
+      <p className="mt-1 text-[12px] xl:text-[12.5px] font-black tracking-wide text-black">
         {site.arn.replace("-", " – ")}
       </p>
       <div className="mt-1 flex items-center gap-1.5 text-[11px] xl:text-[11.5px] font-black tracking-[0.08em] text-[#179672]">
@@ -256,10 +256,10 @@ function MobileRegBanner({ className }: { className?: string }) {
       )}
     >
       <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-0.5 xs:gap-1 uppercase">
-        <p className="text-[9.5px] xs:text-[10.5px] font-extrabold tracking-[0.04em] xs:tracking-[0.06em] text-slate-900 leading-tight">
+        <p className="text-[9.5px] xs:text-[10.5px] font-black tracking-[0.04em] xs:tracking-[0.06em] text-black leading-tight">
           {registrations.lines[0]}
         </p>
-        <p className="text-[11px] xs:text-[12px] font-black tracking-wide text-slate-900 leading-tight">
+        <p className="text-[11px] xs:text-[12px] font-black tracking-wide text-black leading-tight">
           {site.arn.replace("-", " – ")}
         </p>
         <div className="flex items-center justify-center gap-1.5 xs:gap-2 text-[10px] xs:text-[11px] font-black tracking-[0.06em] xs:tracking-[0.08em] text-[#179672] leading-tight">

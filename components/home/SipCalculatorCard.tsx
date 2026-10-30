@@ -257,19 +257,19 @@ export function SipCalculatorCard() {
               id="home-calc-rate"
               type="range"
               min={1}
-              max={13}
+              max={20}
               step={0.5}
               value={rate}
               onChange={(e) => setRate(Number(e.target.value))}
               className="range cursor-pointer"
               style={{
-                ["--fill" as string]: `${((rate - 1) / 12) * 100}%`,
+                ["--fill" as string]: `${((rate - 1) / 19) * 100}%`,
               }}
             />
             <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
-              <span>1% (Conservative)</span>
-              <span>8%</span>
-              <span>13% (max)</span>
+              <span>1% (Debt)</span>
+              <span>10% (Balanced)</span>
+              <span>20% (Aggressive)</span>
             </div>
           </div>
 
@@ -461,7 +461,7 @@ export function SipCalculatorCard() {
           </div>
 
           {/* Regulatory Illustration Disclaimer */}
-          <p className="mt-3 text-center text-[11.5px] leading-relaxed font-medium text-slate-700">
+          <p className="mt-3 text-center text-[11.5px] leading-relaxed font-semibold text-slate-800">
             Calculations are for illustration only and assume a constant return rate. Mutual fund investments are subject to market risks.
           </p>
         </div>

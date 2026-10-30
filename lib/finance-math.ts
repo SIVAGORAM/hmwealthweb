@@ -4,6 +4,13 @@
  * Final monetary values rounded via Math.round().
  */
 
+export const RETURN_LIMITS = {
+  equity: { min: 1, max: 20, def: 12, step: 0.5 },
+  swp: { min: 1, max: 15, def: 8, step: 0.5 },
+  emi: { min: 5, max: 20, def: 8.5, step: 0.1 },
+  inflation: { min: 3, max: 12, def: 6, step: 0.5 },
+} as const;
+
 export interface SIPResult {
   totalInvestment: number;
   maturityValue: number;
@@ -226,14 +233,15 @@ export function calculateTargetLumpsum(
   annualRate: number,
   years: number
 ): TargetLumpsumResult {
-  const C = Math.max(0, targetCorpus);
-  const Y = Math.max(0, years);
-  const requiredLumpSumRaw = C / Math.pow(1 + annualRate / 100, Y);
+  const C = Math.max(0, isNaN(targetCorpus) ? 0 : targetCorpus);
+  const Y = Math.max(0, isNaN(years) ? 0 : years);
+  const safeRate = Math.max(0, isNaN(annualRate) ? 0 : annualRate);
+  const requiredLumpSumRaw = Y === 0 ? C : C / Math.pow(1 + safeRate / 100, Y);
 
   return {
     requiredLumpSum: Math.round(requiredLumpSumRaw),
     targetCorpus: Math.round(C),
-    estimatedReturns: Math.round(C - requiredLumpSumRaw),
+    estimatedReturns: Math.round(Math.max(0, C - requiredLumpSumRaw)),
   };
 }
 
@@ -246,10 +254,11 @@ export function calculateSWP(
   annualRate: number,
   years: number
 ): SWPResult {
-  const P = Math.max(0, principal);
-  const W = Math.max(0, monthlyWithdrawal);
-  const Y = Math.max(0, years);
-  const r = (annualRate / 100) / 12;
+  const P = Math.max(0, isNaN(principal) ? 0 : principal);
+  const W = Math.max(0, isNaN(monthlyWithdrawal) ? 0 : monthlyWithdrawal);
+  const Y = Math.max(0, isNaN(years) ? 0 : years);
+  const safeRate = Math.max(0, isNaN(annualRate) ? 0 : annualRate);
+  const r = (safeRate / 100) / 12;
   const totalMonths = Y * 12;
 
   let balance = P;
@@ -259,8 +268,10 @@ export function calculateSWP(
   let exhaustedYear: number | null = null;
 
   for (let m = 1; m <= totalMonths; m++) {
-    balance = balance * (1 + r) - W;
-    totalWithdrawn += W;
+    const available = balance * (1 + r);
+    const actualW = Math.min(W, available);
+    balance = Math.max(0, available - actualW);
+    totalWithdrawn += actualW;
 
     if (balance <= 0) {
       isExhausted = true;
@@ -417,6 +428,34 @@ export function adjustForInflation(
   return Math.round(discounted);
 }
 
+/**
+ * Calculates the real purchasing-power equivalent of recurring cash flows
+ * discounted by inflation to present value (Year 0 terms).
+ */
+export function calculateRealInvestedCapital(
+  initialMonthly: number,
+  stepUpPercent: number,
+  years: number,
+  inflationRate: number
+): number {
+  const Y = Math.max(0, isNaN(years) ? 0 : years);
+  const n = Y * 12;
+  const safeStep = Math.max(0, isNaN(stepUpPercent) ? 0 : stepUpPercent);
+  const safeInfl = Math.max(0, isNaN(inflationRate) ? 0 : inflationRate);
+  let currentMonthly = Math.max(0, isNaN(initialMonthly) ? 0 : initialMonthly);
+  let realInvested = 0;
+
+  for (let m = 1; m <= n; m++) {
+    if (m > 1 && (m - 1) % 12 === 0) {
+      currentMonthly = currentMonthly * (1 + safeStep / 100);
+    }
+    const tYears = (m - 1) / 12;
+    realInvested += safeInfl > 0 ? currentMonthly / Math.pow(1 + safeInfl / 100, tYears) : currentMonthly;
+  }
+
+  return Math.round(realInvested);
+}
+
 /* ==========================================================================
    11. Yearly Trajectory Series Generators for Wealth Studio AreaChart
    ========================================================================== */
@@ -524,9 +563,10 @@ export function generateSWPTrajectory(
   for (let y = 1; y <= years; y++) {
     for (let m = 1; m <= 12; m++) {
       if (balance > 0) {
-        balance = balance * (1 + r) - monthlyWithdrawal;
-        totalWithdrawn += monthlyWithdrawal;
-        if (balance < 0) balance = 0;
+        const available = balance * (1 + r);
+        const actualW = Math.min(monthlyWithdrawal, available);
+        balance = Math.max(0, available - actualW);
+        totalWithdrawn += actualW;
       }
     }
     points.push({

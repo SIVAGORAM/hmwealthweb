@@ -87,7 +87,7 @@ export function ProductsBento() {
                   <circle cx="400" cy="8" r="5" fill="#f2d27a" className="animate-ping-slow" />
                   <circle cx="400" cy="8" r="4" fill="#f2d27a" />
                 </svg>
-                <p className="text-[11.5px] font-medium text-slate-700">Illustrative only. Mutual fund investments are subject to market risks.</p>
+                <p className="text-[11.5px] font-semibold text-slate-800">Illustrative only. Mutual fund investments are subject to market risks.</p>
               </div>
             </Link>
           </Reveal>

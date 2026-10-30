@@ -16,8 +16,10 @@ import { Calendar, DollarSign, TrendingUp, Sparkles, ShoppingBag } from "lucide-
 interface WealthAreaChartProps {
   data: TrajectoryPoint[];
   showInflation?: boolean;
+  inflationRate?: number;
   capitalLabel?: string;
   wealthLabel?: string;
+  isEMI?: boolean;
   height?: number;
 }
 
@@ -32,9 +34,11 @@ interface CustomTooltipProps {
   }>;
   label?: number;
   showInflation?: boolean;
+  inflationRate?: number;
+  isEMI?: boolean;
 }
 
-function CustomTooltip({ active, payload, label, showInflation }: CustomTooltipProps) {
+function CustomTooltip({ active, payload, label, showInflation, inflationRate = 6, isEMI = false }: CustomTooltipProps) {
   if (!active || !payload || !payload.length) return null;
 
   const point = payload[0].payload;
@@ -53,33 +57,33 @@ function CustomTooltip({ active, payload, label, showInflation }: CustomTooltipP
       </div>
 
       <div className="mt-3 flex flex-col gap-2 text-xs">
-        {/* Invested Capital */}
+        {/* Invested Capital / Principal Repaid */}
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1.5 text-body">
             <span className="size-2 rounded-full bg-slate-700" />
-            Invested Capital:
+            {isEMI ? "Principal Repaid:" : "Invested Capital:"}
           </span>
           <span className="font-bold text-ink tnum">
             {formatCurrencyExact(point.investedCapital)}
           </span>
         </div>
 
-        {/* Wealth Gain */}
+        {/* Wealth Gain / Interest Paid */}
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1.5 text-body">
             <span className="size-2 rounded-full bg-emerald-500" />
-            Estimated Gain:
+            {isEMI ? "Cumulative Interest:" : "Estimated Gain:"}
           </span>
           <span className="font-bold text-brand tnum">
-            +{formatCurrencyExact(point.wealthGain)}
+            {isEMI ? formatCurrencyExact(point.wealthGain) : `+${formatCurrencyExact(point.wealthGain)}`}
           </span>
         </div>
 
-        {/* Total Portfolio Value */}
+        {/* Total Portfolio Value / Outstanding Balance */}
         <div className="flex items-center justify-between border-t border-line/60 pt-2 font-bold">
           <span className="flex items-center gap-1.5 text-ink">
             <Sparkles className="size-3.5 text-amber-500" />
-            Total Value:
+            {isEMI ? "Outstanding Balance:" : "Total Value:"}
           </span>
           <span className="text-[14px] text-ink tnum">
             {formatCurrencyExact(point.totalValue)}
@@ -91,7 +95,7 @@ function CustomTooltip({ active, payload, label, showInflation }: CustomTooltipP
           <div className="flex items-center justify-between rounded-lg bg-soft p-1.5 text-[11px]">
             <span className="flex items-center gap-1 text-body">
               <ShoppingBag className="size-3 text-peach-ink" />
-              Real Value (Purchasing Power):
+              Real Value ({inflationRate}% Inflation):
             </span>
             <span className="font-bold text-peach-ink tnum">
               {formatCurrencyExact(point.realPurchasingPower)}
@@ -106,8 +110,10 @@ function CustomTooltip({ active, payload, label, showInflation }: CustomTooltipP
 export function WealthAreaChart({
   data,
   showInflation = false,
+  inflationRate = 6,
   capitalLabel = "Your Total Capital Invested",
   wealthLabel = "Accumulated Wealth & Returns",
+  isEMI = false,
   height = 320,
 }: WealthAreaChartProps) {
   const [mounted, setMounted] = useState(false);
@@ -184,7 +190,7 @@ export function WealthAreaChart({
             />
 
             <Tooltip
-              content={<CustomTooltip showInflation={showInflation} />}
+              content={<CustomTooltip showInflation={showInflation} inflationRate={inflationRate} isEMI={isEMI} />}
               cursor={{ stroke: "#0b7a55", strokeWidth: 1.5, strokeDasharray: "4 4" }}
             />
 
@@ -240,7 +246,7 @@ export function WealthAreaChart({
         {showInflation && (
           <div className="flex items-center gap-1.5">
             <span className="size-2.5 rounded-full border border-dashed border-amber-600 bg-amber-500/20" />
-            <span className="text-amber-700">Real Purchasing Power (Adjusted for 6% Inflation)</span>
+            <span className="text-amber-700">Real Purchasing Power (Adjusted for {inflationRate}% Inflation)</span>
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 // Calculator maths. All growth uses monthly compounding at the assumed annual rate.
-// Illustrative returns are capped at 13% p.a. in the UI, in line with AMFI guidance on illustrations.
+// Assumed return rates are for illustration only.
 
 export type CalcId = "sip" | "lumpsum" | "stepup" | "swp" | "emi" | "goal";
 
@@ -11,27 +11,27 @@ export const CALCS: CalcDef[] = [
   { id: "sip", name: "SIP", title: "SIP calculator", summary: "What a fixed monthly investment could grow to.",
     sliders: [
       { key: "amount", label: "Monthly investment", min: 500, max: 100000, step: 500, def: 10000, kind: "inr" },
-      { key: "rate", label: "Expected return a year", min: 1, max: 13, step: 0.5, def: 12, kind: "pct" },
+      { key: "rate", label: "Expected return a year", min: 1, max: 20, step: 0.5, def: 12, kind: "pct" },
       { key: "years", label: "Time period", min: 1, max: 40, step: 1, def: 15, kind: "yr" },
     ] },
   { id: "lumpsum", name: "Lumpsum", title: "Lumpsum calculator", summary: "How a one-time investment could grow.",
     sliders: [
       { key: "amount", label: "One-time investment", min: 10000, max: 10000000, step: 10000, def: 500000, kind: "inr" },
-      { key: "rate", label: "Expected return a year", min: 1, max: 13, step: 0.5, def: 12, kind: "pct" },
+      { key: "rate", label: "Expected return a year", min: 1, max: 20, step: 0.5, def: 12, kind: "pct" },
       { key: "years", label: "Time period", min: 1, max: 40, step: 1, def: 10, kind: "yr" },
     ] },
   { id: "stepup", name: "Step-up SIP", title: "Step-up SIP calculator", summary: "The effect of raising your SIP a little every year.",
     sliders: [
       { key: "amount", label: "Starting monthly SIP", min: 500, max: 100000, step: 500, def: 10000, kind: "inr" },
       { key: "step", label: "Yearly increase", min: 0, max: 25, step: 1, def: 10, kind: "pct" },
-      { key: "rate", label: "Expected return a year", min: 1, max: 13, step: 0.5, def: 12, kind: "pct" },
+      { key: "rate", label: "Expected return a year", min: 1, max: 20, step: 0.5, def: 12, kind: "pct" },
       { key: "years", label: "Time period", min: 1, max: 40, step: 1, def: 15, kind: "yr" },
     ] },
   { id: "swp", name: "SWP", title: "SWP calculator", summary: "A regular monthly income drawn from your investment.",
     sliders: [
       { key: "amount", label: "Total investment", min: 100000, max: 50000000, step: 100000, def: 5000000, kind: "inr" },
       { key: "withdraw", label: "Monthly withdrawal", min: 1000, max: 500000, step: 1000, def: 30000, kind: "inr" },
-      { key: "rate", label: "Expected return a year", min: 1, max: 13, step: 0.5, def: 8, kind: "pct" },
+      { key: "rate", label: "Expected return a year", min: 1, max: 15, step: 0.5, def: 8, kind: "pct" },
       { key: "years", label: "Time period", min: 1, max: 30, step: 1, def: 15, kind: "yr" },
     ] },
   { id: "emi", name: "Loan EMI", title: "Loan EMI calculator", summary: "The monthly EMI for a home, car or personal loan.",
@@ -43,7 +43,7 @@ export const CALCS: CalcDef[] = [
   { id: "goal", name: "Goal SIP", title: "Goal SIP calculator", summary: "The monthly SIP needed to reach a future amount.",
     sliders: [
       { key: "amount", label: "Goal amount", min: 100000, max: 100000000, step: 100000, def: 2500000, kind: "inr" },
-      { key: "rate", label: "Expected return a year", min: 1, max: 13, step: 0.5, def: 12, kind: "pct" },
+      { key: "rate", label: "Expected return a year", min: 1, max: 20, step: 0.5, def: 12, kind: "pct" },
       { key: "years", label: "Years to goal", min: 1, max: 40, step: 1, def: 12, kind: "yr" },
     ] },
 ];
@@ -94,8 +94,10 @@ export function compute(id: CalcId, v: Record<string, number>): Result {
     let bal = v.amount, wd = 0;
     const series = [{ year: 0, primary: bal, base: 0 }];
     for (let m = 0; m < n; m++) {
-      const w = Math.min(v.withdraw, Math.max(bal, 0));
-      bal -= w; wd += w; bal = Math.max(bal, 0) * (1 + i);
+      const avail = bal * (1 + i);
+      const w = Math.min(v.withdraw, avail);
+      bal = Math.max(0, avail - w);
+      wd += w;
       if ((m + 1) % 12 === 0) series.push({ year: (m + 1) / 12, primary: bal, base: wd });
     }
     return { headLabel: `Value left after ${years} ${years === 1 ? "year" : "years"}`, head: bal,

@@ -44,6 +44,8 @@ import {
   formatCurrency,
   formatCurrencyExact,
   adjustForInflation,
+  calculateRealInvestedCapital,
+  RETURN_LIMITS,
   generateSIPTrajectory,
   generateStepUpTrajectory,
   generateLumpsumTrajectory,
@@ -231,6 +233,7 @@ export function WealthStudio() {
         const res = calculateSIP(sipMonthly, sipRate, sipYears);
         const trajectory = generateSIPTrajectory(sipMonthly, sipRate, sipYears, inflationRate);
         const realValue = adjustForInflation(res.maturityValue, inflationRate, sipYears);
+        const realInvestedCapital = calculateRealInvestedCapital(sipMonthly, 0, sipYears, inflationRate);
         return {
           headline: "Estimated Value",
           primaryValue: res.maturityValue,
@@ -238,6 +241,7 @@ export function WealthStudio() {
           investedCapital: res.totalInvestment,
           wealthGain: res.estimatedReturns,
           realValue,
+          realInvestedCapital,
           trajectory,
           years: sipYears,
           multiplier: res.totalInvestment > 0 ? (res.maturityValue / res.totalInvestment).toFixed(2) : "1.0",
@@ -247,13 +251,15 @@ export function WealthStudio() {
         const res = calculateStepUpSIP(stepUpMonthly, stepUpPercent, stepUpRate, stepUpYears);
         const trajectory = generateStepUpTrajectory(stepUpMonthly, stepUpPercent, stepUpRate, stepUpYears, inflationRate);
         const realValue = adjustForInflation(res.maturityValue, inflationRate, stepUpYears);
+        const realInvestedCapital = calculateRealInvestedCapital(stepUpMonthly, stepUpPercent, stepUpYears, inflationRate);
         return {
           headline: "Estimated Value with Step-Up",
           primaryValue: res.maturityValue,
-          primaryLabel: `Value after ${stepUpYears} Years with ${stepUpPercent}% Annual Hike`,
+          primaryLabel: `Value after ${stepUpYears} Years (at ${stepUpRate}% return with ${stepUpPercent}% annual SIP increase)`,
           investedCapital: res.totalInvestment,
           wealthGain: res.estimatedReturns,
           realValue,
+          realInvestedCapital,
           trajectory,
           years: stepUpYears,
           finalMonthly: res.finalMonthlySIP,
@@ -269,6 +275,7 @@ export function WealthStudio() {
           primaryValue: res.maturityValue,
           primaryLabel: `One-Time Investment Growth over ${lumpYears} Years`,
           investedCapital: res.investedAmount,
+          realInvestedCapital: res.investedAmount,
           wealthGain: res.estimatedReturns,
           realValue,
           trajectory,
@@ -281,11 +288,13 @@ export function WealthStudio() {
         const res = calculateAnnualSIP(annualAmount, annualRate, annualYears);
         const trajectory = generateAnnualSIPTrajectory(annualAmount, annualRate, annualYears, inflationRate);
         const realValue = adjustForInflation(res.maturityValue, inflationRate, annualYears);
+        const realInvestedCapital = calculateRealInvestedCapital(annualAmount / 12, 0, annualYears, inflationRate);
         return {
           headline: "Estimated Value",
           primaryValue: res.maturityValue,
           primaryLabel: `Value from ${formatCurrency(annualAmount)}/year over ${annualYears} Years`,
           investedCapital: res.totalInvestment,
+          realInvestedCapital,
           wealthGain: res.estimatedReturns,
           realValue,
           trajectory,
@@ -296,6 +305,8 @@ export function WealthStudio() {
       case "target": {
         const res = calculateTargetSIP(targetCorpus, targetRate, targetYears);
         const trajectory = generateSIPTrajectory(res.requiredMonthlySIP, targetRate, targetYears, inflationRate);
+        const realValue = adjustForInflation(res.targetCorpus, inflationRate, targetYears);
+        const realInvestedCapital = calculateRealInvestedCapital(res.requiredMonthlySIP, 0, targetYears, inflationRate);
         return {
           headline: "Required Monthly SIP",
           primaryValue: res.requiredMonthlySIP,
@@ -303,7 +314,9 @@ export function WealthStudio() {
           isMonthlyTarget: true,
           targetCorpus: res.targetCorpus,
           investedCapital: res.totalInvestment,
+          realInvestedCapital,
           wealthGain: res.estimatedReturns,
+          realValue,
           trajectory,
           years: targetYears,
           multiplier: res.totalInvestment > 0 ? (res.targetCorpus / res.totalInvestment).toFixed(2) : "1.0",
@@ -375,13 +388,16 @@ export function WealthStudio() {
       case "targetLump": {
         const res = calculateTargetLumpsum(targetLumpCorpus, targetLumpRate, targetLumpYears);
         const trajectory = generateLumpsumTrajectory(res.requiredLumpSum, targetLumpRate, targetLumpYears, inflationRate);
+        const realValue = adjustForInflation(res.targetCorpus, inflationRate, targetLumpYears);
         return {
           headline: "Required One-Time Investment",
           primaryValue: res.requiredLumpSum,
           primaryLabel: `Invest Today to Reach ${formatCurrency(targetLumpCorpus)} in ${targetLumpYears} Years`,
           targetCorpus: res.targetCorpus,
           investedCapital: res.requiredLumpSum,
+          realInvestedCapital: res.requiredLumpSum,
           wealthGain: res.estimatedReturns,
+          realValue,
           trajectory,
           years: targetLumpYears,
           isTargetLump: true,
@@ -633,17 +649,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="sip-rate"
                   label="Expected Annual Return"
                   value={sipRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
                   quickChips={[
                     { label: "10%", addValue: 10 - sipRate },
                     { label: "12%", addValue: 12 - sipRate },
-                    { label: "13%", addValue: 13 - sipRate },
+                    { label: "15%", addValue: 15 - sipRate },
                   ]}
                   onChange={setSipRate}
-                  helperText="Assumed rate, capped at 13% for illustration"
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -662,60 +678,6 @@ Modeled at: https://hmwealth.in/calculators`;
                   onChange={setSipYears}
                   helperText="Longer periods show more compounding"
                 />
-
-                {/* Inflation Adjustment Control Section */}
-                <div className="rounded-2xl border border-line bg-soft/60 p-4 transition-all">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <span className="flex size-7 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700">
-                        <ShoppingBag className="size-4" />
-                      </span>
-                      <div>
-                        <span className="text-[13px] font-bold text-ink">Adjust for Inflation</span>
-                        <p className="text-[11px] text-body">Estimate purchasing power in today&apos;s money</p>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showInflation}
-                      aria-label="Toggle inflation adjustment"
-                      onClick={() => setShowInflation((v) => !v)}
-                      className={cn(
-                        "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none",
-                        showInflation ? "bg-brand" : "bg-slate-300"
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          "pointer-events-none inline-block size-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out",
-                          showInflation ? "translate-x-5" : "translate-x-0"
-                        )}
-                      />
-                    </button>
-                  </div>
-
-                  {showInflation && (
-                    <div className="mt-3.5 border-t border-line/60 pt-3">
-                      <DualControl
-                        id="sip-inflation-rate"
-                        label="Expected Annual Inflation"
-                        value={inflationRate}
-                        min={3}
-                        max={10}
-                        step={0.5}
-                        unit="percent"
-                        quickChips={[
-                          { label: "5%", addValue: 5 - inflationRate },
-                          { label: "6% (Avg)", addValue: 6 - inflationRate },
-                          { label: "7%", addValue: 7 - inflationRate },
-                        ]}
-                        onChange={setInflationRate}
-                        helperText="Historical long-term Indian CPI inflation averages ~6%"
-                      />
-                    </div>
-                  )}
-                </div>
               </>
             )}
 
@@ -759,11 +721,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="stepup-rate"
                   label="Expected Annual Return"
                   value={stepUpRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
+                  quickChips={[
+                    { label: "10%", addValue: 10 - stepUpRate },
+                    { label: "12%", addValue: 12 - stepUpRate },
+                    { label: "15%", addValue: 15 - stepUpRate },
+                  ]}
                   onChange={setStepUpRate}
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -774,6 +742,11 @@ Modeled at: https://hmwealth.in/calculators`;
                   max={40}
                   step={1}
                   unit="years"
+                  quickChips={[
+                    { label: "+1 yr", addValue: 1 },
+                    { label: "+5 yrs", addValue: 5 },
+                    { label: "+10 yrs", addValue: 10 },
+                  ]}
                   onChange={setStepUpYears}
                 />
               </>
@@ -802,15 +775,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="lump-rate"
                   label="Expected Annual Return"
                   value={lumpRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
                   quickChips={[
                     { label: "10%", addValue: 10 - lumpRate },
                     { label: "12%", addValue: 12 - lumpRate },
+                    { label: "15%", addValue: 15 - lumpRate },
                   ]}
                   onChange={setLumpRate}
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -854,11 +829,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="annual-rate"
                   label="Expected Annual Return"
                   value={annualRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
+                  quickChips={[
+                    { label: "10%", addValue: 10 - annualRate },
+                    { label: "12%", addValue: 12 - annualRate },
+                    { label: "15%", addValue: 15 - annualRate },
+                  ]}
                   onChange={setAnnualRate}
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -898,11 +879,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="target-rate"
                   label="Expected Annual Return"
                   value={targetRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
+                  quickChips={[
+                    { label: "10%", addValue: 10 - targetRate },
+                    { label: "12%", addValue: 12 - targetRate },
+                    { label: "15%", addValue: 15 - targetRate },
+                  ]}
                   onChange={setTargetRate}
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -982,11 +969,11 @@ Modeled at: https://hmwealth.in/calculators`;
                     label="Pre-Retirement Return"
                     value={preRetirementReturn}
                     min={6}
-                    max={13}
+                    max={RETURN_LIMITS.equity.max}
                     step={0.5}
                     unit="percent"
                     onChange={setPreRetirementReturn}
-                    helperText="During wealth building"
+                    helperText="During wealth building phase"
                   />
 
                   <DualControl
@@ -1065,10 +1052,11 @@ Modeled at: https://hmwealth.in/calculators`;
                     label="Expected Return"
                     value={educationReturn}
                     min={6}
-                    max={13}
+                    max={RETURN_LIMITS.equity.max}
                     step={0.5}
                     unit="percent"
                     onChange={setEducationReturn}
+                    helperText="Expected annual portfolio return"
                   />
                 </div>
               </>
@@ -1113,11 +1101,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="swp-rate"
                   label="Expected Portfolio Growth"
                   value={swpRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.swp.min}
+                  max={RETURN_LIMITS.swp.max}
                   step={0.5}
                   unit="percent"
+                  quickChips={[
+                    { label: "7%", addValue: 7 - swpRate },
+                    { label: "8%", addValue: 8 - swpRate },
+                    { label: "10%", addValue: 10 - swpRate },
+                  ]}
                   onChange={setSwpRate}
+                  helperText="Assumed post-retirement portfolio return"
                 />
 
                 <DualControl
@@ -1155,11 +1149,17 @@ Modeled at: https://hmwealth.in/calculators`;
                   id="target-lump-rate"
                   label="Expected Annual Return"
                   value={targetLumpRate}
-                  min={1}
-                  max={13}
+                  min={RETURN_LIMITS.equity.min}
+                  max={RETURN_LIMITS.equity.max}
                   step={0.5}
                   unit="percent"
+                  quickChips={[
+                    { label: "10%", addValue: 10 - targetLumpRate },
+                    { label: "12%", addValue: 12 - targetLumpRate },
+                    { label: "15%", addValue: 15 - targetLumpRate },
+                  ]}
                   onChange={setTargetLumpRate}
+                  helperText="Assumed annual rate for illustration. Returns are not guaranteed."
                 />
 
                 <DualControl
@@ -1226,6 +1226,62 @@ Modeled at: https://hmwealth.in/calculators`;
                   onChange={setEmiYears}
                 />
               </>
+            )}
+
+            {/* Optional Inflation Adjustment Toggle for wealth building calculators */}
+            {["sip", "stepup", "lumpsum", "annual", "target", "targetLump"].includes(activeCalcKey) && (
+              <div className="rounded-2xl border border-line bg-soft/60 p-4 transition-all">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex size-7 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700">
+                      <ShoppingBag className="size-4" />
+                    </span>
+                    <div>
+                      <span className="text-[13px] font-bold text-ink">Adjust for Inflation</span>
+                      <p className="text-[11px] text-body">Estimate purchasing power in today&apos;s money</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={showInflation}
+                    aria-label="Toggle inflation adjustment"
+                    onClick={() => setShowInflation((v) => !v)}
+                    className={cn(
+                      "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none",
+                      showInflation ? "bg-brand" : "bg-slate-300"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "pointer-events-none inline-block size-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out",
+                        showInflation ? "translate-x-5" : "translate-x-0"
+                      )}
+                    />
+                  </button>
+                </div>
+
+                {showInflation && (
+                  <div className="mt-3.5 border-t border-line/60 pt-3">
+                    <DualControl
+                      id="studio-inflation-rate"
+                      label="Expected Annual Inflation"
+                      value={inflationRate}
+                      min={RETURN_LIMITS.inflation.min}
+                      max={RETURN_LIMITS.inflation.max}
+                      step={0.5}
+                      unit="percent"
+                      quickChips={[
+                        { label: "5%", addValue: 5 - inflationRate },
+                        { label: "6% (Avg)", addValue: 6 - inflationRate },
+                        { label: "7%", addValue: 7 - inflationRate },
+                      ]}
+                      onChange={setInflationRate}
+                      helperText="Historical long-term Indian CPI inflation averages ~6%"
+                    />
+                  </div>
+                )}
+              </div>
             )}
           </div>
 
@@ -1314,11 +1370,18 @@ Modeled at: https://hmwealth.in/calculators`;
 
                 <p className="mt-1 text-[12px] leading-relaxed text-amber-900/80">
                   Due to {inflationRate}% annual inflation, your projected {formatCurrency(currentResult.primaryValue)} after {currentResult.years} years will have the purchasing power of <strong>{formatCurrency(currentResult.realValue)}</strong> in today&apos;s money.
-                  {currentResult.realValue > currentResult.investedCapital ? (
-                    <span className="text-emerald-700 font-semibold">
-                      {" "}Your investment still beats inflation by {formatCurrency(currentResult.realValue - currentResult.investedCapital)} in real wealth creation!
-                    </span>
-                  ) : null}
+                  {(() => {
+                    const baseReal = ((currentResult as any).realInvestedCapital ?? currentResult.investedCapital) as number;
+                    if (currentResult.realValue > baseReal) {
+                      const realGain = currentResult.realValue - baseReal;
+                      return (
+                        <span className="text-emerald-700 font-semibold">
+                          {" "}Your investment still beats inflation by {formatCurrency(realGain)} in real wealth creation (equivalent to investing {formatCurrency(baseReal)} in today&apos;s money)!
+                        </span>
+                      );
+                    }
+                    return null;
+                  })()}
                 </p>
               </div>
             )}
@@ -1337,6 +1400,8 @@ Modeled at: https://hmwealth.in/calculators`;
             <WealthAreaChart
               data={currentResult.trajectory}
               showInflation={showInflation}
+              inflationRate={inflationRate}
+              isEMI={currentResult.isEMI}
               capitalLabel={currentResult.isEMI ? "Principal Repaid" : "Total Capital Invested"}
               wealthLabel={currentResult.isEMI ? "Remaining Loan Balance" : "Estimated Value"}
               height={250}
