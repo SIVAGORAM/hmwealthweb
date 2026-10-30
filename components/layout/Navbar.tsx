@@ -12,7 +12,6 @@ import {
   Mail,
   ChevronDown,
   ArrowRight,
-  ShieldCheck,
   Apple,
   User,
 } from "lucide-react";
@@ -28,6 +27,7 @@ const menuIntro = {
   services: "Simple, no-pressure help with your family’s money goals.",
 };
 
+/* Official 4-color Google Play glyph */
 function PlayStoreGlyph({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden>
@@ -48,6 +48,52 @@ function PlayStoreGlyph({ className }: { className?: string }) {
         d="M3.6 21.7c.5.5 1.4.7 2.2.2l10.8-6.2-3.7-3.7-9.3 9.7z"
       />
     </svg>
+  );
+}
+
+/* Executive Apple App Store Badge */
+function AppleStoreBadge({ className }: { className?: string }) {
+  return (
+    <a
+      href={site.appStoreUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Download on Apple App Store"
+      title="Download on Apple App Store"
+      className={cn(
+        "group flex h-[38px] items-center gap-2 rounded-xl bg-[#0b1320] px-3 text-white shadow-xs transition hover:bg-black hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border border-slate-700/60",
+        className
+      )}
+    >
+      <Apple className="size-[17px] text-white shrink-0 transition-transform group-hover:scale-110" />
+      <div className="flex flex-col text-left leading-none">
+        <span className="text-[8px] font-medium uppercase tracking-wider text-slate-400">Download on</span>
+        <span className="text-[11.5px] font-bold text-white tracking-tight">App Store</span>
+      </div>
+    </a>
+  );
+}
+
+/* Executive Google Play Store Badge */
+function PlayStoreBadge({ className }: { className?: string }) {
+  return (
+    <a
+      href={site.playStoreUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Get it on Google Play"
+      title="Get it on Google Play"
+      className={cn(
+        "group flex h-[38px] items-center gap-2 rounded-xl bg-[#0b1320] px-3 text-white shadow-xs transition hover:bg-black hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border border-slate-700/60",
+        className
+      )}
+    >
+      <PlayStoreGlyph className="size-[16px] shrink-0 transition-transform group-hover:scale-110" />
+      <div className="flex flex-col text-left leading-none">
+        <span className="text-[8px] font-medium uppercase tracking-wider text-slate-400">Get it on</span>
+        <span className="text-[11.5px] font-bold text-white tracking-tight">Google Play</span>
+      </div>
+    </a>
   );
 }
 
@@ -130,10 +176,10 @@ function NavMenu({
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex items-center gap-1.5 whitespace-nowrap rounded-lg px-3.5 py-1.5 text-[13.5px] font-bold tracking-wide transition-all xl:px-4 xl:text-[14px]",
+          "flex items-center gap-1.5 whitespace-nowrap rounded-lg px-4 py-2 text-[13.5px] font-bold tracking-wide transition-all xl:px-5 xl:text-[14px]",
           active
-            ? "bg-white text-brand shadow-xs"
-            : "text-white/95 hover:bg-white/15 hover:text-white"
+            ? "bg-white/22 text-white font-extrabold shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] backdrop-blur-xs border border-white/30"
+            : "text-white/92 hover:bg-white/15 hover:text-white"
         )}
       >
         <span>{label}</span>
@@ -141,7 +187,7 @@ function NavMenu({
           className={cn(
             "size-3.5 transition-transform duration-200",
             open && "rotate-180",
-            active ? "text-brand" : "text-white/80"
+            "text-white/80"
           )}
           aria-hidden
         />
@@ -194,28 +240,28 @@ function NavMenu({
   );
 }
 
-/* Desktop AMFI Registration Block: Displayed beside logo */
+/* Desktop AMFI Registration Block: Well-structured credentials block beside logo */
 function DesktopRegBlock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex flex-col justify-center gap-0.5 border-l-2 border-brand/20 pl-4 uppercase leading-snug transition-all",
+        "flex flex-col justify-center border-l-2 border-[#1fa882]/30 pl-4 uppercase leading-none transition-all",
         className
       )}
     >
-      <p className="text-[11px] font-bold tracking-[0.03em] text-body">
+      <p className="text-[10px] xl:text-[10.5px] font-bold tracking-[0.06em] text-slate-500">
         {registrations.lines[0]}
       </p>
-      <p className="text-[11.5px] font-black tracking-[0.03em] text-ink">
+      <p className="mt-1 text-[12px] xl:text-[12.5px] font-black tracking-wide text-slate-900">
         {site.arn.replace("-", " – ")}
       </p>
-      <p className="flex items-center gap-1.5 text-[11.5px] font-black tracking-[0.08em] text-brand-deep">
+      <div className="mt-1 flex items-center gap-1.5 text-[11px] xl:text-[11.5px] font-black tracking-[0.08em] text-[#179672]">
         <span>{registrations.products[0]}</span>
         <span className="text-[#e0a92e] font-black select-none" aria-hidden>
           |
         </span>
         <span>{registrations.products[1]}</span>
-      </p>
+      </div>
     </div>
   );
 }
@@ -225,24 +271,24 @@ function MobileRegBanner({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "border-t border-line/60 bg-[#fbfcfb]/95 px-3 py-1.5 text-center backdrop-blur-md transition-colors",
+        "border-t border-slate-100 bg-[#f8faf9] px-4 py-2 text-center transition-colors",
         className
       )}
     >
-      <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-0.5 uppercase leading-tight">
-        <p className="text-[11px] font-bold tracking-[0.03em] text-body sm:text-[11.5px]">
+      <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-1 uppercase">
+        <p className="text-[10.5px] font-bold tracking-[0.06em] text-slate-500 leading-none">
           {registrations.lines[0]}
         </p>
-        <p className="text-[11px] font-black tracking-[0.02em] text-ink sm:text-[11.5px]">
+        <p className="text-[12px] font-black tracking-wide text-slate-900 leading-none">
           {site.arn.replace("-", " – ")}
         </p>
-        <p className="flex items-center justify-center gap-2 text-[11.5px] font-black tracking-[0.08em] text-brand-deep sm:text-[12px]">
+        <div className="flex items-center justify-center gap-2 text-[11px] font-black tracking-[0.08em] text-[#179672] leading-none">
           <span>{registrations.products[0]}</span>
           <span className="text-[#e0a92e] font-black select-none" aria-hidden>
             |
           </span>
           <span>{registrations.products[1]}</span>
-        </p>
+        </div>
       </div>
     </div>
   );
@@ -294,37 +340,19 @@ export function Navbar() {
         </div>
 
         {/* Right side CTA actions */}
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
-          {/* Apple App Store */}
-          <a
-            href={site.appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download on Apple App Store"
-            title="Download on Apple App Store"
-            className="group hidden size-9 items-center justify-center rounded-full border border-line bg-white shadow-2xs transition hover:border-ink hover:bg-slate-50 hover:scale-105 active:scale-95 sm:flex sm:size-10"
-          >
-            <Apple className="size-[17px] text-ink transition-transform group-hover:scale-110" />
-          </a>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+          {/* Apple App Store Badge */}
+          <AppleStoreBadge className="hidden md:flex" />
 
-          {/* Google Play Store */}
-          <a
-            href={site.playStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Get it on Google Play"
-            title="Get it on Google Play"
-            className="group hidden size-9 items-center justify-center rounded-full border border-line bg-white shadow-2xs transition hover:border-[#01875f] hover:bg-slate-50 hover:scale-105 active:scale-95 sm:flex sm:size-10"
-          >
-            <PlayStoreGlyph className="size-[16px] transition-transform group-hover:scale-110" />
-          </a>
+          {/* Google Play Store Badge */}
+          <PlayStoreBadge className="hidden md:flex" />
 
           {/* Direct phone desk shortcut */}
           <a
             href={site.phoneHref}
             aria-label={`Call ${site.phone}`}
             title={`Direct Phone Desk: ${site.phone}`}
-            className="group hidden size-9 items-center justify-center rounded-full border border-brand/30 bg-mint/60 text-brand shadow-2xs transition hover:border-brand hover:bg-brand hover:text-white hover:scale-105 active:scale-95 sm:flex sm:size-10"
+            className="group hidden size-[38px] items-center justify-center rounded-xl border border-brand/20 bg-mint/50 text-[#179672] shadow-2xs transition hover:border-[#179672] hover:bg-[#179672] hover:text-white hover:scale-105 active:scale-95 sm:flex"
           >
             <Phone className="size-[15px] transition-transform group-hover:scale-110" />
           </a>
@@ -332,7 +360,7 @@ export function Navbar() {
           {/* Book a call button */}
           <Link
             href="/contact"
-            className="group relative hidden min-h-[38px] items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-ink px-3.5 text-[13px] font-bold text-white shadow-xs transition hover:bg-brand active:scale-[0.99] min-[900px]:inline-flex xl:px-4 xl:text-[13.5px]"
+            className="group relative hidden h-[38px] items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-xl bg-slate-900 px-3.5 text-[13px] font-bold text-white shadow-xs transition hover:bg-[#179672] active:scale-[0.99] min-[980px]:inline-flex xl:px-4 xl:text-[13.5px]"
           >
             <CalendarDays className="size-3.5 text-white/80 group-hover:text-white" />
             <span>Book a call</span>
@@ -343,7 +371,7 @@ export function Navbar() {
             href={site.loginUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex min-h-[38px] items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-brand to-brand-bright px-3.5 text-[12.5px] font-extrabold text-white shadow-[0_6px_16px_-4px_rgba(11,122,85,0.45)] transition hover:from-brand-dark hover:to-brand hover:shadow-md active:scale-[0.99] sm:px-4.5 sm:text-[13.5px]"
+            className="group inline-flex h-[38px] items-center gap-1.5 whitespace-nowrap rounded-xl bg-gradient-to-r from-[#179672] to-[#2cb98f] px-4 text-[13px] font-extrabold text-white shadow-[0_4px_14px_-2px_rgba(23,150,114,0.4)] transition hover:from-[#147a5d] hover:to-[#179672] hover:shadow-md active:scale-[0.99] sm:px-4.5 sm:text-[13.5px]"
           >
             <User className="size-3.5 transition-transform group-hover:scale-110" />
             <span>Login</span>
@@ -356,7 +384,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className="flex size-9 items-center justify-center rounded-xl border border-line/80 bg-white text-ink transition hover:border-brand/40 hover:bg-soft active:scale-95 sm:size-10 lg:hidden"
+            className="flex size-[38px] items-center justify-center rounded-xl border border-line/80 bg-white text-ink transition hover:border-brand/40 hover:bg-soft active:scale-95 lg:hidden"
           >
             {open ? <X className="size-5 text-ink" /> : <Menu className="size-5 text-ink" />}
           </button>
@@ -366,10 +394,10 @@ export function Navbar() {
       {/* ======================================================================
           2. SECOND TIER: COLORED NAVIGATION BAR (Color of "WEALTH" in the logo)
           ====================================================================== */}
-      <div className="hidden border-y border-[#0e7c5b] bg-[#108c69] shadow-[0_4px_16px_rgba(11,122,85,0.18)] lg:block">
-        <div className="mx-auto flex h-[46px] max-w-[1520px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Left: Main Navigation Items */}
-          <nav aria-label="Main" className="flex items-center gap-1 xl:gap-2">
+      <div className="hidden border-t border-white/20 border-b border-[#147a5d] bg-gradient-to-r from-[#179672] via-[#1fa880] to-[#2cb98f] shadow-[0_4px_16px_rgba(23,150,114,0.22)] lg:block">
+        <div className="mx-auto flex h-[48px] max-w-[1520px] items-center justify-center px-4 sm:px-6 lg:px-8">
+          {/* Centered Main Navigation Items */}
+          <nav aria-label="Main" className="flex items-center gap-1.5 xl:gap-3">
             {nav.map((item) =>
               item.menu ? (
                 <NavMenu
@@ -384,10 +412,10 @@ export function Navbar() {
                   href={item.href}
                   aria-current={active(item.href) ? "page" : undefined}
                   className={cn(
-                    "relative whitespace-nowrap rounded-lg px-3.5 py-1.5 text-[13.5px] font-bold tracking-wide transition-all xl:px-4 xl:text-[14px]",
+                    "relative whitespace-nowrap rounded-lg px-4 py-2 text-[13.5px] font-bold tracking-wide transition-all xl:px-5 xl:text-[14px]",
                     active(item.href)
-                      ? "bg-white text-brand shadow-xs"
-                      : "text-white/95 hover:bg-white/15 hover:text-white"
+                      ? "bg-white/22 text-white font-extrabold shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] backdrop-blur-xs border border-white/30"
+                      : "text-white/92 hover:bg-white/15 hover:text-white"
                   )}
                 >
                   <span className="relative">{item.label}</span>
@@ -395,12 +423,6 @@ export function Navbar() {
               )
             )}
           </nav>
-
-          {/* Right: Quick Statutory Badge */}
-          <div className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-wider text-white/90">
-            <span className="size-1.5 rounded-full bg-[#f2b33d]" aria-hidden />
-            <span>AMFI-Registered MFD · ARN-341412</span>
-          </div>
         </div>
       </div>
 
@@ -474,28 +496,12 @@ export function Navbar() {
                 )
               )}
 
-              {/* Mobile App Downloads & Client Login Bar */}
-              <div className="mt-3 flex items-center justify-between rounded-2xl border border-line/70 bg-[#f7f9f8] p-3">
-                <span className="text-xs font-bold text-ink">Download Mobile App</span>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={site.appStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex size-9 items-center justify-center rounded-xl border border-line bg-white shadow-2xs hover:bg-soft"
-                    aria-label="Apple App Store"
-                  >
-                    <Apple className="size-4 text-ink" />
-                  </a>
-                  <a
-                    href={site.playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex size-9 items-center justify-center rounded-xl border border-line bg-white shadow-2xs hover:bg-soft"
-                    aria-label="Google Play Store"
-                  >
-                    <PlayStoreGlyph className="size-4" />
-                  </a>
+              {/* Mobile App Downloads */}
+              <div className="mt-3 flex flex-col gap-2 rounded-2xl border border-line/70 bg-[#f7f9f8] p-3.5">
+                <span className="text-xs font-bold text-ink">Download Our Mobile App</span>
+                <div className="grid grid-cols-2 gap-2">
+                  <AppleStoreBadge className="h-10 justify-center !flex" />
+                  <PlayStoreBadge className="h-10 justify-center !flex" />
                 </div>
               </div>
 
@@ -505,14 +511,14 @@ export function Navbar() {
                   href={site.loginUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand to-brand-bright text-[15px] font-extrabold text-white shadow-sm transition hover:from-brand-dark hover:to-brand"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#179672] to-[#2cb98f] text-[15px] font-extrabold text-white shadow-sm transition hover:from-[#147a5d] hover:to-[#179672]"
                 >
                   <User className="size-4" />
                   Client Login
                 </a>
                 <Link
                   href="/contact"
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-ink text-[15px] font-bold text-white shadow-sm transition hover:bg-brand"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-ink text-[15px] font-bold text-white shadow-sm transition hover:bg-[#179672]"
                 >
                   <CalendarDays className="size-4" />
                   Book a free call
@@ -520,18 +526,21 @@ export function Navbar() {
               </div>
 
               {/* Contact information footer */}
-              <div className="mt-2 flex items-center justify-between border-t border-line/70 pt-3 text-[13px] font-semibold text-body">
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-4 text-sm text-body">
+                <a
+                  href={site.phoneHref}
+                  className="inline-flex items-center gap-1.5 font-bold text-ink hover:text-brand"
+                >
+                  <Phone className="size-4 text-brand" />
+                  <span>{site.phone}</span>
+                </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex items-center gap-1.5 transition hover:text-brand"
+                  className="inline-flex items-center gap-1.5 text-xs text-body hover:text-brand"
                 >
-                  <Mail className="size-4 text-brand" />
-                  {site.email}
+                  <Mail className="size-3.5 text-brand" />
+                  <span>{site.email}</span>
                 </a>
-                <span className="inline-flex items-center gap-1 text-xs text-body/80">
-                  <ShieldCheck className="size-3.5 text-brand" />
-                  ARN-341412
-                </span>
               </div>
             </div>
           </motion.nav>
@@ -540,5 +549,3 @@ export function Navbar() {
     </header>
   );
 }
-
-export default Navbar;
