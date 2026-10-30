@@ -132,7 +132,14 @@ export function WhyUs() {
           <Reveal className="relative order-2 lg:order-1">
             <div aria-hidden className="absolute -inset-6 -z-10 rounded-[48px] bg-[radial-gradient(60%_60%_at_30%_30%,#cfeedf_0%,transparent_70%)]" />
             <div className="relative aspect-[4/3.9] overflow-hidden rounded-[28px] sm:rounded-[36px] shadow-[0_40px_80px_-40px_rgba(4,38,28,0.6)] sm:aspect-[5/5]">
-              <ProtectedImage src={photos.professional.src} alt={photos.professional.alt} fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover object-[50%_30%]" />
+              <ProtectedImage
+                src={photos.professional.src}
+                alt={photos.professional.alt}
+                fill
+                loading="eager"
+                sizes="(min-width:1024px) 45vw, 100vw"
+                className="object-cover object-[50%_30%]"
+              />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#03241a]/55 via-transparent to-transparent" />
             </div>
 
