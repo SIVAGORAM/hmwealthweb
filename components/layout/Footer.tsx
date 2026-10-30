@@ -60,7 +60,7 @@ export function Footer() {
                     {registrations.products[0]}<span className="h-3.5 w-[2px] rounded-full bg-brand/60" />{registrations.products[1]}
                   </p>
                   <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-mint px-2.5 py-1 text-[13px] font-bold text-brand-dark ring-1 ring-brand/20">
-                    <ShieldCheck className="size-3.5 text-brand" />{site.arn}
+                    <ShieldCheck className="size-3.5 text-brand" />Verified MFD
                   </span>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export function Footer() {
                 </h4>
               </div>
               <span className="text-[11.5px] font-semibold text-body sm:text-[12px]">
-                AMFI MFD Registration: <strong className="font-extrabold text-brand-dark">{site.arn}</strong>
+                AMFI MFD Status: <strong className="font-bold text-brand-dark">Active &amp; Verified</strong>
               </span>
             </div>
 
