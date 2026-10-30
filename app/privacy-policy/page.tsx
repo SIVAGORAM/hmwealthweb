@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
           <p>
             Reasonable technical, administrative, and physical security measures have been implemented to safeguard the security, confidentiality, and integrity of your information, including industry-standard encryption, firewalls, and stringent access controls in accordance with the Information Technology Act, 2000, and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011.
           </p>
-          <p className="text-body/80 italic">
+          <p className="text-slate-700 italic">
             <strong>Limitation:</strong> While we employ industry-standard safeguards to protect your personal data, we shall not be held liable for any security breach or unauthorized disclosure resulting from circumstances beyond our reasonable control (force majeure, malicious third-party attacks, hardware failure) or where disclosure is mandatory under applicable Indian laws, statutory regulations, or competent judicial orders.
           </p>
         </div>
@@ -333,7 +333,7 @@ export default function PrivacyPolicyPage() {
               </a>
             </div>
           </div>
-          <p className="text-[11.5px] text-body/80 mt-1">
+          <p className="text-[12px] font-medium text-slate-700 mt-1">
             If your grievance is not resolved satisfactorily within 30 days, you may escalate the matter via the SEBI SCORES portal (<a href="https://scores.sebi.gov.in" target="_blank" rel="noopener noreferrer" className="text-brand font-semibold underline">scores.sebi.gov.in</a>) or the AMFI Grievance Cell.
           </p>
         </div>

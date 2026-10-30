@@ -367,14 +367,14 @@ export function DualControl({
       </div>
 
       {/* Validation Warning or Helper Limits */}
-      <div className="flex items-center justify-between text-[11px] font-medium tnum">
+      <div className="flex items-center justify-between text-[11px] font-semibold tnum">
         {hasWarning ? (
           <span className="flex items-center gap-1 font-semibold text-amber-700 animate-fadeIn">
             <AlertCircle className="size-3 shrink-0" />
             {validationWarning}
           </span>
         ) : (
-          <span className="text-body/75">
+          <span className="text-slate-700">
             {prefix}
             {min.toLocaleString("en-IN")}
             {suffix ? ` ${suffix}` : ""}
@@ -382,10 +382,10 @@ export function DualControl({
         )}
 
         {helperText && !hasWarning && (
-          <span className="text-body/60">{helperText}</span>
+          <span className="text-slate-700 font-medium">{helperText}</span>
         )}
 
-        <span className="text-body/75">
+        <span className="text-slate-700">
           {prefix}
           {max.toLocaleString("en-IN")}
           {suffix ? ` ${suffix}` : ""}

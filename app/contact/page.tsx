@@ -309,7 +309,7 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-line/80 bg-white p-5 shadow-xs sm:p-6">
             <div className="flex items-start gap-3">
               <ShieldCheck className="size-5 shrink-0 text-brand mt-0.5" />
-              <div className="flex flex-col gap-1 text-xs leading-relaxed text-body">
+              <div className="flex flex-col gap-1 text-xs leading-relaxed font-medium text-slate-700">
                 <span className="font-bold uppercase tracking-wider text-ink">
                   Disclosure
                 </span>

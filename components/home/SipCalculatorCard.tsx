@@ -237,7 +237,7 @@ export function SipCalculatorCard() {
                 }%`,
               }}
             />
-            <div className="flex justify-between text-[11px] font-medium text-body/60 tnum">
+            <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>{formatCurrency(isSIP ? 500 : 10000)}</span>
               <span>{formatCurrency(isSIP ? 100000 : 1000000)}</span>
             </div>
@@ -266,7 +266,7 @@ export function SipCalculatorCard() {
                 ["--fill" as string]: `${((rate - 1) / 12) * 100}%`,
               }}
             />
-            <div className="flex justify-between text-[11px] font-medium text-body/60 tnum">
+            <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>1% (Conservative)</span>
               <span>8%</span>
               <span>13% (max)</span>
@@ -296,7 +296,7 @@ export function SipCalculatorCard() {
                 ["--fill" as string]: `${((years - 1) / 34) * 100}%`,
               }}
             />
-            <div className="flex justify-between text-[11px] font-medium text-body/60 tnum">
+            <div className="flex justify-between text-[11px] font-semibold text-slate-700 tnum">
               <span>1 Year</span>
               <span>10 Years</span>
               <span>35 Years</span>
@@ -461,7 +461,7 @@ export function SipCalculatorCard() {
           </div>
 
           {/* Regulatory Illustration Disclaimer */}
-          <p className="mt-3 text-center text-[11px] leading-tight text-body">
+          <p className="mt-3 text-center text-[11.5px] leading-relaxed font-medium text-slate-700">
             Calculations are for illustration only and assume a constant return rate. Mutual fund investments are subject to market risks.
           </p>
         </div>

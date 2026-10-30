@@ -207,7 +207,7 @@ export function ContactForm() {
           {errors.phone ? (
             <p className="text-xs font-semibold text-red-600">{errors.phone}</p>
           ) : (
-            <p className="text-[11.5px] font-medium text-body/75">
+            <p className="text-[11.5px] font-medium text-slate-600">
               We will connect with you via Call or WhatsApp.
             </p>
           )}

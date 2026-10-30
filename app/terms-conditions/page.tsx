@@ -115,7 +115,7 @@ export default function TermsConditionsPage() {
               </p>
             </div>
           </div>
-          <p className="text-[11.5px] text-body/80 mt-1">
+          <p className="text-[12px] font-medium text-slate-700 mt-1">
             HM Wealth accepts no liability for NAV variances or allotment delays caused by banking network clearing cycles (NEFT/RTGS/NACH), payment gateway downtimes, or RTA server outages.
           </p>
         </div>
@@ -290,7 +290,7 @@ export default function TermsConditionsPage() {
             <p className="text-[11.5px] text-body">
               Email: <a href={`mailto:${site.email}`} className="text-brand font-semibold underline">{site.email}</a> · Phone: {site.phone}
             </p>
-            <p className="text-[11.5px] text-body/80 mt-0.5">Address: {site.address}</p>
+            <p className="text-[12px] font-medium text-slate-700 mt-0.5">Address: {site.address}</p>
           </div>
           <div className="rounded-xl border border-line bg-white p-3 shadow-2xs mt-1">
             <p className="font-bold text-ink text-[12.5px]">Level 2: SEBI SCORES &amp; SMART ODR Portal</p>

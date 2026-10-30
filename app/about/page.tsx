@@ -385,7 +385,7 @@ export default function AboutPage() {
                 <p className="mt-0.5 font-extrabold text-brand tnum">{site.arn}</p>
               </div>
             </div>
-            <div className="mt-3 rounded-xl border border-line bg-white p-3 text-[12px] sm:text-[12.5px] leading-relaxed text-body">
+            <div className="mt-3 rounded-xl border border-line bg-white p-3 text-[12px] sm:text-[12.5px] leading-relaxed font-medium text-slate-700">
               <p>
                 <strong>Regulatory Clarification:</strong> HM Wealth is an AMFI-registered Mutual Fund Distributor engaged in the distribution of mutual fund schemes. We earn commission from Asset Management Companies (AMCs) on regular plans. We are not a SEBI-registered Investment Adviser and do not provide fee-based investment advice. Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
               </p>
@@ -436,7 +436,7 @@ export default function AboutPage() {
               </a>
             </div>
 
-            <p className="mt-3 text-[11px] font-medium text-body/80">
+            <p className="mt-3 text-[12px] font-semibold text-slate-700">
               AMFI-Registered MFD · Zero consultation fee · Transparent scheme review
             </p>
           </div>

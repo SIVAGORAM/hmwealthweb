@@ -146,8 +146,8 @@ export function Footer() {
                   <span className="h-3.5 w-[2px] rounded-full bg-brand/70" />
                   <span>INSURANCE</span>
                 </div>
-                <p className="mt-1.5 text-[12.5px] sm:text-[13px] font-bold text-body">
-                  {site.founder} <span className="font-medium text-body/75">(Founder &amp; Principal MFD)</span>
+                <p className="mt-1.5 text-[12.5px] sm:text-[13px] font-bold text-slate-800">
+                  {site.founder} <span className="font-semibold text-slate-700">(Founder &amp; Principal MFD)</span>
                 </p>
               </div>
 
@@ -164,7 +164,7 @@ export function Footer() {
               <span className="mt-1.5 size-2 shrink-0 rounded-full bg-gold shadow-[0_0_12px_rgba(242,179,61,0.9)]" />
               Statutory Regulatory Notice &amp; Compliance Disclosures
             </p>
-            <p className="mt-3 text-[12.5px] leading-relaxed text-body sm:text-[13px]">
+            <p className="mt-3 text-[12.5px] leading-relaxed font-medium text-slate-700 sm:text-[13px]">
               Mutual Fund investments are subject to market risks, read all scheme related documents carefully. HM Wealth is an AMFI-registered Mutual Fund Distributor ({site.arn}). We distribute mutual fund schemes and earn commission from Asset Management Companies. We are not a SEBI-registered Investment Adviser and do not provide investment advice. Insurance products are offered through licensed insurance partners. Insurance is the subject matter of solicitation. Please read the sales brochure and policy wording carefully before concluding a sale. IRDAI does not sell insurance policies, announce bonuses or invest premiums; report spurious calls to the police. Calculator results are for illustration only and assume a constant rate of return. Past performance may or may not be sustained in the future and is not a guarantee of future returns. Tax benefits are subject to prevailing tax laws.
             </p>
           </div>
@@ -233,7 +233,7 @@ export function Footer() {
               <p>
                 © {new Date().getFullYear()} {site.name}. All rights reserved.
               </p>
-              <p className="text-body/80">
+              <p className="text-slate-600 font-medium">
                 Mutual Fund Distribution &amp; Insurance Facilitation for Indian Families.
               </p>
             </div>

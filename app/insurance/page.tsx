@@ -259,7 +259,7 @@ export default function InsurancePage() {
                       <span className="rounded-full bg-mint px-2 py-0.5 text-[11px] font-bold text-brand">Term</span>
                     </div>
                     <p className="mt-1 text-[14px] font-semibold text-ink">Protects family income, loans &amp; education</p>
-                    <p className="mt-1 text-xs text-body/80">Premium depends on age, health and cover chosen</p>
+                    <p className="mt-1 text-xs text-slate-600 font-medium">Premium depends on age, health and cover chosen</p>
                   </div>
 
                   <div className="rounded-2xl border border-line bg-soft/70 p-4 transition hover:bg-soft">
@@ -268,7 +268,7 @@ export default function InsurancePage() {
                       <span className="rounded-full bg-sky px-2 py-0.5 text-[11px] font-bold text-sky-ink">Cashless</span>
                     </div>
                     <p className="mt-1 text-[14px] font-semibold text-ink">Surgeries, room rent, doctor fees covered</p>
-                    <p className="mt-1 text-xs text-body/80">Direct settlement at the insurer’s network hospitals</p>
+                    <p className="mt-1 text-xs text-slate-600 font-medium">Direct settlement at the insurer’s network hospitals</p>
                   </div>
                 </div>
 
@@ -279,7 +279,7 @@ export default function InsurancePage() {
                   </div>
                 </div>
 
-                <p className="mt-4 text-center text-[11.5px] text-body/80">
+                <p className="mt-4 text-center text-[12px] font-medium text-slate-700">
                   Multiple top insurers compared side by side with zero hidden clauses.
                 </p>
               </div>
