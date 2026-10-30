@@ -19,6 +19,16 @@ export const site = {
   loginUrl: "https://my-planner.in/login",
 };
 
+// Social media profiles. Leave a value empty ("") to hide that icon;
+// fill it in later and the icon appears automatically in the footer and contact page.
+export const socials = {
+  instagram: "https://www.instagram.com/hm.wealth/",
+  youtube: "https://www.youtube.com/@hmwealthofficial",
+  x: "",
+  linkedin: "",
+  facebook: "",
+};
+
 // Shown in the navbar, adhering to SEBI/AMFI MFD nomenclature.
 export const registrations = {
   lines: [

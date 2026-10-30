@@ -2,6 +2,7 @@ import Link from "next/link";
 import { offeringHref, products, services } from "@/lib/offerings";
 import { Mail, Phone, MessageCircle, ArrowUp, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { Container } from "@/components/ui/kit";
 import { disclosures, registrations, site } from "@/lib/site";
 import { CookiePreferencesButton } from "@/components/consent/CookiePreferencesButton";
@@ -51,6 +52,10 @@ export function Footer() {
               <p className="text-[15px] leading-relaxed text-body">
                 Mutual funds and insurance for families and business owners, explained in plain words and reviewed every year.
               </p>
+              <div className="flex flex-col gap-2.5">
+                <p className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-brand">Follow us</p>
+                <SocialLinks />
+              </div>
               <div className="rounded-2xl border border-line bg-white p-4 backdrop-blur">
                 <p className="text-[13px] font-semibold uppercase leading-relaxed tracking-[0.03em] text-body">
                   {registrations.lines[0]}

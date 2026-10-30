@@ -20,6 +20,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { Faq } from "@/components/sections/Faq";
 import { Card, Container, IconBox, Section, SectionTitle } from "@/components/ui/kit";
 import { ProtectedImage } from "@/components/ui/ProtectedImage";
@@ -132,6 +133,12 @@ export default function ContactPage() {
             <div className="mt-3.5 sm:mt-4 inline-flex items-center gap-2 rounded-2xl border border-brand/20 bg-mint/60 px-4 py-2 text-xs font-bold text-ink shadow-2xs backdrop-blur-xs sm:text-[13px]">
               <span className="text-base">💡</span>
               <span>First consultations are always 100% free with zero sales pressure.</span>
+            </div>
+
+            {/* Social media */}
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <span className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-brand">Follow us</span>
+              <SocialLinks />
             </div>
           </div>
           <div className="relative aspect-[1672/941] overflow-hidden rounded-[28px] border border-line bg-white shadow-card">

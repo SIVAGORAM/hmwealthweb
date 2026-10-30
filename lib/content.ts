@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import { site, socials } from "@/lib/site";
 import { SITE_CONFIG, toAbsoluteUrl } from "@/lib/seo";
 
 export const brandContent = {
@@ -19,12 +19,7 @@ export const brandContent = {
     postalCode: "500032",
     addressCountry: "IN",
   },
-  sameAs: [
-    "https://www.linkedin.com/company/hm-wealth",
-    "https://twitter.com/hmwealth",
-    "https://www.facebook.com/hmwealthindia",
-    "https://www.instagram.com/hmwealth",
-  ],
+  sameAs: Object.values(socials).filter(Boolean),
   software: {
     name: "HM Wealth Studio & Financial Calculators",
     operatingSystem: "All (Web Browser, iOS, Android, Windows, macOS)",
