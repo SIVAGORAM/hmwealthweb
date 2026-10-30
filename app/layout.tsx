@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { site } from "@/lib/site";
-import { SITE_CONFIG, toAbsoluteUrl } from "@/lib/seo";
+import { getBaseUrl, SITE_CONFIG, toAbsoluteUrl } from "@/lib/seo";
 import {
   JsonLd,
   getOrganizationSchema,
@@ -18,8 +18,10 @@ import { CookieConsentProvider } from "@/components/consent/CookieConsentContext
 import { CookieConsentBanner } from "@/components/consent/CookieConsentBanner";
 import { CookiePreferencesModal } from "@/components/consent/CookiePreferencesModal";
 
+const baseUrl = getBaseUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hmwealth.in"),
+  metadataBase: new URL(baseUrl),
   title: {
     default: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     template: `%s | ${site.name}`,
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
   alternates: {
-    canonical: "https://hmwealth.in/",
+    canonical: toAbsoluteUrl("/"),
   },
   robots: {
     index: true,
@@ -62,13 +64,15 @@ export const metadata: Metadata = {
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
       "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
-    url: "https://hmwealth.in/",
+    url: toAbsoluteUrl("/"),
     locale: "en_IN",
     images: [
       {
-        url: "https://hmwealth.in/og-image.png",
+        url: toAbsoluteUrl("/og-image.jpg"),
+        secureUrl: toAbsoluteUrl("/og-image.jpg"),
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
       },
     ],
@@ -78,7 +82,7 @@ export const metadata: Metadata = {
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
       "Explore mutual funds, SIP investments and insurance with HM Wealth.",
-    images: ["https://hmwealth.in/og-image.png"],
+    images: [toAbsoluteUrl("/og-image.jpg")],
   },
 };
 

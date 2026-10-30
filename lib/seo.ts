@@ -21,12 +21,25 @@ export interface RouteSeoConfig {
   noIndex?: boolean;
 }
 
-// 1. Central site configuration with canonical production domain
+// 1. Central site configuration dynamically resolving active domain
+// Testing URL: https://hmwealthweb-seven.vercel.app
+// Production URL: https://hmwealth.in
 export const PRODUCTION_URL = "https://hmwealth.in";
+export const TESTING_URL = "https://hmwealthweb-seven.vercel.app";
+
+export function getBaseUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
+  }
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL.replace(/\/+$/, "")}`;
+  }
+  return TESTING_URL;
+}
 
 export const SITE_CONFIG = {
-  url: PRODUCTION_URL,
-  domain: PRODUCTION_URL,
+  url: getBaseUrl(),
+  domain: getBaseUrl(),
   name: "HM Wealth",
   tagline: "AMFI-registered Mutual Fund Distributor",
   arn: "ARN-341412",
@@ -34,9 +47,10 @@ export const SITE_CONFIG = {
   type: "website" as const,
   twitterCard: "summary_large_image" as const,
   defaultOgImage: {
-    url: "/og-image.png",
+    url: "/og-image.jpg",
     width: 1200,
     height: 630,
+    type: "image/jpeg",
     alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
 };
@@ -81,7 +95,7 @@ export const CORE_ROUTES_SEO = {
     path: "/",
     priority: 1.0,
     changeFrequency: "daily" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   about: {
@@ -91,7 +105,7 @@ export const CORE_ROUTES_SEO = {
     path: "/about",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "About HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   calculators: {
@@ -101,7 +115,7 @@ export const CORE_ROUTES_SEO = {
     path: "/calculators",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Financial SIP & Wealth Calculators Online — HM Wealth",
   },
   contact: {
@@ -111,7 +125,7 @@ export const CORE_ROUTES_SEO = {
     path: "/contact",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Contact HM Wealth Support Desk",
   },
   investments: {
@@ -121,7 +135,7 @@ export const CORE_ROUTES_SEO = {
     path: "/investments",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Mutual Fund Investment Schemes and SIP Plans — HM Wealth",
   },
   insurance: {
@@ -131,7 +145,7 @@ export const CORE_ROUTES_SEO = {
     path: "/insurance",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Family and Business Insurance Protection — HM Wealth",
   },
   products: {
@@ -141,7 +155,7 @@ export const CORE_ROUTES_SEO = {
     path: "/products",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Investment and Insurance Products Catalog — HM Wealth",
   },
   productMutualFunds: {
@@ -191,7 +205,7 @@ export const CORE_ROUTES_SEO = {
     path: "/services",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Mutual Fund Distribution and Client Guidance Services — HM Wealth",
   },
   serviceFinancialEducation: {
@@ -251,7 +265,7 @@ export const CORE_ROUTES_SEO = {
     path: "/important-links",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Important Investor Links Directory — HM Wealth",
   },
   investorGrievance: {
@@ -261,7 +275,7 @@ export const CORE_ROUTES_SEO = {
     path: "/investor-grievance",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Investor Grievance Redressal Mechanism — HM Wealth",
   },
   riskFactors: {
@@ -271,7 +285,7 @@ export const CORE_ROUTES_SEO = {
     path: "/risk-factors",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "Mandatory Statutory Investment Risk Factors — HM Wealth",
   },
   privacyPolicy: {
@@ -281,7 +295,7 @@ export const CORE_ROUTES_SEO = {
     path: "/privacy-policy",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "HM Wealth Privacy Policy and Data Security",
   },
   termsConditions: {
@@ -291,7 +305,7 @@ export const CORE_ROUTES_SEO = {
     path: "/terms-conditions",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.jpg",
     ogImageAlt: "HM Wealth Terms and Conditions of Service",
   },
 } as const satisfies Record<string, RouteSeoConfig>;
@@ -350,15 +364,16 @@ export function getRouteSeo(keyOrPath: string): RouteSeoConfig | undefined {
 
 // 3. Centralized metadata constructor returning Next.js Metadata type
 export function constructMetadata(config: RouteSeoConfig): Metadata {
+  const baseUrl = getBaseUrl();
   const canonicalUrl = toAbsoluteUrl(config.path);
-  const ogImageUrl = config.ogImage
-    ? toAbsoluteUrl(config.ogImage)
-    : toAbsoluteUrl(SITE_CONFIG.defaultOgImage.url);
+  const ogImageRel = config.ogImage ?? SITE_CONFIG.defaultOgImage.url;
+  const ogImageUrl = toAbsoluteUrl(ogImageRel);
   const ogImageAlt = config.ogImageAlt ?? SITE_CONFIG.defaultOgImage.alt;
   const isNoIndex = Boolean(config.noIndex);
+  const isPng = ogImageUrl.endsWith(".png");
 
   return {
-    metadataBase: new URL(PRODUCTION_URL),
+    metadataBase: new URL(baseUrl),
     title: { absolute: config.title },
     description: config.description,
     alternates: {
@@ -374,8 +389,10 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
       images: [
         {
           url: ogImageUrl,
+          secureUrl: ogImageUrl,
           width: 1200,
           height: 630,
+          type: isPng ? "image/png" : "image/jpeg",
           alt: ogImageAlt,
         },
       ],
