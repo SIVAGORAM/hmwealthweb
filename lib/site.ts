@@ -24,7 +24,7 @@ export const site = {
 export const socials = {
   instagram: "https://www.instagram.com/hm.wealth/",
   youtube: "https://www.youtube.com/@hmwealthofficial",
-  x: "",
+  x: "https://x.com/HM_Wealth",
   linkedin: "",
   facebook: "",
 };

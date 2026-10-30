@@ -396,6 +396,8 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
     },
     twitter: {
       card: SITE_CONFIG.twitterCard,
+      site: "@HM_Wealth",
+      creator: "@HM_Wealth",
       title: config.title,
       description:
         config.path === "/"

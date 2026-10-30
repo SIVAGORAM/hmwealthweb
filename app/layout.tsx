@@ -79,6 +79,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
+    site: "@HM_Wealth",
+    creator: "@HM_Wealth",
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
       "Explore mutual funds, SIP investments and insurance with HM Wealth.",
