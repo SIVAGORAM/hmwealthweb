@@ -53,19 +53,46 @@
 
 @utility tnum { font-variant-numeric: tabular-nums; }
 
-/* Branded range slider */
+/* Branded range slider with silky touch ergonomics */
 @utility range {
-  appearance: none; width: 100%; height: 6px; border-radius: 999px; cursor: pointer;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: pan-y;
   background: linear-gradient(to right, var(--color-brand-bright), var(--color-brand) var(--fill, 50%), var(--color-line) var(--fill, 50%));
+
   &::-webkit-slider-thumb {
-    appearance: none; width: 24px; height: 24px; border-radius: 999px; background: #fff;
-    border: 7px solid var(--color-brand); box-shadow: 0 0 0 6px rgb(25 195 138 / 0.15), 0 4px 10px rgb(11 122 85 / 0.35);
-    transition: box-shadow .2s;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 6px solid var(--color-brand);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(11, 122, 85, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: grab;
   }
-  &:hover::-webkit-slider-thumb { box-shadow: 0 0 0 9px rgb(25 195 138 / 0.2), 0 4px 10px rgb(11 122 85 / 0.35); }
+
+  &:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 7px rgb(25 195 138 / 0.2), 0 4px 10px rgb(11 122 85 / 0.35);
+  }
+
+  &:active::-webkit-slider-thumb {
+    transform: scale(1.15);
+    cursor: grabbing;
+    box-shadow: 0 0 0 9px rgb(25 195 138 / 0.25), 0 5px 12px rgb(11 122 85 / 0.4);
+  }
+
   &::-moz-range-thumb {
-    width: 12px; height: 12px; border-radius: 999px; background: #fff;
-    border: 6px solid var(--color-brand); box-shadow: 0 2px 8px rgb(11 122 85 / 0.35);
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 6px solid var(--color-brand);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(11, 122, 85, 0.3);
+    cursor: grab;
   }
 }
 

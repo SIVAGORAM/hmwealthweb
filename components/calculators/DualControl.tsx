@@ -285,58 +285,42 @@ export function DualControl({
 
   return (
     <div className={cn("flex flex-col gap-2.5", className)}>
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <label htmlFor={id} className="text-[14px] font-semibold text-ink">
-          {label}
-        </label>
+      {/* Row 1: Label + Quick Chips on Left, Input Box on Right (WealthyStep ergonomic layout) */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+          <label htmlFor={id} className="text-[14px] sm:text-[14.5px] font-bold text-ink leading-tight">
+            {label}
+          </label>
 
-        {/* Quick Add Chip Pills */}
-        {quickChips && quickChips.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1.5">
-            {quickChips.map((chip, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleAddChip(chip.addValue)}
-                className="inline-flex items-center gap-0.5 rounded-full border border-line bg-soft px-2.5 py-0.5 text-[11px] font-semibold text-body transition-colors hover:border-brand hover:bg-mint hover:text-brand active:scale-95"
-              >
-                {/* % chips set an exact rate; others add to the current value */}
-                {!chip.label.endsWith("%") && <Plus className="size-2.5" />}
-                {chip.label}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="flex items-center gap-3">
-        {/* Synchronized Slider: smoothly tracks up to max, stays at 100% if custom value exceeds max */}
-        <div className="relative flex-1">
-          <input
-            id={id}
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={Math.min(value, max)}
-            onChange={handleRangeChange}
-            className="range w-full cursor-pointer"
-            style={{ ["--fill" as string]: `${fillPercent}%` }}
-            aria-label={`${label} slider`}
-          />
+          {/* Quick Add Chip Pills */}
+          {quickChips && quickChips.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+              {quickChips.map((chip, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => handleAddChip(chip.addValue)}
+                  className="inline-flex items-center gap-0.5 rounded-full border border-line bg-soft px-2.5 py-0.5 text-[11px] font-bold text-body transition-colors hover:border-brand hover:bg-mint hover:text-brand active:scale-95"
+                >
+                  {!chip.label.endsWith("%") && <Plus className="size-2.5" />}
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Manual Input with Unit Adornment & Fluid Touch/Typing */}
+        {/* Manual Input with Unit Adornment */}
         <div
           className={cn(
-            "relative flex min-w-[110px] xs:min-w-[130px] sm:min-w-[150px] shrink-0 items-center rounded-xl border bg-white shadow-xs transition-all",
+            "relative flex w-28 xs:w-32 sm:w-36 shrink-0 items-center rounded-xl border bg-white shadow-xs transition-all",
             hasWarning
               ? "border-amber-400 ring-2 ring-amber-400/20"
               : "border-line focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/15"
           )}
         >
           {prefix && (
-            <span className="pl-3 text-[13px] font-bold text-body select-none">
+            <span className="pl-3 text-[14px] font-bold text-body select-none">
               {prefix}
             </span>
           )}
@@ -355,45 +339,56 @@ export function DualControl({
             onFocus={(e) => {
               setIsFocused(true);
               setValidationWarning(null);
-              // Select all on focus for effortless single-tap editing
               e.currentTarget.select();
             }}
             onBlur={handleBlur}
             className={cn(
-              "w-full bg-transparent py-1.5 pr-2.5 text-right text-[14px] font-extrabold text-ink outline-none tnum",
+              "w-full bg-transparent py-1.5 sm:py-2 pr-2.5 text-right text-[14.5px] sm:text-[15px] font-black text-ink outline-none tnum",
               !prefix && "pl-3"
             )}
             aria-label={label}
             aria-invalid={hasWarning}
           />
           {suffix && (
-            <span className="pr-3 text-[12px] font-bold text-body select-none">
+            <span className="pr-3 text-[12.5px] font-bold text-body select-none">
               {suffix}
             </span>
           )}
         </div>
       </div>
 
-      {/* Helper Limits or Active Warning */}
-      <div className="flex items-center justify-between text-[11px] font-semibold tnum">
+      {/* Row 2: Full-Width Range Slider (100% of container width for silky smooth touch dragging) */}
+      <div className="relative w-full pt-1">
+        <input
+          id={id}
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={Math.min(value, max)}
+          onChange={handleRangeChange}
+          className="range w-full cursor-pointer touch-pan-y"
+          style={{ ["--fill" as string]: `${fillPercent}%` }}
+          aria-label={`${label} slider`}
+        />
+      </div>
+
+      {/* Row 3: Min on Left, Max on Right (Directly under slider edges) */}
+      <div className="flex items-center justify-between text-[11.5px] font-semibold text-slate-700 tnum">
         {hasWarning ? (
           <span className="flex items-center gap-1 font-semibold text-amber-700 animate-fadeIn">
             <AlertCircle className="size-3 shrink-0" />
             {validationWarning}
           </span>
         ) : (
-          <span className="text-slate-700">
+          <span>
             {prefix}
             {min.toLocaleString("en-IN")}
             {suffix ? ` ${suffix}` : ""}
           </span>
         )}
 
-        {helperText && !hasWarning && (
-          <span className="text-slate-700 font-medium">{helperText}</span>
-        )}
-
-        <span className="text-slate-700">
+        <span>
           {prefix}
           {max.toLocaleString("en-IN")}
           {suffix ? ` ${suffix}` : ""}
@@ -404,6 +399,13 @@ export function DualControl({
           )}
         </span>
       </div>
+
+      {/* Row 4: Optional Helper Note on its own line (Zero text-wrapping conflicts) */}
+      {helperText && !hasWarning && (
+        <p className="text-[11px] text-slate-500 leading-tight">
+          {helperText}
+        </p>
+      )}
     </div>
   );
 }
