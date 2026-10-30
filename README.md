@@ -1,8 +1,8 @@
-# hmwealthweb
+# HM Wealth (`https://hmwealth.in`)
 
 **HM Wealth** — Production-grade wealth distribution & financial protection platform built with Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Motion, and Lucide icons.
 
-## Overview
+- **Official Production Domain:** [https://hmwealth.in](https://hmwealth.in) (also accessible via [https://www.hmwealth.in](https://www.hmwealth.in))
 - **ARN**: 341412 (AMFI-Registered Mutual Fund Distributor)
 - **Features**: Interactive Compounding & Wealth Studio (10 models), SIP Calculators, Family & Business Insurance Guides, Regulatory Grievance Portal, and Statutory Compliance Framework.
 

@@ -22,16 +22,14 @@ export interface RouteSeoConfig {
 }
 
 // 1. Central site configuration dynamically resolving active domain
-// Testing URL: https://hmwealthweb-seven.vercel.app
-// Production URL: https://hmwealth.in
+// Official Client Production Domains: https://hmwealth.in and https://www.hmwealth.in
 export const PRODUCTION_URL = "https://hmwealth.in";
-export const TESTING_URL = "https://hmwealthweb-seven.vercel.app";
 
 export function getBaseUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
   }
-  return TESTING_URL;
+  return PRODUCTION_URL;
 }
 
 export const SITE_CONFIG = {
