@@ -22,13 +22,12 @@ import {
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Faq } from "@/components/sections/Faq";
 import { Card, Container, IconBox, Section, SectionTitle } from "@/components/ui/kit";
+import { ProtectedImage } from "@/components/ui/ProtectedImage";
 import { site } from "@/lib/site";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Contact HM Wealth | Book a Free Financial Consultation",
-  description:
-    "Have questions about mutual funds, SIPs, or insurance? Contact HM Wealth. Call, WhatsApp, email, or visit our office for honest, personalized financial guidance.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.contact);
 
 const quickChannels = [
   {
@@ -39,7 +38,7 @@ const quickChannels = [
     actionLabel: "+91 96181 01040",
     href: site.phoneHref,
     tint: "mint",
-    subtext: "Mon – Sat during business hours",
+    subtext: "Mon – Sat direct desk support",
   },
   {
     num: "02",
@@ -50,7 +49,7 @@ const quickChannels = [
     href: site.whatsappHref,
     tint: "brand",
     isButton: true,
-    subtext: "Typically replies in under 15 mins",
+    subtext: "Fast response on WhatsApp",
   },
   {
     num: "03",
@@ -60,18 +59,9 @@ const quickChannels = [
     actionLabel: site.email,
     href: `mailto:${site.email}`,
     tint: "sky",
-    subtext: "Replies within 2 business hours",
+    subtext: "Prompt reply on all inquiries",
   },
-  {
-    num: "04",
-    icon: MapPin,
-    title: "Office Address",
-    content: "Visit our office for an in-person consultation.",
-    actionLabel: "View on Google Maps",
-    href: "#office-map",
-    tint: "peach",
-    subtext: "Financial District, Hyderabad",
-  },
+
 ];
 
 const faqs = [
@@ -81,7 +71,7 @@ const faqs = [
   },
   {
     q: "How quickly will someone contact me?",
-    a: "If you reach out during business hours (9:30 AM – 6:30 PM), our team responds within 2 hours. Outside of hours, we connect the next morning.",
+    a: "Our team typically responds within 2 hours. Inquiries sent late evening are addressed first thing the next morning.",
   },
   {
     q: "I live in another city or abroad (NRI). Can we meet virtually?",
@@ -96,6 +86,12 @@ const faqs = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint/50 via-soft/60 to-white">
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Contact Us", item: "/contact" },
+        ])}
+      />
       {/* ======================================================================
           1. Hero Section (Top Banner)
           ====================================================================== */}
@@ -111,7 +107,8 @@ export default function ContactPage() {
         />
 
         <Container>
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="grid grid-cols-1 items-center gap-6 py-2 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col items-start text-left">
             {/* Small Badge */}
             <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-white/90 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-brand shadow-xs backdrop-blur-md">
               <Sparkles className="size-3 text-brand" />
@@ -137,6 +134,17 @@ export default function ContactPage() {
               <span>First consultations are always 100% free with zero sales pressure.</span>
             </div>
           </div>
+          <div className="relative aspect-[1672/941] overflow-hidden rounded-[28px] border border-line bg-white shadow-card">
+            <ProtectedImage
+              src="/images/pages/contact-get-in-touch.jpg"
+              alt="Get in touch: a sunlit desk with a laptop, phone and notebook"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          </div>
         </Container>
       </section>
 
@@ -145,7 +153,8 @@ export default function ContactPage() {
           ====================================================================== */}
       <section className="relative z-10 -mt-3 sm:-mt-4">
         <Container>
-          <div className="m-rail grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="sr-only">Direct Communication Channels</h2>
+          <div className="m-rail grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {quickChannels.map((c) => {
               const Icon = c.icon;
               return (
@@ -200,12 +209,12 @@ export default function ContactPage() {
             })}
           </div>
 
-          {/* Working Hours Bar */}
+          {/* Support Availability Bar */}
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-line/80 bg-white/90 px-5 py-3 shadow-2xs backdrop-blur-xs">
             <div className="flex items-center gap-2 text-xs font-semibold text-body">
-              <Clock className="size-4 text-brand" />
+              <Headphones className="size-4 text-brand" />
               <span>
-                <strong className="text-ink">Working Hours:</strong> Monday – Friday: 9:30 AM to 6:30 PM | Saturday: 10:00 AM to 2:00 PM (IST)
+                <strong className="text-ink">Support Availability:</strong> Dedicated client desk active Monday through Saturday.
               </span>
             </div>
             <div className="flex items-center gap-1.5 text-xs font-bold text-brand">
@@ -213,7 +222,7 @@ export default function ContactPage() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-brand" />
               </span>
-              Desk Active Now
+              Desk Active
             </div>
           </div>
         </Container>
@@ -222,201 +231,46 @@ export default function ContactPage() {
       {/* ======================================================================
           3 & 4. Main Section: Form (Left) + Why Connect With Us (Right)
           ====================================================================== */}
-      <section className="py-1.5 sm:py-2">
+      <section className="py-5 sm:py-8">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-12 items-start">
-            {/* Left Side (7 cols): Interactive Contact & Lead Capture Form */}
-            <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[1.25fr_1fr] lg:gap-8">
+            {/* Interactive Contact & Lead Capture Form */}
+            <div className="min-w-0">
               <ContactForm />
             </div>
-
-            {/* Right Side (5 cols): Why Connect With Us? */}
-            <div className="flex flex-col gap-4 lg:col-span-5">
-              {/* Expectations Card */}
-              <div className="rounded-[28px] border border-line bg-white p-5 shadow-card sm:p-6">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-mint px-3 py-1 text-xs font-bold text-brand">
-                  <ShieldCheck className="size-3.5" />
-                  What to Expect
-                </span>
-                <h3 className="mt-2.5 text-xl font-extrabold text-ink sm:text-2xl">
-                  Why Connect With Us?
-                </h3>
-                <p className="mt-1 text-xs leading-relaxed text-body">
-                  When you reach out to HM Wealth, here is the transparent experience you can count on:
-                </p>
-
-                <div className="mt-4 flex flex-col gap-3">
-                  {/* Point 1 */}
-                  <div className="flex items-start gap-3 rounded-2xl border border-line/60 bg-soft/40 p-3.5 transition-colors hover:bg-soft">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-brand text-white shadow-2xs">
-                      <Headphones className="size-4" />
-                    </span>
-                    <div>
-                      <h4 className="text-[13.5px] font-bold text-ink">
-                        No Robotic Call Centers
-                      </h4>
-                      <p className="mt-0.5 text-xs leading-relaxed text-body">
-                        You speak directly to an experienced AMFI-registered mutual fund distributor who takes time to understand your life goals.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Point 2 */}
-                  <div className="flex items-start gap-3 rounded-2xl border border-line/60 bg-soft/40 p-3.5 transition-colors hover:bg-soft">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-sky text-sky-ink shadow-2xs">
-                      <Video className="size-4" />
-                    </span>
-                    <div>
-                      <h4 className="text-[13.5px] font-bold text-ink">
-                        Online or In-Person
-                      </h4>
-                      <p className="mt-0.5 text-xs leading-relaxed text-body">
-                        We can meet in person at our office or over a convenient 20-minute Zoom, Google Meet, or WhatsApp video call.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Point 3 */}
-                  <div className="flex items-start gap-3 rounded-2xl border border-line/60 bg-soft/40 p-3.5 transition-colors hover:bg-soft">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-peach text-peach-ink shadow-2xs">
-                      <FileSearch className="size-4" />
-                    </span>
-                    <div>
-                      <h4 className="text-[13.5px] font-bold text-ink">
-                        Portfolio Second Opinion
-                      </h4>
-                      <p className="mt-0.5 text-xs leading-relaxed text-body">
-                        Bring your existing insurance policies or mutual funds—we’ll give you an honest review with zero obligation to switch.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Direct Founder & AMFI Trust Card */}
-              <div className="relative isolate overflow-hidden rounded-[28px] border border-white/20 bg-gradient-to-br from-[#021f15] via-[#053b2a] to-[#04261c] p-5 text-white shadow-card sm:p-6">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-12 -top-12 -z-10 size-48 rounded-full bg-[#19c38a]/20 blur-[60px]"
+            <div className="hidden flex-col gap-5 lg:flex">
+              <div className="relative aspect-[740/575] overflow-hidden rounded-[28px] border border-line bg-white shadow-card">
+                <ProtectedImage
+                  src="/images/pages/contact-laptop.jpg"
+                  alt="Laptop showing a Contact Us page on a wooden desk"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
                 />
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300">
-                    Regulated &amp; Verified
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-bold text-[#7ff0c4] ring-1 ring-white/15">
-                    <ShieldCheck className="size-3 text-gold" />
-                    AMFI Registered
-                  </span>
-                </div>
-
-                <div className="mt-3">
-                  <p className="text-xs text-white/70">AMFI MFD Registration</p>
-                  <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-white tnum">
-                    {site.arn}
-                  </p>
-                </div>
-
-                <div className="mt-4 flex flex-col gap-2 border-t border-white/15 pt-3 text-xs text-white/80">
-                  <div className="flex justify-between">
-                    <span className="text-white/60">Distribution Desk Lead:</span>
-                    <span className="font-bold text-white">{site.founder}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/60">Direct Mobile:</span>
-                    <a href={site.phoneHref} className="font-bold text-emerald-300 hover:underline">
-                      {site.phone}
-                    </a>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/60">Official Email:</span>
-                    <a href={`mailto:${site.email}`} className="font-bold text-emerald-300 hover:underline">
-                      {site.email}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ======================================================================
-          5. Office Location & Interactive Map
-          ====================================================================== */}
-      <section id="office-map" className="py-1.5 border-t border-line/60 bg-white sm:py-2">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-mint px-3 py-1 text-xs font-bold text-brand">
-              <Building2 className="size-3.5" />
-              IN-PERSON CONSULTATIONS
-            </span>
-            <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-ink sm:text-[30px]">
-              Visit Our Office
-            </h2>
-            <p className="mt-1 text-xs sm:text-sm leading-relaxed text-body">
-              Prefer an in-person discussion? We welcome you to visit our office for a personalized face-to-face portfolio session.
-            </p>
-          </div>
-
-          <div className="mt-2 sm:mt-2.5 grid gap-4 lg:grid-cols-12 items-stretch">
-            {/* Map Frame (7 cols) */}
-            <div className="relative overflow-hidden rounded-[28px] border border-line shadow-card min-h-[340px] lg:col-span-7">
-              <iframe
-                title="HM Wealth Office Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6644485542287!2d78.33789497516584!3d17.427863583466175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93f54d6e901b%3A0xb35a703d2745a909!2sFinancial%20District%2C%20Nanakramguda%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                className="h-full w-full min-h-[340px] border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-
-            {/* Clear Directions Card (5 cols) */}
-            <div className="flex flex-col justify-between rounded-[28px] border border-line bg-soft/50 p-6 shadow-card sm:p-8 lg:col-span-5">
-              <div>
-                <span className="inline-flex items-center gap-1 rounded-md bg-white px-2.5 py-1 text-xs font-extrabold text-brand shadow-xs">
-                  <MapPin className="size-3.5" />
-                  Headquarters
-                </span>
-                <h3 className="mt-3 text-xl font-extrabold text-ink">
-                  HM Wealth
-                </h3>
-                <p className="mt-1 text-xs font-semibold text-brand">
-                  AMFI Registered Mutual Fund Distributor (ARN-341412)
-                </p>
-
-                <div className="mt-4 flex flex-col gap-1 text-[13.5px] leading-relaxed text-body">
-                  <p className="font-bold text-ink">Office Suite, Financial District</p>
-                  <p>Gachibowli / Nanakramguda</p>
-                  <p>Hyderabad, Telangana – 500032</p>
-                </div>
-
-                <div className="mt-6 flex flex-col gap-3 border-t border-line/70 pt-4">
-                  <div className="flex items-start gap-3 text-xs text-body">
-                    <Train className="size-4 shrink-0 text-brand mt-0.5" />
-                    <div>
-                      <strong className="text-ink">Metro Connectivity:</strong> Accessible via Raidurg Metro Station (Blue Line) with convenient cab and shuttle connectivity.
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 text-xs text-body">
-                    <Car className="size-4 shrink-0 text-brand mt-0.5" />
-                    <div>
-                      <strong className="text-ink">Visitor Parking:</strong> Dedicated visitor parking space available inside the office complex.
-                    </div>
-                  </div>
-                </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-line/70">
-                <a
-                  href="https://maps.google.com/?q=Financial+District+Gachibowli+Hyderabad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-white border border-line py-2.5 text-xs font-bold text-ink shadow-2xs transition hover:border-brand hover:text-brand"
-                >
-                  <ExternalLink className="size-3.5" />
-                  Open in Google Maps App
-                </a>
+              {/* What happens next */}
+              <div className="rounded-[28px] border border-line bg-[linear-gradient(150deg,#eef7f2_0%,#ffffff_60%,#fbf6ea_100%)] p-6 shadow-card">
+                <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-brand">What happens next</p>
+                <ol className="mt-4 flex flex-col gap-4">
+                  {[
+                    { t: "We call you back", d: "Our team reaches out on a working day, by call or WhatsApp." },
+                    { t: "We understand your goal", d: "A short, friendly chat about what you want to achieve." },
+                    { t: "We explain your options", d: "Clear choices with risks and costs. The decision is always yours." },
+                  ].map((step, i) => (
+                    <li key={step.t} className="flex gap-3.5">
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand text-[13px] font-extrabold text-white tnum">{i + 1}</span>
+                      <div>
+                        <p className="text-[15px] font-extrabold text-ink">{step.t}</p>
+                        <p className="mt-0.5 text-[13.5px] leading-relaxed text-body">{step.d}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <div className="mt-5 flex items-center gap-2 border-t border-line pt-4 text-[13px] font-semibold text-ink">
+                  <ShieldCheck className="size-4 text-brand" />
+                  First call is free. No obligation, no pressure.
+                </div>
               </div>
             </div>
           </div>
@@ -426,31 +280,34 @@ export default function ContactPage() {
       {/* ======================================================================
           6. Quick Contact FAQs (Eliminating Hesitation)
           ====================================================================== */}
-      <Section soft>
-        <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.4fr]">
+      <Section soft className="py-8 sm:py-12">
+        <Container className="flex flex-col items-center gap-6 sm:gap-8">
           <SectionTitle
             badge="FAQ"
             title="Before You Reach Out"
-            intro="Common questions regarding consultations, turnaround times, and NRI onboarding."
+            intro="Common questions about consultations, response times and NRI investing."
+            center
           />
-          <Faq items={faqs} />
+          <div className="w-full max-w-3xl">
+            <Faq items={faqs} />
+          </div>
         </Container>
       </Section>
 
       {/* ======================================================================
           7. Statutory Regulatory Footer Note
           ====================================================================== */}
-      <section className="py-1.5 sm:py-2">
+      <section className="py-4 sm:py-6">
         <Container>
           <div className="rounded-2xl border border-line/80 bg-white p-5 shadow-xs sm:p-6">
             <div className="flex items-start gap-3">
               <ShieldCheck className="size-5 shrink-0 text-brand mt-0.5" />
               <div className="flex flex-col gap-1 text-xs leading-relaxed text-body">
                 <span className="font-bold uppercase tracking-wider text-ink">
-                  Statutory Regulatory Compliance Notice
+                  Disclosure
                 </span>
                 <p>
-                  HM Wealth is an AMFI-registered Mutual Fund Distributor (ARN-341412). Mutual Fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not indicative of future returns. We distribute mutual fund schemes and earn trail commissions from Asset Management Companies as per AMFI/SEBI norms.
+                  HM Wealth is an AMFI-registered Mutual Fund Distributor. Mutual Fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not indicative of future returns. We distribute mutual fund schemes and earn trail commissions from Asset Management Companies as per AMFI/SEBI norms.
                 </p>
               </div>
             </div>

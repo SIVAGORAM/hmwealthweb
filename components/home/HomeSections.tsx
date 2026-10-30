@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { photos } from "@/lib/photos";
 import {
   TrendingUp, CalendarClock, Receipt, ShieldCheck, Coins, Globe2, ArrowRight, Home as HomeIcon, GraduationCap, Sunset, LifeBuoy, Landmark,
@@ -7,6 +6,7 @@ import {
 } from "lucide-react";
 import { Badge, Card, Container, IconBox, Section, SectionTitle, type Tint } from "@/components/ui/kit";
 import { Reveal } from "@/components/ui/Reveal";
+import { ProtectedImage } from "@/components/ui/ProtectedImage";
 import { Steps } from "@/components/sections/Steps";
 import { SipCalculatorCard } from "./SipCalculatorCard";
 import { ProductsBento } from "./ProductsBento";
@@ -16,13 +16,13 @@ import { site } from "@/lib/site";
 
 export function TrustStrip() {
   const items = [
-    { icon: BadgeCheck, t: "AMFI‑registered", d: site.arn },
+    { icon: BadgeCheck, t: "AMFI‑registered", d: "Mutual Fund Distributor" },
     { icon: FileCheck2, t: "Paperless KYC", d: "Online in 10 minutes" },
     { icon: Wallet, t: "Your money, your name", d: "Held with the fund house" },
     { icon: Headphones, t: "Real people to call", d: "Review & claim support" },
   ];
   return (
-    <Container className="relative z-10 mt-2 sm:mt-2.5">
+    <Container className="relative z-10 my-3.5 sm:my-5">
       {/* gradient hairline border */}
       <div className="rounded-[22px] bg-[linear-gradient(120deg,rgba(25,195,138,0.45),rgba(227,235,231,0.9)_30%,rgba(227,235,231,0.9)_70%,rgba(242,179,61,0.45))] p-px shadow-[0_18px_40px_-28px_rgba(5,59,42,0.45)]">
         <div className="grid grid-cols-2 gap-1.5 rounded-[21px] bg-white/95 p-1.5 sm:gap-1 sm:p-2 backdrop-blur lg:grid-cols-4">
@@ -45,12 +45,12 @@ export function TrustStrip() {
 }
 
 const products: { icon: typeof TrendingUp; tint: Tint; t: string; d: string; href: string }[] = [
-  { icon: TrendingUp, tint: "green", t: "Mutual funds", d: "Equity, debt, hybrid and index funds chosen for your goal and time horizon.", href: "/investments" },
-  { icon: CalendarClock, tint: "sky", t: "SIP", d: "Invest a fixed amount every month, from ₹500. Pause or raise it any time.", href: "/investments#ways" },
-  { icon: Receipt, tint: "lilac", t: "Tax saving (ELSS)", d: "Equity funds with a 3-year lock-in that can reduce your tax, as per law.", href: "/investments#categories" },
-  { icon: ShieldCheck, tint: "peach", t: "Insurance", d: "Term life, health, motor and business cover compared across insurers.", href: "/insurance" },
-  { icon: Coins, tint: "gold", t: "Gold", d: "Gold ETFs and gold funds, with no lockers, purity checks or making charges.", href: "/investments#categories" },
-  { icon: Globe2, tint: "green", t: "NRI investing", d: "Invest in Indian mutual funds through your NRE or NRO account.", href: "/investments#nri" },
+  { icon: TrendingUp, tint: "green", t: "Mutual funds", d: "Equity, debt, hybrid and index funds chosen for your goal and time horizon.", href: "/products/mutual-funds" },
+  { icon: CalendarClock, tint: "sky", t: "SIP", d: "Invest a fixed amount every month, from ₹500. Pause or raise it any time.", href: "/products/mutual-funds" },
+  { icon: Receipt, tint: "lilac", t: "Tax saving (ELSS)", d: "Equity funds with a 3-year lock-in that can reduce your tax, as per law.", href: "/products/mutual-funds" },
+  { icon: ShieldCheck, tint: "peach", t: "Insurance", d: "Term life, health, motor and business cover compared across insurers.", href: "/products/life-insurance" },
+  { icon: Coins, tint: "gold", t: "Gold", d: "Gold ETFs and gold funds, with no lockers, purity checks or making charges.", href: "/products/mutual-funds" },
+  { icon: Globe2, tint: "green", t: "NRI investing", d: "Invest in Indian mutual funds through your NRE or NRO account.", href: "/products/mutual-funds" },
 ];
 
 export function Products() {
@@ -64,7 +64,7 @@ export function SipSection() {
     { k: "Flexible", v: "Pause or stop any time" },
   ];
   return (
-    <section className="relative isolate overflow-hidden bg-soft py-1.5 sm:py-2">
+    <section className="relative isolate overflow-hidden bg-soft py-6 sm:py-9 lg:py-11">
       <div aria-hidden className="pointer-events-none absolute -left-40 top-10 -z-10 size-[520px] rounded-full bg-[#19c38a]/15 blur-[120px]" />
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 -z-10 size-[460px] rounded-full bg-gold/10 blur-[120px]" />
       <Container>
@@ -125,14 +125,14 @@ export function WhyUs() {
     { icon: RefreshCcw, t: "With you for years", d: "Yearly reviews and help at claim time." },
   ];
   return (
-    <section className="relative overflow-hidden py-1.5 sm:py-2">
+    <section className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* ---------- photo with floating UI ---------- */}
           <Reveal className="relative order-2 lg:order-1">
             <div aria-hidden className="absolute -inset-6 -z-10 rounded-[48px] bg-[radial-gradient(60%_60%_at_30%_30%,#cfeedf_0%,transparent_70%)]" />
             <div className="relative aspect-[4/3.9] overflow-hidden rounded-[28px] sm:rounded-[36px] shadow-[0_40px_80px_-40px_rgba(4,38,28,0.6)] sm:aspect-[5/5]">
-              <Image src={photos.professional.src} alt={photos.professional.alt} fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover object-[50%_30%]" />
+              <ProtectedImage src={photos.professional.src} alt={photos.professional.alt} fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover object-[50%_30%]" />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#03241a]/55 via-transparent to-transparent" />
             </div>
 
@@ -160,8 +160,8 @@ export function WhyUs() {
             </div>
 
             {/* floating chip: in your name */}
-            <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-[#04261c]/85 px-3.5 py-2 text-[12px] sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5 sm:text-[13px] font-bold text-white shadow-lg backdrop-blur-md">
-              <Lock className="size-4 text-[#7ff0c4]" />Held in your name
+            <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/95 px-3.5 py-2 text-[12px] text-ink sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5 sm:text-[13px] font-bold text-ink shadow-lg backdrop-blur-md">
+              <Lock className="size-4 text-brand" />Held in your name
             </div>
           </Reveal>
 
@@ -194,7 +194,7 @@ export function WhyUs() {
                 Book a free call
                 <span className="flex size-9 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5"><ArrowRight className="size-4" /></span>
               </Link>
-              <span className="text-[13px] text-body">No obligation · {site.arn}</span>
+              <span className="text-[13px] text-body">No obligation · Free first call</span>
             </div>
           </Reveal>
         </div>
@@ -211,20 +211,20 @@ export function InsuranceBand() {
     { icon: Store, t: "Business", d: "Shop, office and stock protection" },
   ];
   return (
-    <section className="py-1.5 sm:py-2">
+    <section className="py-5 sm:py-8">
       <Container>
-        <div className="relative overflow-hidden rounded-[28px] sm:rounded-[32px] bg-brand-deep px-5 py-7 sm:px-10 sm:py-7">
-          <div aria-hidden className="absolute -right-20 -top-20 size-96 rounded-full bg-brand-bright/20 blur-3xl" />
+        <div className="relative overflow-hidden rounded-[28px] sm:rounded-[32px] bg-[linear-gradient(135deg,#fff8ec_0%,#ffffff_50%,#eef7f2_100%)] ring-1 ring-line px-5 py-7 sm:px-10 sm:py-7">
+          <div aria-hidden className="absolute -right-20 -top-20 size-96 rounded-full bg-brand-bright/10 blur-3xl" />
           <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_1.3fr]">
             <div className="flex flex-col gap-4 sm:gap-5">
-              <SectionTitle light badge="Insurance" title="Protect your family first, then invest" intro="Compare plans from multiple insurers. We explain the fine print and help you at claim time." />
-              <Link href="/insurance" className="inline-flex min-h-11 w-fit items-center gap-2 rounded-xl bg-white px-5 text-[14.5px] font-bold text-brand-deep transition hover:bg-mint">Explore insurance <ArrowRight className="size-4" /></Link>
+              <SectionTitle badge="Insurance" title="Protect your family first, then invest" intro="Compare plans from multiple insurers. We explain the fine print and help you at claim time." />
+              <Link href="/products/life-insurance" className="inline-flex min-h-11 w-fit items-center gap-2 rounded-xl bg-brand px-5 text-[14.5px] font-bold text-white transition hover:bg-brand-dark">Explore insurance <ArrowRight className="size-4" /></Link>
             </div>
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {covers.map(({ icon: I, t, d }) => (
-                <Link key={t} href="/insurance#types" className="group flex flex-col items-start gap-2.5 rounded-2xl bg-white/[0.07] p-3.5 ring-1 ring-white/10 transition hover:bg-white/[0.12] sm:flex-row sm:items-center sm:gap-3.5 sm:p-4">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-bright/20 text-brand-bright transition-transform group-hover:scale-110 sm:size-11 sm:rounded-2xl"><I className="size-5" /></span>
-                  <div><p className="text-[14.5px] font-bold text-white sm:text-[15px]">{t}</p><p className="mt-0.5 text-[12px] leading-snug text-white/70 sm:text-[13px]">{d}</p></div>
+                <Link key={t} href="/products/life-insurance" className="group flex flex-col items-start gap-2.5 rounded-2xl bg-white p-3.5 shadow-card ring-1 ring-line transition hover:ring-brand/30 sm:flex-row sm:items-center sm:gap-3.5 sm:p-4">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-mint text-brand transition-transform group-hover:scale-110 sm:size-11 sm:rounded-2xl"><I className="size-5" /></span>
+                  <div><p className="text-[14.5px] font-bold text-ink sm:text-[15px]">{t}</p><p className="mt-0.5 text-[12px] leading-snug text-body sm:text-[13px]">{d}</p></div>
                 </Link>
               ))}
             </div>
@@ -237,7 +237,7 @@ export function InsuranceBand() {
 
 export function FounderNote() {
   return (
-    <section className="py-1.5 sm:py-2">
+    <section className="py-5 sm:py-8">
       <Container>
         <Reveal>
           {/* gradient hairline border */}
@@ -248,7 +248,7 @@ export function FounderNote() {
 
               <div className="relative grid items-center gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
                 {/* quote mark badge */}
-                <span aria-hidden className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-bright to-brand-deep text-[38px] font-extrabold leading-none text-white shadow-[0_16px_30px_-12px_rgba(11,122,85,0.8)] sm:size-18 sm:text-[48px]">
+                <span aria-hidden className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-bright to-brand text-[38px] font-extrabold leading-none text-white shadow-[0_16px_30px_-12px_rgba(11,122,85,0.8)] sm:size-18 sm:text-[48px]">
                   <span className="translate-y-2">&ldquo;</span>
                 </span>
 
@@ -261,7 +261,7 @@ export function FounderNote() {
 
                   <figcaption className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2.5">
                     <span className="flex items-center gap-3">
-                      <span className="flex size-10 items-center justify-center rounded-full bg-[#04261c] text-[13px] font-extrabold tracking-tight text-white ring-4 ring-mint">HS</span>
+                      <span className="flex size-10 items-center justify-center rounded-full bg-brand text-[13px] font-extrabold tracking-tight text-white ring-4 ring-mint">HS</span>
                       <span className="leading-tight">
                         <span className="block text-[15px] font-extrabold text-ink">{site.founder}</span>
                         <span className="block text-[12.5px] text-body">Founder, {site.name}</span>
@@ -269,7 +269,7 @@ export function FounderNote() {
                     </span>
                     <span className="hidden h-7 w-px bg-line sm:block" />
                     <span className="flex flex-wrap gap-2">
-                      {["AMFI-registered MFD", "Mutual Fund Distribution", site.arn].map((c) => (
+                      {["AMFI-registered MFD", "Mutual Fund Distribution"].map((c) => (
                         <span key={c} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-soft px-3 py-1 text-[12px] font-semibold text-ink">
                           <BadgeCheck className="size-3.5 text-brand" />{c}
                         </span>

@@ -80,9 +80,9 @@ export function CalculatorSuite() {
         </div>
 
         <div className="flex flex-col gap-6 rounded-[28px] border border-line bg-white p-6 shadow-card sm:p-8">
-          <div className="rounded-2xl bg-gradient-to-br from-brand to-brand-deep p-6 text-white">
-            <p className="text-[15px] text-white/80">{r.headLabel}</p>
-            <p className="mt-1 text-[38px] font-extrabold leading-none tnum sm:text-[46px]" aria-live="polite"><Count value={r.head} /></p>
+          <div className="rounded-2xl bg-[linear-gradient(145deg,#eaf6f0_0%,#f8fbf9_60%,#fbf6ea_100%)] p-6 text-ink ring-1 ring-line">
+            <p className="text-[15px] text-body">{r.headLabel}</p>
+            <p className="mt-1 text-[38px] font-extrabold leading-none text-brand-dark tnum sm:text-[46px]" aria-live="polite"><Count value={r.head} /></p>
           </div>
           <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {r.rows.map((row) => (

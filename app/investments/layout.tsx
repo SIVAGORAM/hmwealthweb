@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Smart & Simple Investment Plans | HM Wealth",
-  description:
-    "Grow your money with disciplined, goal-based mutual fund plans. Easy monthly SIPs, tax-saving schemes, and transparent guidance from HM Wealth.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.investments);
 
 export default function InvestmentsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Investments", item: "/investments" },
+        ])}
+      />
+      {children}
+    </>
+  );
 }
-

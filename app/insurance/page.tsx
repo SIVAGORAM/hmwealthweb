@@ -22,7 +22,7 @@ const personalPlans = [
     tag: "High Cover · Low Cost",
     whatItIs: "Pure life insurance for you.",
     whyYouNeedIt:
-      "If something happens to you, your family gets a large lump sum (e.g., ₹1 Crore or ₹2 Crore) so they can pay bills, finish school, and live without money worries.",
+      "If something happens to you, your family gets a large lump sum so they can pay bills, finish school, and live without money worries.",
     goodToKnow: "Very low cost—often costs less than a cup of tea a day.",
     icon: ShieldCheck,
     tint: "green" as Tint,
@@ -40,7 +40,7 @@ const personalPlans = [
     icon: HeartPulse,
     tint: "peach" as Tint,
     badgeColor: "bg-peach text-peach-ink",
-    sampleCost: "Cashless at 10,000+ hospitals",
+    sampleCost: "Cashless at network hospitals",
   },
   {
     id: "motor",
@@ -73,10 +73,10 @@ const personalPlans = [
 const businessPlans = [
   {
     title: "1. Group Health Cover for Employees",
-    desc: "Give your team cashless hospital cover. Covers pre-existing diseases from Day 1 (no waiting time). Includes maternity and newborn baby care. Helps you attract and keep the best workers.",
+    desc: "Give your team cashless hospital cover. Pre-existing disease cover as per policy terms. Includes maternity and newborn baby care. Helps you attract and keep the best workers.",
     points: [
       "Cashless hospitalization for your entire team",
-      "Covers pre-existing diseases from Day 1 (no waiting period)",
+      "Pre-existing disease cover as per policy terms",
       "Includes maternity and newborn baby care",
       "Helps you attract and retain top talent",
     ],
@@ -139,7 +139,7 @@ const claimSteps = [
   },
   {
     num: "03",
-    title: "Fast Payout",
+    title: "Claim Support",
     desc: "We check all your documents to ensure the insurer processes the claim smoothly without unfair rejections.",
     icon: CheckCircle2,
   },
@@ -256,10 +256,10 @@ export default function InsurancePage() {
                   <div className="rounded-2xl border border-line bg-soft/70 p-4 transition hover:bg-soft">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold uppercase tracking-wider text-body">Term Life Income Shield</span>
-                      <span className="rounded-full bg-mint px-2 py-0.5 text-[11px] font-bold text-brand">₹1 Crore</span>
+                      <span className="rounded-full bg-mint px-2 py-0.5 text-[11px] font-bold text-brand">Term</span>
                     </div>
                     <p className="mt-1 text-[14px] font-semibold text-ink">Protects family income, loans &amp; education</p>
-                    <p className="mt-1 text-xs text-body/80">Less than a cup of tea a day (~₹18/day)</p>
+                    <p className="mt-1 text-xs text-body/80">Premium depends on age, health and cover chosen</p>
                   </div>
 
                   <div className="rounded-2xl border border-line bg-soft/70 p-4 transition hover:bg-soft">
@@ -268,13 +268,13 @@ export default function InsurancePage() {
                       <span className="rounded-full bg-sky px-2 py-0.5 text-[11px] font-bold text-sky-ink">Cashless</span>
                     </div>
                     <p className="mt-1 text-[14px] font-semibold text-ink">Surgeries, room rent, doctor fees covered</p>
-                    <p className="mt-1 text-xs text-body/80">Direct hospital settlement at 10,000+ network hospitals</p>
+                    <p className="mt-1 text-xs text-body/80">Direct settlement at the insurer’s network hospitals</p>
                   </div>
                 </div>
 
                 <div className="mt-6 flex flex-col gap-2 rounded-2xl bg-gradient-to-r from-mint to-sky/40 p-4 text-xs font-bold text-ink">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="flex items-center gap-1.5"><Hospital className="size-4 text-brand" /> 10,000+ Cashless Hospitals</span>
+                    <span className="flex items-center gap-1.5"><Hospital className="size-4 text-brand" /> Cashless Network Hospitals</span>
                     <span className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-brand" /> 100% Paperless</span>
                   </div>
                 </div>
@@ -290,7 +290,7 @@ export default function InsurancePage() {
           <div className="m-rail mt-4 sm:mt-5 grid gap-4 sm:grid-cols-3">
             {[
               {
-                title: "10,000+ Cashless Hospitals",
+                title: "Cashless Network Hospitals",
                 desc: "Walk in with your health card. The insurer pays the hospital bill directly without cash hassle.",
                 icon: Hospital,
                 badge: "Cashless Network",
@@ -333,7 +333,7 @@ export default function InsurancePage() {
       {/* =========================================================================
           SECTION 2: PERSONAL & FAMILY PLANS (4 Unified, High-End Cards)
       ========================================================================== */}
-      <section id="family-plans" className="relative overflow-hidden py-1.5 sm:py-2">
+      <section id="family-plans" className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-mint px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand">
@@ -402,7 +402,7 @@ export default function InsurancePage() {
       {/* =========================================================================
           SECTION 3: BUSINESS & TEAM HEALTH PLANS
       ========================================================================== */}
-      <section id="business" className="relative overflow-hidden bg-soft py-1.5 sm:py-2 border-y border-line">
+      <section id="business" className="relative overflow-hidden bg-soft py-6 sm:py-9 lg:py-11 border-y border-line">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
@@ -464,7 +464,7 @@ export default function InsurancePage() {
       {/* =========================================================================
           SECTION 4: PROFESSIONAL SHIELD (FOR EXPERTS)
       ========================================================================== */}
-      <section id="professional" className="relative overflow-hidden py-1.5 sm:py-2">
+      <section id="professional" className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-mint px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand">
@@ -530,7 +530,7 @@ export default function InsurancePage() {
       {/* =========================================================================
           SECTION 5: HOW HM WEALTH HELPS YOU DURING CLAIMS (3-Step Roadmap)
       ========================================================================== */}
-      <section id="claims" className="relative overflow-hidden bg-soft py-1.5 sm:py-2 border-y border-line">
+      <section id="claims" className="relative overflow-hidden bg-soft py-6 sm:py-9 lg:py-11 border-y border-line">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
@@ -588,7 +588,7 @@ export default function InsurancePage() {
       {/* =========================================================================
           SECTION 6: SIMPLE INSURANCE FAQS (Clean Editorial Q&A)
       ========================================================================== */}
-      <section id="faqs" className="relative overflow-hidden py-1.5 sm:py-2">
+      <section id="faqs" className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="grid gap-6 lg:grid-cols-[0.8fr_1.3fr] lg:gap-10">
             {/* Left Column: Direct Callout Box */}
@@ -611,7 +611,7 @@ export default function InsurancePage() {
               {/* Live Support Box */}
               <div className="rounded-2xl sm:rounded-3xl border border-line bg-white p-4 sm:p-5 shadow-card">
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-[#04261c] text-xs font-extrabold text-white ring-2 ring-mint">
+                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand text-xs font-extrabold text-white ring-2 ring-mint">
                     HS
                   </span>
                   <div>
@@ -621,7 +621,7 @@ export default function InsurancePage() {
                 </div>
 
                 <div className="mt-2.5 flex items-center gap-2 text-xs font-semibold text-brand">
-                  <span className="size-2 rounded-full bg-brand animate-pulse" /> Available {site.hours}
+                  <span className="size-2 rounded-full bg-brand animate-pulse" /> Direct Desk Support
                 </div>
 
                 <div className="mt-3 grid grid-cols-2 gap-2">
@@ -715,7 +715,7 @@ export default function InsurancePage() {
                   Not sure which insurance plan is right for you?
                 </h2>
                 <p className="mt-1.5 text-[15px] sm:text-[16px] leading-relaxed text-body">
-                  Let our friendly team review your existing policies for free and find the best cover for your budget.
+                  Let our friendly team review your existing policies for free and explain cover options that fit your budget.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-body">
                   <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Free Policy Review</span>

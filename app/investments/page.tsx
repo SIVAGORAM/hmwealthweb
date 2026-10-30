@@ -31,8 +31,8 @@ const steps = [
   },
   {
     num: "02",
-    title: "Get a Custom Plan",
-    text: "We suggest the best mutual fund options suited to your budget and comfort level.",
+    title: "Compare Your Options",
+    text: "We walk you through scheme options with their risks and costs, so you can choose.",
     tag: "Tailored For You",
     icon: Compass,
     tint: "sky" as Tint,
@@ -81,8 +81,8 @@ const plans: {
     category: "1. Equity Funds",
     badge: "5+ Years Horizon",
     bestFor: "Buying a home, children's college fund, retirement (5+ years).",
-    howItWorks: "Your money is invested in top Indian companies with the objective of seeking long-term capital growth.",
-    whyChoose: "Best chance to build serious wealth for long-term dreams.",
+    howItWorks: "Your money is invested in listed Indian companies with the objective of seeking long-term capital growth.",
+    whyChoose: "Suited to long-term goals of 5+ years, with higher ups and downs.",
     icon: TrendingUp,
     tint: "green",
     allocation: { stocks: 95, bonds: 5 },
@@ -156,7 +156,7 @@ const reasons = [
   {
     icon: ShieldCheck,
     title: "Objective Guidance, Always",
-    text: "We only recommend funds that are right for you, not what gives us the biggest commission.",
+    text: "We explain options based on your needs, and disclose our commission on request.",
     badge: "Client-Centric",
     tint: "green" as Tint,
   },
@@ -236,7 +236,7 @@ export default function InvestmentsPage() {
             <span className="text-ink">Investments</span>
           </nav>
 
-          <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+          <div className="grid max-w-3xl items-center gap-8">
             {/* Left Content */}
             <div className="flex flex-col gap-3.5 sm:gap-4">
               {/* small badge */}
@@ -258,7 +258,7 @@ export default function InvestmentsPage() {
 
               {/* sub-headline */}
               <p className="max-w-[54ch] text-[15px] leading-relaxed text-body sm:text-[18px]">
-                Whether you want to buy a home, plan for your child&apos;s education, or retire comfortably, we help you pick the right mutual funds without any confusing financial terms.
+                Whether you want to buy a home, plan for your child&apos;s education, or retire comfortably, we explain mutual fund options in plain words, without confusing financial terms.
               </p>
 
               {/* CTA actions */}
@@ -266,7 +266,7 @@ export default function InvestmentsPage() {
                 <Button href="/contact" className="group relative min-h-12 overflow-hidden px-6 text-[15px] sm:min-h-14 sm:px-8 sm:text-[16px] shadow-[0_16px_32px_-12px_rgba(11,122,85,0.5)]">
                   <span aria-hidden className="absolute inset-y-0 left-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/25 to-transparent" />
                   <PhoneCall className="relative size-[18px]" />
-                  <span className="relative">Talk to an Expert (Free)</span>
+                  <span className="relative">Book a free call</span>
                   <ArrowRight className="relative size-[18px] transition group-hover:translate-x-1" />
                 </Button>
                 <a
@@ -278,107 +278,6 @@ export default function InvestmentsPage() {
                 </a>
               </div>
             </div>
-
-            {/* Right: Live Interactive Micro-SIP Visualizer Card */}
-            <div className="relative">
-              {/* decorative multi-layer glow */}
-              <div aria-hidden className="absolute -inset-3 rounded-[36px] bg-gradient-to-br from-brand-bright/20 via-mint-2/40 to-gold/20 blur-2xl" />
-
-              <div className="relative rounded-[32px] border border-white bg-white/95 p-4 sm:p-6 shadow-[0_30px_70px_-20px_rgba(15,31,26,0.12)] backdrop-blur-xl">
-                <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-line pb-4">
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex size-9 items-center justify-center rounded-xl bg-mint text-brand">
-                      <Sparkles className="size-4" />
-                    </span>
-                    <div>
-                      <p className="text-[14px] font-bold text-ink">Smart SIP Simulator</p>
-                      <p className="text-[12px] text-body">See what monthly discipline builds</p>
-                    </div>
-                  </div>
-                  <span className="rounded-full bg-soft px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand ring-1 ring-line">
-                    Illustration @ 12%
-                  </span>
-                </div>
-
-                {/* Amount slider */}
-                <div className="mt-5 flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <label htmlFor="hero-sip-amt" className="text-xs font-bold uppercase tracking-wider text-body">
-                      Monthly Investment
-                    </label>
-                    <output htmlFor="hero-sip-amt" className="text-lg font-extrabold text-brand tnum">
-                      {inr(sipAmount)} / mo
-                    </output>
-                  </div>
-                  <input
-                    id="hero-sip-amt"
-                    type="range"
-                    min={1000}
-                    max={25000}
-                    step={1000}
-                    value={sipAmount}
-                    onChange={(e) => setSipAmount(Number(e.target.value))}
-                    className="range"
-                    style={{ ["--fill" as string]: `${((sipAmount - 1000) / 24000) * 100}%` }}
-                  />
-                  <div className="flex justify-between text-[11px] font-medium text-body/60">
-                    <span>₹1,000 / mo</span>
-                    <span>₹25,000 / mo</span>
-                  </div>
-                </div>
-
-                {/* Years slider */}
-                <div className="mt-4 flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <label htmlFor="hero-sip-yrs" className="text-xs font-bold uppercase tracking-wider text-body">
-                      Time Horizon
-                    </label>
-                    <output htmlFor="hero-sip-yrs" className="text-sm font-bold text-ink tnum">
-                      {sipYears} Years
-                    </output>
-                  </div>
-                  <input
-                    id="hero-sip-yrs"
-                    type="range"
-                    min={5}
-                    max={30}
-                    step={1}
-                    value={sipYears}
-                    onChange={(e) => setSipYears(Number(e.target.value))}
-                    className="range"
-                    style={{ ["--fill" as string]: `${((sipYears - 5) / 25) * 100}%` }}
-                  />
-                </div>
-
-                {/* GrowthChart */}
-                <div className="mt-5 rounded-2xl bg-soft/70 p-3 pt-4">
-                  <GrowthChart
-                    series={sipResult.series}
-                    primaryLabel="Estimated Value"
-                    baseLabel="Invested"
-                    height={160}
-                    compact
-                  />
-                </div>
-
-                {/* Output figures */}
-                <div className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-center">
-                  <div>
-                    <p className="text-xs font-medium text-body">Total You Invest</p>
-                    <p className="mt-0.5 text-base font-extrabold text-ink tnum">{inr(sipResult.rows[0].value)}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-body">Estimated Wealth</p>
-                    <p className="mt-0.5 text-base font-extrabold text-brand tnum">{inrShort(sipResult.head)}</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex items-center justify-center gap-4 text-[11.5px] text-body/80">
-                  <span className="flex items-center gap-1"><CheckCircle2 className="size-3.5 text-brand" /> 100% In Your Name</span>
-                  <span className="flex items-center gap-1"><CheckCircle2 className="size-3.5 text-brand" /> Pause Anytime</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Quick Highlights: 3 Glass Trust Cards */}
@@ -387,7 +286,7 @@ export default function InvestmentsPage() {
               {
                 title: "Registered with AMFI",
                 subtitle: "SEBI-regulated fund houses",
-                desc: "Official ARN-341412 mutual fund distributor adhering to all SEBI guidelines.",
+                desc: "Officially registered mutual fund distributor following AMFI and SEBI guidelines.",
                 icon: ShieldCheck,
                 badge: "Govt Regulated",
               },
@@ -429,71 +328,11 @@ export default function InvestmentsPage() {
         </Container>
       </section>
 
-      {/* =========================================================================
-          SECTION 2: HOW IT WORKS (4 Easy Steps — Interactive Roadmap Track)
-      ========================================================================== */}
-      <section className="relative overflow-hidden py-1.5 sm:py-2">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-mint px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand">
-              <Compass className="size-3.5" /> OUR PROCESS
-            </span>
-            <h2 className="mt-1 text-[30px] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:mt-1.5 sm:text-[40px]">
-              Investing Made Super Easy
-            </h2>
-            <p className="mt-1 text-[15px] leading-relaxed text-body sm:mt-1.5">
-              You don’t need to be a finance expert. We guide you every step of the way.
-            </p>
-          </div>
-
-          {/* Stepper Grid */}
-          <div className="relative mt-2 sm:mt-2.5">
-            {/* connecting dashed line on desktop */}
-            <div aria-hidden className="absolute left-[12%] right-[12%] top-8 hidden border-t-2 border-dashed border-mint-2 lg:block" />
-
-            <div className="m-rail grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map((s, i) => (
-                <div
-                  key={s.num}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-line bg-white p-5 shadow-card sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-lift"
-                >
-                  <div>
-                    {/* Header with step number and icon */}
-                    <div className="flex items-center justify-between">
-                      <span className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-[0_10px_20px_-8px_rgba(11,122,85,0.7)] ring-4 ring-mint transition-transform duration-300 group-hover:scale-110">
-                        <s.icon className="size-6" />
-                      </span>
-                      <span className="text-3xl font-extrabold text-ink/15 transition-colors group-hover:text-brand/30">
-                        {s.num}
-                      </span>
-                    </div>
-
-                    <span className="mt-5 inline-block rounded-full bg-soft px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand">
-                      {s.tag}
-                    </span>
-
-                    <h3 className="mt-2 text-[20px] font-extrabold text-ink">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-[14.5px] leading-relaxed text-body">
-                      {s.text}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 border-t border-line pt-3 text-[12.5px] font-medium text-body/80">
-                    {s.detail}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* =========================================================================
           SECTION 3: SIMPLE INVESTMENT OPTIONS (Interactive Plan Navigator)
       ========================================================================== */}
-      <section id="options" className="relative overflow-hidden bg-soft py-1.5 sm:py-2">
+      <section id="options" className="relative overflow-hidden bg-soft py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
@@ -596,7 +435,7 @@ export default function InvestmentsPage() {
                     <div className="flex flex-col gap-2.5 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
                       <Button href="/contact" className="w-full justify-center gap-2 shadow-md sm:w-auto min-h-11 text-sm">
                         <PhoneCall className="size-4" />
-                        <span>Talk to an Expert About This Plan</span>
+                        <span>Ask about this option</span>
                       </Button>
                       <a
                         href={site.whatsappHref}
@@ -637,7 +476,7 @@ export default function InvestmentsPage() {
                       {/* Metrics cards */}
                       <div className="mt-4 grid grid-cols-2 gap-2.5 text-xs">
                         <div className="rounded-xl border border-line bg-white p-3 shadow-xs">
-                          <p className="font-medium text-body">Recommended Horizon</p>
+                          <p className="font-medium text-body">Suggested Horizon</p>
                           <p className="mt-0.5 text-[14px] font-extrabold text-ink">{activePlan.horizonYears}</p>
                         </div>
                         <div className="rounded-xl border border-line bg-white p-3 shadow-xs">
@@ -655,7 +494,7 @@ export default function InvestmentsPage() {
                           <Check className="size-3.5 text-brand" /> Units credited directly in your own folio
                         </li>
                         <li className="flex items-center gap-2 text-ink font-medium">
-                          <Check className="size-3.5 text-brand" /> Auto-rebalancing during annual reviews
+                          <Check className="size-3.5 text-brand" /> Portfolio review every year
                         </li>
                       </ul>
                     </div>
@@ -695,7 +534,7 @@ export default function InvestmentsPage() {
       {/* =========================================================================
           SECTION 4: WHY CHOOSE HM WEALTH? (The Trust Matrix)
       ========================================================================== */}
-      <section className="relative overflow-hidden py-1.5 sm:py-2">
+      <section className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-mint px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand">
@@ -761,7 +600,7 @@ export default function InvestmentsPage() {
       {/* =========================================================================
           SECTION 5: SIMPLE FAQS (Clean Editorial Q&A with Live Help Desk)
       ========================================================================== */}
-      <section className="relative overflow-hidden bg-soft py-1.5 sm:py-2">
+      <section className="relative overflow-hidden bg-soft py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="grid gap-6 lg:grid-cols-[0.8fr_1.3fr] lg:gap-10">
             {/* Left: Help Desk Callout */}
@@ -784,7 +623,7 @@ export default function InvestmentsPage() {
               {/* Live Support Box */}
               <div className="rounded-2xl sm:rounded-3xl border border-line bg-white p-4 sm:p-5 shadow-card">
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-[#04261c] text-xs font-extrabold text-white ring-2 ring-mint">
+                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand text-xs font-extrabold text-white ring-2 ring-mint">
                     HS
                   </span>
                   <div>
@@ -794,7 +633,7 @@ export default function InvestmentsPage() {
                 </div>
 
                 <div className="mt-2.5 flex items-center gap-2 text-xs font-semibold text-brand">
-                  <span className="size-2 rounded-full bg-brand animate-pulse" /> Available {site.hours}
+                  <span className="size-2 rounded-full bg-brand animate-pulse" /> Direct Desk Support
                 </div>
 
                 <div className="mt-3 grid grid-cols-2 gap-2">
@@ -888,12 +727,12 @@ export default function InvestmentsPage() {
                   Ready to start growing your money?
                 </h2>
                 <p className="mt-1.5 text-[15px] sm:text-[16px] leading-relaxed text-body">
-                  Talk to an HM Wealth mutual fund specialist today. It’s free, friendly, and takes just 15 minutes.
+                  Talk to HM Wealth today. The first call is free and friendly.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-body">
                   <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Free 15-Minute Consultation</span>
                   <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Zero Obligations</span>
-                  <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> AMFI Registered ARN-341412</span>
+                  <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> AMFI Registered MFD</span>
                 </div>
               </div>
 

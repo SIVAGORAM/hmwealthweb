@@ -257,19 +257,19 @@ export function SipCalculatorCard() {
               id="home-calc-rate"
               type="range"
               min={1}
-              max={20}
+              max={13}
               step={0.5}
               value={rate}
               onChange={(e) => setRate(Number(e.target.value))}
               className="range cursor-pointer"
               style={{
-                ["--fill" as string]: `${((rate - 1) / 19) * 100}%`,
+                ["--fill" as string]: `${((rate - 1) / 12) * 100}%`,
               }}
             />
             <div className="flex justify-between text-[11px] font-medium text-body/60 tnum">
               <span>1% (Conservative)</span>
-              <span>12-14% (Equity Historical)</span>
-              <span>20%</span>
+              <span>8%</span>
+              <span>13% (max)</span>
             </div>
           </div>
 
@@ -315,11 +315,11 @@ export function SipCalculatorCard() {
         </div>
 
         {/* Right Column: High-End Obsidian Wealth Dashboard */}
-        <div className="relative isolate flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#021f15] via-[#053b2a] to-[#04261c] p-5 sm:p-8 text-white">
+        <div className="relative isolate flex flex-col justify-between overflow-hidden bg-[linear-gradient(160deg,#eaf6f0_0%,#f8fbf9_55%,#fbf6ea_100%)] p-5 sm:p-8 text-ink">
           {/* Ambient radial lighting */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-20 -top-20 -z-10 size-72 rounded-full bg-[#19c38a]/25 blur-[90px]"
+            className="pointer-events-none absolute -right-20 -top-20 -z-10 size-72 rounded-full bg-[#19c38a]/10 blur-[90px]"
           />
           <div
             aria-hidden
@@ -329,35 +329,22 @@ export function SipCalculatorCard() {
           <div>
             {/* Top Badge & Live Advantage */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-300/80">
+              <span className="text-xs font-bold uppercase tracking-wider text-brand">
                 Projected Wealth in {years} {years === 1 ? "Year" : "Years"}
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-[#19c38a]/15 px-2.5 py-0.5 text-[11px] font-extrabold text-[#7ff0c4] ring-1 ring-[#19c38a]/30">
-                <Sparkles className="size-3 text-gold" />
+              <span className="inline-flex items-center gap-1 rounded-full bg-mint px-2.5 py-0.5 text-[11px] font-extrabold text-brand ring-1 ring-[#19c38a]/30">
+                <Sparkles className="size-3 text-[#b07a10]" />
                 {multiplier}x Wealth Multiplier
               </span>
             </div>
 
             {/* Headline Animated Value */}
-            <div className="mt-2 text-[38px] font-extrabold leading-none tracking-tight text-white sm:text-[46px] tnum">
+            <div className="mt-2 text-[38px] font-extrabold leading-none tracking-tight text-ink sm:text-[46px] tnum">
               <AnimatedCurrency value={result.maturityValue} />
             </div>
-            <p className="mt-1 text-xs text-white/60 tnum">
+            <p className="mt-1 text-xs text-body tnum">
               Exact: {formatCurrencyExact(result.maturityValue)}
             </p>
-
-            {/* Comparison Pill vs Bank FD */}
-            {wealthAdvantage > 0 && (
-              <div className="mt-3.5 flex items-center justify-between rounded-xl bg-white/10 px-3 py-2 text-xs backdrop-blur-xs border border-white/10">
-                <span className="flex items-center gap-1.5 text-white/80 font-medium">
-                  <TrendingUp className="size-3.5 text-gold" />
-                  Wealth Advantage vs Bank FD (6.5%):
-                </span>
-                <span className="font-extrabold text-gold tnum">
-                  +{formatCurrency(wealthAdvantage)}
-                </span>
-              </div>
-            )}
 
             {/* Glowing SVG Compounding Chart */}
             <div className="mt-4">
@@ -368,8 +355,8 @@ export function SipCalculatorCard() {
                     <stop offset="100%" stopColor="#19c38a" stopOpacity="0.0" />
                   </linearGradient>
                   <linearGradient id={`gradCap${gid}`} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.12" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
+                    <stop offset="0%" stopColor="#15191e" stopOpacity="0.12" />
+                    <stop offset="100%" stopColor="#15191e" stopOpacity="0.0" />
                   </linearGradient>
                 </defs>
 
@@ -381,7 +368,7 @@ export function SipCalculatorCard() {
                     x2={W - P}
                     y1={H * f}
                     y2={H * f}
-                    stroke="white"
+                    stroke="#15191e"
                     strokeOpacity="0.08"
                     strokeDasharray="3 4"
                   />
@@ -392,7 +379,7 @@ export function SipCalculatorCard() {
                 <path
                   d={capitalPath}
                   fill="none"
-                  stroke="white"
+                  stroke="#15191e"
                   strokeOpacity="0.4"
                   strokeWidth="1.5"
                   strokeDasharray="4 4"
@@ -422,7 +409,7 @@ export function SipCalculatorCard() {
                   cy={getY(lastPoint.value)}
                   r="4.5"
                   fill="#f2d27a"
-                  stroke="#04261c"
+                  stroke="#ffffff"
                   strokeWidth="2"
                 />
               </svg>
@@ -430,22 +417,22 @@ export function SipCalculatorCard() {
 
             {/* Breakdown Cards */}
             <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
-              <div className="rounded-xl bg-white/10 p-3 backdrop-blur-xs">
-                <span className="flex items-center gap-1.5 text-white/70">
-                  <span className="size-2 rounded-full bg-white/60" />
+              <div className="rounded-xl bg-white p-3 backdrop-blur-xs">
+                <span className="flex items-center gap-1.5 text-body">
+                  <span className="size-2 rounded-full bg-ink/30" />
                   Your Capital
                 </span>
-                <p className="mt-1 text-[16px] font-extrabold text-white tnum">
+                <p className="mt-1 text-[16px] font-extrabold text-ink tnum">
                   {formatCurrency(result.totalInvestment)}
                 </p>
               </div>
 
-              <div className="rounded-xl bg-white/10 p-3 backdrop-blur-xs">
-                <span className="flex items-center gap-1.5 text-white/70">
+              <div className="rounded-xl bg-white p-3 backdrop-blur-xs">
+                <span className="flex items-center gap-1.5 text-body">
                   <span className="size-2 rounded-full bg-[#19c38a]" />
                   Estimated Gains
                 </span>
-                <p className="mt-1 text-[16px] font-extrabold text-[#7ff0c4] tnum">
+                <p className="mt-1 text-[16px] font-extrabold text-brand tnum">
                   +{formatCurrency(result.estimatedReturns)}
                 </p>
               </div>
@@ -456,9 +443,9 @@ export function SipCalculatorCard() {
           <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
             <Link
               href="/contact"
-              className="group flex flex-1 items-center justify-center gap-2 rounded-xl bg-white py-3 text-center text-[14px] font-extrabold text-[#04261c] shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-[#e7f6ef]"
+              className="group flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand py-3 text-center text-[14px] font-extrabold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-brand-dark"
             >
-              Start This Plan
+              Start This SIP
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
 
@@ -466,12 +453,17 @@ export function SipCalculatorCard() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-xs font-bold text-white backdrop-blur-xs transition hover:bg-white/20"
+              className="flex items-center justify-center gap-1.5 rounded-xl border border-line bg-white px-4 py-3 text-xs font-bold text-ink backdrop-blur-xs transition hover:bg-white"
             >
-              <MessageCircle className="size-4 text-emerald-400" />
-              WhatsApp Specialist
+              <MessageCircle className="size-4 text-emerald-600" />
+              WhatsApp Us
             </a>
           </div>
+
+          {/* Regulatory Illustration Disclaimer */}
+          <p className="mt-3 text-center text-[11px] leading-tight text-body">
+            Calculations are for illustration only and assume a constant return rate. Mutual fund investments are subject to market risks.
+          </p>
         </div>
       </div>
     </div>

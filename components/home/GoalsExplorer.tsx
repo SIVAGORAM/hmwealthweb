@@ -1,22 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Home as HomeIcon, GraduationCap, Sunset, LifeBuoy, Receipt, Landmark, Target, Clock } from "lucide-react";
 import { Container } from "@/components/ui/kit";
 import { Reveal } from "@/components/ui/Reveal";
+import { ProtectedImage } from "@/components/ui/ProtectedImage";
 import { photos } from "@/lib/photos";
 
 const GOALS = [
   { icon: GraduationCap, t: "Child’s education", time: "5 to 15 years", photo: photos.family, pos: "45% 30%",
-    d: "Start early with equity funds and move to safer funds as admission year nears.", calc: "goal", accent: "#6b4fd1", soft: "#f0ecff" },
+    d: "Start early with equity funds and move to safer funds as admission year nears.", calc: "education", accent: "#6b4fd1", soft: "#f0ecff" },
   { icon: HomeIcon, t: "Dream home", time: "3 to 7 years", photo: photos.home, pos: "60% 40%",
     d: "Build your down-payment with a mix that stays steady as the date comes closer.", calc: "goal", accent: "#2f6fd6", soft: "#e8f1ff" },
   { icon: Sunset, t: "Retirement", time: "15+ years", photo: photos.seniors, pos: "55% 25%",
-    d: "Grow a corpus with SIPs now, then draw a monthly income with SWP.", calc: "stepup", accent: "#d6662f", soft: "#fff0e8" },
+    d: "Grow a corpus with SIPs now, then draw a monthly income with SWP.", calc: "retirement", accent: "#d6662f", soft: "#fff0e8" },
   { icon: LifeBuoy, t: "Emergency fund", time: "Any time", photo: photos.motherDaughter, pos: "50% 25%",
     d: "Keep about 6 months of expenses in funds you can access quickly.", calc: "lumpsum", accent: "#0b7a55", soft: "#e7f6ef" },
   { icon: Receipt, t: "Save tax", time: "3-year lock-in", photo: photos.professional, pos: "50% 30%",
     d: "ELSS funds that can lower your tax under the rules that apply to you.", calc: "sip", accent: "#b07a10", soft: "#fff6e0" },
-  { icon: Landmark, t: "Long-term wealth", time: "7+ years", photo: photos.bigFamily, pos: "50% 25%",
+  { icon: Landmark, t: "Long-term wealth", time: "7+ years", photo: photos.wealthCouple, pos: "50% 35%",
     d: "Index and flexi-cap funds for steady growth across many years.", calc: "sip", accent: "#0f8a8a", soft: "#e4f6f6" },
 ];
 
@@ -24,7 +24,7 @@ const WIDE = [0, 5]; // tiles that span two columns
 
 export function GoalsExplorer() {
   return (
-    <section className="relative overflow-hidden py-1.5 sm:py-2">
+    <section className="relative overflow-hidden py-6 sm:py-9 lg:py-11">
       <Container>
         {/* header */}
         <Reveal className="flex flex-col justify-between gap-3 lg:flex-row lg:items-end">
@@ -46,7 +46,7 @@ export function GoalsExplorer() {
           {GOALS.map((g, i) => (
             <Reveal key={g.t} delay={i * 0.05} className={WIDE.includes(i) ? "col-span-2" : ""}>
               <Link href={`/calculators?c=${g.calc}`} className="group relative isolate flex h-full flex-col justify-between overflow-hidden rounded-[22px] p-3 text-white sm:rounded-[26px] sm:p-5">
-                <Image src={g.photo.src} alt={g.photo.alt} fill sizes="(min-width:1024px) 50vw, 100vw"
+                <ProtectedImage src={g.photo.src} alt={g.photo.alt} fill sizes="(min-width:1024px) 50vw, 100vw"
                   className="-z-20 object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110" style={{ objectPosition: g.pos }} />
                 <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/25 to-black/0 transition-opacity duration-500 group-hover:from-black/90 group-hover:via-black/45" />
                 <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100" style={{ background: g.accent }} />

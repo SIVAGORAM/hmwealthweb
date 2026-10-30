@@ -3,8 +3,9 @@ export const site = {
   name: "HM Wealth",
   tagline: "AMFI-registered Mutual Fund Distributor",
   description:
-    "HM Wealth is an AMFI-registered Mutual Fund Distributor offering mutual fund investments, SIPs, insurance and gold investments for families and business owners.",
+    "HM Wealth is an AMFI-registered Mutual Fund Distributor (ARN-341412) distributing mutual fund schemes, SIPs, and facilitating insurance coverage for families and business owners.",
   url: "https://hmwealth.in",
+  domain: "hmwealth.in",
   arn: "ARN-341412",
   phone: "+91 96181 01040",
   phoneHref: "tel:+919618101040",
@@ -17,14 +18,17 @@ export const site = {
 
 // Shown in the navbar, adhering to SEBI/AMFI MFD nomenclature.
 export const registrations = {
-  lines: ["AMFI REGISTERED MUTUAL FUND DISTRIBUTOR", "AMFI REGISTERED SIF DISTRIBUTOR"],
+  lines: [
+    "AMFI REGISTERED MUTUAL FUND DISTRIBUTOR",
+    "AMFI REGISTERED SIF DISTRIBUTOR",
+  ],
   products: ["MUTUAL FUND", "INSURANCE"],
 };
 
-export const nav = [
+export const nav: { label: string; href: string; menu?: "products" | "services" }[] = [
   { label: "Home", href: "/" },
-  { label: "Investments", href: "/investments" },
-  { label: "Insurance", href: "/insurance" },
+  { label: "Products", href: "/products", menu: "products" },
+  { label: "Services", href: "/services", menu: "services" },
   { label: "Calculators", href: "/calculators" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

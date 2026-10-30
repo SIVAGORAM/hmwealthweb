@@ -295,7 +295,8 @@ export function DualControl({
                 onClick={() => handleAddChip(chip.addValue)}
                 className="inline-flex items-center gap-0.5 rounded-full border border-line bg-soft px-2 py-0.5 text-[11px] font-semibold text-body transition-colors hover:border-brand hover:bg-mint hover:text-brand active:scale-95"
               >
-                <Plus className="size-2.5" />
+                {/* % chips set an exact rate; others add to the current value */}
+                {!chip.label.endsWith("%") && <Plus className="size-2.5" />}
                 {chip.label}
               </button>
             ))}

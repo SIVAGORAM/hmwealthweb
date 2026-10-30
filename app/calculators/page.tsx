@@ -13,17 +13,20 @@ import {
 } from "lucide-react";
 import { WealthStudio } from "@/components/calculators/WealthStudio";
 import { Card, Container, IconBox, Section, SectionTitle } from "@/components/ui/kit";
-import { CtaBand } from "@/components/sections/CtaBand";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Financial Calculator Suite & Wealth Studio | HM Wealth",
-  description:
-    "100% mathematically verified SIP, Step-Up SIP, Lump Sum, Target Goal, Retirement Independence, SWP, and Loan EMI calculators with live compounding curves.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.calculators);
 
 export default function CalculatorsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint/50 via-soft/60 to-white">
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Calculators", item: "/calculators" },
+        ])}
+      />
       {/* ======================================================================
           Compact, Luxury Studio Header (No empty voids, tool starts on screen)
           ====================================================================== */}
@@ -39,67 +42,16 @@ export default function CalculatorsPage() {
         />
 
         <Container>
-          <div className="flex flex-col gap-4">
-            {/* Top Breadcrumb & Live Status Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold text-body">
-                <Link href="/" className="hover:text-brand transition-colors">
-                  Home
-                </Link>
-                <ChevronRight className="size-3.5 text-body/40" aria-hidden />
-                <span className="text-ink">Calculators</span>
-                <ChevronRight className="size-3.5 text-body/40" aria-hidden />
-                <span className="text-brand font-bold">Wealth Studio</span>
-              </nav>
-
-              {/* Status pill */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/90 px-3 py-1 text-[11px] font-extrabold text-brand shadow-xs backdrop-blur-md">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                  <span className="relative inline-flex size-2 rounded-full bg-brand" />
-                </span>
-                LIVE WEALTH STUDIO · 10 VERIFIED MODELS
-              </div>
-            </div>
-
-            {/* Headline and Benchmarks Ribbon */}
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <h1 className="text-[28px] font-extrabold tracking-tight text-ink sm:text-[38px] lg:text-[44px]">
-                  HM Wealth <span className="bg-gradient-to-r from-brand via-brand to-brand-bright bg-clip-text text-transparent">Studio</span>
-                </h1>
-                <p className="mt-1 max-w-2xl text-[14px] leading-relaxed text-body sm:text-[15.5px]">
-                  Interactive, mathematically verified financial modeling for SIPs, goals, retirement, and cashflows. Move any slider to watch compounding work in real time.
-                </p>
-              </div>
-
-              {/* 3 Live Benchmark Chips */}
-              <div className="grid grid-cols-3 gap-2 pt-1 sm:flex sm:flex-wrap sm:items-center lg:pt-0">
-                <div className="flex min-w-0 items-center gap-1.5 rounded-xl border border-line bg-white/80 px-2.5 py-2 sm:gap-2 sm:px-3 shadow-xs backdrop-blur-xs">
-                  <ShieldCheck className="size-4 text-brand" />
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-body">AMFI Registered</span>
-                    <span className="text-xs font-extrabold text-ink">ARN-341412</span>
-                  </div>
-                </div>
-
-                <div className="flex min-w-0 items-center gap-1.5 rounded-xl border border-line bg-white/80 px-2.5 py-2 sm:gap-2 sm:px-3 shadow-xs backdrop-blur-xs">
-                  <Zap className="size-4 text-gold" />
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-body">Precision Math</span>
-                    <span className="text-xs font-extrabold text-ink">64-Bit Actuarial</span>
-                  </div>
-                </div>
-
-                <div className="flex min-w-0 items-center gap-1.5 rounded-xl border border-line bg-white/80 px-2.5 py-2 sm:gap-2 sm:px-3 shadow-xs backdrop-blur-xs">
-                  <Sparkles className="size-4 text-emerald-500" />
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-body">Guidance</span>
-                    <span className="text-xs font-extrabold text-ink">Zero Pushy Sales</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col gap-2">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold text-body">
+              <Link href="/" className="hover:text-brand transition-colors">Home</Link>
+              <ChevronRight className="size-3.5 text-body/40" aria-hidden />
+              <span className="text-ink">Calculators</span>
+            </nav>
+            <h1 className="text-[28px] font-extrabold tracking-tight text-ink sm:text-[38px] lg:text-[44px]">Calculators</h1>
+            <p className="max-w-2xl text-[14px] leading-relaxed text-body sm:text-[15.5px]">
+              Plan for your goals with simple calculators. Move the sliders to see an illustration instantly.
+            </p>
           </div>
         </Container>
       </header>
@@ -107,59 +59,122 @@ export default function CalculatorsPage() {
       {/* ======================================================================
           Wealth Studio Terminal (Immediately in view, zero wasted scroll)
           ====================================================================== */}
-      <main className="py-1.5 sm:py-2">
+      <section className="py-5 sm:py-8">
         <Container>
           <Suspense fallback={<div className="h-[720px] rounded-[28px] bg-white border border-line shadow-card animate-pulse" />}>
             <WealthStudio />
           </Suspense>
         </Container>
-      </main>
+      </section>
 
       {/* ======================================================================
-          How It Works Educational Strip
+          Semantic Guide & Compounding Methodology (SEO & Investor Literacy)
           ====================================================================== */}
-      <Section soft className="border-t border-line/60">
+      <section className="border-t border-line bg-soft/40 py-10 sm:py-14">
         <Container>
-          <SectionTitle
-            badge="TRANSPARENT MATH"
-            title="How Our Mathematical Engine Works"
-            intro="Built on rigorous actuarial principles, time value of money, and standard compound growth equations."
-            center
-          />
-          <div className="m-rail mt-2 sm:mt-2.5 grid gap-3 md:grid-cols-3">
-            {[
-              {
-                i: Calculator,
-                t: "64-Bit Exact Mathematics",
-                d: "SIP and Goal models calculate annuity due (beginning-of-month compounding). EMI computes exact reducing balance amortization. Values are only rounded at presentation.",
-              },
-              {
-                i: Info,
-                t: "Inflation & Purchasing Power",
-                d: "Our models include a 6% annual inflation toggle so you can evaluate nominal future wealth against true purchasing power in today's rupees.",
-              },
-              {
-                i: Sparkles,
-                t: "Next Action Roadmap",
-                d: "Calculations serve as a compass. Our licensed specialists help you pick suitable schemes, complete paperless KYC, and automate your investments.",
-              },
-            ].map(({ i: I, t, d }) => (
-              <Card key={t} className="flex flex-col gap-2 p-4 sm:p-5">
-                <IconBox className="size-11">
-                  <I className="size-5" />
-                </IconBox>
-                <h3 className="text-base font-bold text-ink sm:text-[17px]">{t}</h3>
-                <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-body">{d}</p>
-              </Card>
-            ))}
+          <div className="mx-auto max-w-4xl flex flex-col gap-8">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-mint px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-brand mb-3">
+                <Sparkles className="size-3.5" />
+                Compounding &amp; Methodologies
+              </div>
+              <h2 className="text-[26px] font-extrabold tracking-tight text-ink sm:text-[34px]">
+                Understanding Financial Calculators &amp; Compounding Mathematics
+              </h2>
+              <p className="mt-2 text-[15px] leading-relaxed text-body">
+                Our calculators help Indian investors plan disciplined wealth creation journeys. By simulating systematic monthly contributions, inflation-adjusted goals, and periodic cash flows, you can make informed decisions before selecting mutual fund schemes.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-2xl border border-line bg-white p-6 shadow-card">
+                <div className="flex items-center gap-2.5 text-brand font-bold text-sm mb-2">
+                  <TrendingUp className="size-4" />
+                  <h3>1. SIP Compounding Formula</h3>
+                </div>
+                <p className="text-[13.5px] leading-relaxed text-body">
+                  A Systematic Investment Plan (SIP) leverages Rupee Cost Averaging. The mathematical maturity value \(M\) is calculated as:
+                </p>
+                <div className="my-3 rounded-xl bg-soft p-3 font-mono text-xs text-ink font-semibold text-center border border-line/60">
+                  M = P × [((1 + i)^n - 1) / i] × (1 + i)
+                </div>
+                <p className="text-[12.5px] text-body/90">
+                  Where <strong>P</strong> is your monthly installment, <strong>i</strong> is the monthly periodic rate (Annual Expected Return ÷ 12 ÷ 100), and <strong>n</strong> is the total tenure in months.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-line bg-white p-6 shadow-card">
+                <div className="flex items-center gap-2.5 text-brand font-bold text-sm mb-2">
+                  <Zap className="size-4" />
+                  <h3>2. Step-Up (Top-Up) SIP Power</h3>
+                </div>
+                <p className="text-[13.5px] leading-relaxed text-body">
+                  As your annual income grows, increasing your SIP contribution by 5% to 10% each year accelerates wealth accumulation significantly compared to a flat monthly investment.
+                </p>
+                <p className="mt-2 text-[12.5px] text-body/90">
+                  Step-up SIP counters inflation naturally, allowing you to reach targets like children&apos;s higher education or early retirement in fewer years.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-line bg-white p-6 shadow-card">
+                <div className="flex items-center gap-2.5 text-brand font-bold text-sm mb-2">
+                  <Calculator className="size-4" />
+                  <h3>3. Lump Sum vs. SIP Strategy</h3>
+                </div>
+                <p className="text-[13.5px] leading-relaxed text-body">
+                  <strong>SIP:</strong> Best suited for salaried individuals and families investing monthly savings, minimizing the risk of market entry timing.
+                </p>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-body">
+                  <strong>Lump Sum:</strong> Suitable for deploying windfalls, bonuses, or property sale proceeds when paired with Systematic Transfer Plans (STP) into equity schemes.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-line bg-white p-6 shadow-card">
+                <div className="flex items-center gap-2.5 text-brand font-bold text-sm mb-2">
+                  <ShieldCheck className="size-4" />
+                  <h3>4. Systematic Withdrawal Plan (SWP)</h3>
+                </div>
+                <p className="text-[13.5px] leading-relaxed text-body">
+                  Designed for retirees seeking predictable monthly cash flow without liquidating their entire portfolio. Capital gains are taxed only on the redeemed units, preserving overall capital efficiency.
+                </p>
+              </div>
+            </div>
+
+            {/* Contextual links strip */}
+            <div className="rounded-2xl border border-line bg-mint/50 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-bold text-ink">Ready to align your calculation with actual mutual fund schemes?</p>
+                <p className="text-xs text-body">Explore our scheme catalog or consult our mutual fund distribution desk.</p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                <Link
+                  href="/products/mutual-funds"
+                  className="rounded-xl border border-brand/30 bg-white px-3.5 py-2 text-xs font-bold text-brand transition hover:bg-mint"
+                >
+                  View Mutual Funds
+                </Link>
+                <Link
+                  href="/contact"
+                  className="rounded-xl bg-brand px-4 py-2 text-xs font-bold text-white transition hover:bg-brand-dark"
+                >
+                  Book Free Consultation
+                </Link>
+              </div>
+            </div>
+
+            {/* Statutory Disclaimer */}
+            <div className="rounded-2xl border border-line bg-white p-5 text-xs text-body leading-relaxed">
+              <div className="flex items-center gap-1.5 font-bold text-ink mb-1">
+                <Info className="size-3.5 text-gold" />
+                <h3>Statutory Assumptions &amp; Disclosures</h3>
+              </div>
+              <p>
+                Calculator illustrations assume a constant rate of return and do not account for market fluctuations, scheme Total Expense Ratios (TER), exit loads, or prevailing income tax rates. Projections are purely illustrative and do not represent a guarantee of future returns. Mutual Fund investments are subject to market risks; read all scheme related documents carefully. HM Wealth is an AMFI-registered Mutual Fund Distributor (ARN-341412) and does not provide investment advisory services.
+              </p>
+            </div>
           </div>
         </Container>
-      </Section>
-
-      <CtaBand
-        title="Ready to Put Your Wealth Plan into Action?"
-        intro="Speak to an AMFI-registered specialist to align your asset allocation with your calculated goals. Zero setup fees."
-      />
+      </section>
     </div>
   );
 }

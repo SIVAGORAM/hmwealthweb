@@ -1,7 +1,5 @@
-// Custom next/image loader.
-// Unsplash photos are resized by Unsplash's own CDN (via w / q params), so the browser
-// loads them directly instead of going through the Next.js image optimizer.
-// Local images (e.g. /images/founder.jpg) are returned as they are.
+// Custom next/image loader for HM Wealth.
+// Implements width parameter to satisfy Next.js responsive image srcset requirements.
 export default function imageLoader({ src, width, quality }: { src: string; width: number; quality?: number }) {
   if (src.startsWith("https://images.unsplash.com/")) {
     const url = new URL(src);
@@ -11,5 +9,9 @@ export default function imageLoader({ src, width, quality }: { src: string; widt
     url.searchParams.set("fit", "crop");
     return url.toString();
   }
-  return src;
+  if (src.endsWith(".svg")) {
+    return src;
+  }
+  const separator = src.includes("?") ? "&" : "?";
+  return `${src}${separator}w=${width}&q=${quality ?? 75}`;
 }

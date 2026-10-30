@@ -14,12 +14,10 @@ import {
   Scale,
 } from "lucide-react";
 import { Container } from "@/components/ui/kit";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Important Investor Links & Official Portals | HM Wealth",
-  description:
-    "Essential directory of official regulatory, RTA, depository, and financial portals for Indian mutual fund and insurance investors.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.importantLinks);
 
 export default function ImportantLinksPage() {
   const linkCategories = [
@@ -162,6 +160,12 @@ export default function ImportantLinksPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint/50 via-soft/60 to-white">
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Important Links", item: "/important-links" },
+        ])}
+      />
       {/* ======================================================================
           Header & Breadcrumb
           ====================================================================== */}
@@ -209,7 +213,7 @@ export default function ImportantLinksPage() {
       {/* ======================================================================
           Categorized Links Directory
           ====================================================================== */}
-      <main className="py-1.5 sm:py-2">
+      <section className="py-5 sm:py-8">
         <Container>
           <div className="flex flex-col gap-5">
             {linkCategories.map((cat) => {
@@ -286,7 +290,7 @@ export default function ImportantLinksPage() {
             </div>
           </div>
         </Container>
-      </main>
+      </section>
     </div>
   );
 }

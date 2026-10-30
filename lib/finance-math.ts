@@ -583,3 +583,40 @@ export function generateEMITrajectory(
 
   return points;
 }
+
+
+/**
+ * Annual SIP: a fixed amount invested at the start of every year,
+ * compounded yearly. FV = A × [((1 + r)^n − 1) / r] × (1 + r)
+ */
+export function calculateAnnualSIP(annualAmount: number, annualRate: number, years: number) {
+  const A = Math.max(0, annualAmount);
+  const n = Math.max(0, Math.round(years));
+  const r = Math.max(0, annualRate) / 100;
+  const fv = r === 0 ? A * n : A * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+  const maturityValue = Math.round(fv);
+  const totalInvestment = Math.round(A * n);
+  return { totalInvestment, maturityValue, estimatedReturns: Math.max(0, maturityValue - totalInvestment) };
+}
+
+export function generateAnnualSIPTrajectory(
+  annualAmount: number,
+  annualRate: number,
+  years: number,
+  inflationRate = 6
+): TrajectoryPoint[] {
+  const points: TrajectoryPoint[] = [
+    { year: 0, investedCapital: 0, totalValue: 0, wealthGain: 0, realPurchasingPower: 0 },
+  ];
+  for (let y = 1; y <= years; y++) {
+    const res = calculateAnnualSIP(annualAmount, annualRate, y);
+    points.push({
+      year: y,
+      investedCapital: res.totalInvestment,
+      totalValue: res.maturityValue,
+      wealthGain: res.estimatedReturns,
+      realPurchasingPower: adjustForInflation(res.maturityValue, inflationRate, y),
+    });
+  }
+  return points;
+}

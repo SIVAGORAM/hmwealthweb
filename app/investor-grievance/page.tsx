@@ -19,12 +19,10 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/kit";
 import { site } from "@/lib/site";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Investor Grievance Redressal Mechanism | HM Wealth",
-  description:
-    "Transparent 3-tier grievance redressal procedure for HM Wealth clients: Support desk, Compliance Officer escalation, and SEBI SCORES / SMART ODR.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.investorGrievance);
 
 export default function InvestorGrievancePage() {
   const redressalLevels = [
@@ -37,7 +35,7 @@ export default function InvestorGrievancePage() {
       channel: [
         { label: "Dedicated Email", value: site.email, href: `mailto:${site.email}` },
         { label: "Direct Phone", value: site.phone, href: site.phoneHref },
-        { label: "Working Hours", value: "Monday – Friday: 9:30 AM to 6:30 PM | Saturday: 10:00 AM to 2:00 PM IST" },
+        { label: "Support Days", value: "Monday – Saturday (Prompt Desk Assistance)" },
       ],
       escalateNote: "If your grievance is not resolved to your satisfaction within 3 business days, you may escalate to Level 2.",
       icon: Headphones,
@@ -51,7 +49,7 @@ export default function InvestorGrievancePage() {
       turnaround: "Formal written response and resolution within 5 business days.",
       officer: {
         name: site.founder,
-        role: "Founder & Principal MFD · AMFI ARN-341412",
+        role: "Founder & Principal MFD",
         email: site.email,
         phone: site.phone,
         instructions: "Please mention 'Escalation - Grievance - [Your Name / Folio Number]' in the subject line along with your Level 1 reference.",
@@ -85,6 +83,12 @@ export default function InvestorGrievancePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint/50 via-soft/60 to-white">
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Investor Grievance", item: "/investor-grievance" },
+        ])}
+      />
       {/* ======================================================================
           Header & Breadcrumb
           ====================================================================== */}
@@ -132,7 +136,7 @@ export default function InvestorGrievancePage() {
       {/* ======================================================================
           Multi-Tier Redressal Flow
           ====================================================================== */}
-      <main className="py-1.5 sm:py-2">
+      <section className="py-5 sm:py-8">
         <Container>
           <div className="flex flex-col gap-4">
             {redressalLevels.map((lvl) => {
@@ -296,7 +300,7 @@ export default function InvestorGrievancePage() {
             </div>
           </div>
         </Container>
-      </main>
+      </section>
     </div>
   );
 }

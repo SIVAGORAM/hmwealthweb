@@ -18,12 +18,10 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/kit";
 import { site } from "@/lib/site";
+import { constructMetadata, ROUTES_SEO } from "@/lib/seo";
+import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
-  title: "Statutory Risk Factors & Disclosures | HM Wealth (ARN-341412)",
-  description:
-    "Comprehensive risk disclosures covering mutual funds, market risks, liquidity, credit, interest rates, and regulatory statutory notices for HM Wealth.",
-};
+export const metadata: Metadata = constructMetadata(ROUTES_SEO.riskFactors);
 
 export default function RiskFactorsPage() {
   const riskCategories = [
@@ -119,6 +117,12 @@ export default function RiskFactorsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint/50 via-soft/60 to-white">
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Risk Factors", item: "/risk-factors" },
+        ])}
+      />
       {/* ======================================================================
           Header & Breadcrumb
           ====================================================================== */}
@@ -166,7 +170,7 @@ export default function RiskFactorsPage() {
       {/* ======================================================================
           Mandatory AMFI Statutory Notice Card
           ====================================================================== */}
-      <section className="py-1.5 sm:py-2">
+      <section className="py-4 sm:py-6">
         <Container>
           <div className="rounded-[24px] sm:rounded-[30px] border-2 border-brand/30 bg-gradient-to-br from-mint/70 via-white to-soft p-5 sm:p-7 shadow-lift">
             <div className="flex flex-col gap-3.5 sm:gap-4">
@@ -183,7 +187,7 @@ export default function RiskFactorsPage() {
                   </div>
                 </div>
                 <span className="rounded-full bg-brand px-3 py-1 text-xs font-extrabold text-white">
-                  ARN-341412
+                  AMFI Registered
                 </span>
               </div>
 
@@ -194,7 +198,7 @@ export default function RiskFactorsPage() {
                     Intermediary for Mutual Fund Distribution
                   </p>
                   <p className="mt-1 text-body/90 leading-relaxed text-[12px]">
-                    HM Wealth is registered with the Association of Mutual Funds in India (AMFI) as a Mutual Fund Distributor (ARN-341412). We distribute mutual fund schemes of SEBI-registered Asset Management Companies (AMCs) on regular plans and earn trail commissions.
+                    HM Wealth is registered with the Association of Mutual Funds in India (AMFI) as a Mutual Fund Distributor. We distribute mutual fund schemes of SEBI-registered Asset Management Companies (AMCs) on regular plans and earn trail commissions.
                   </p>
                 </div>
 
@@ -223,7 +227,7 @@ export default function RiskFactorsPage() {
       {/* ======================================================================
           Comprehensive Risk Categories
           ====================================================================== */}
-      <section className="py-1.5 sm:py-2">
+      <section className="py-4 sm:py-6">
         <Container>
           <div className="mb-4">
             <h2 className="text-xl font-extrabold text-ink sm:text-2xl">
@@ -274,7 +278,7 @@ export default function RiskFactorsPage() {
       {/* ======================================================================
           SID / SAI / KIM Study Notice & Action Steps
           ====================================================================== */}
-      <section className="py-1.5 sm:py-2">
+      <section className="py-4 sm:py-6">
         <Container>
           <div className="grid gap-4 lg:grid-cols-12 items-stretch">
             <div className="rounded-2xl sm:rounded-3xl border border-line bg-white p-5 shadow-card sm:p-6 lg:col-span-8 flex flex-col justify-between">
@@ -327,30 +331,30 @@ export default function RiskFactorsPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl sm:rounded-3xl border border-line bg-gradient-to-br from-[#04261c] to-[#021f16] p-5 text-white shadow-card sm:p-6 lg:col-span-4 flex flex-col justify-between">
+            <div className="rounded-2xl sm:rounded-3xl border border-line bg-[linear-gradient(145deg,#eef7f2_0%,#ffffff_60%,#fbf6ea_100%)] p-5 text-ink shadow-card sm:p-6 lg:col-span-4 flex flex-col justify-between">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300">
-                  <HelpCircle className="size-3 text-gold" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-mint px-2.5 py-0.5 text-[11px] font-bold text-brand">
+                  <HelpCircle className="size-3 text-[#b07a10]" />
                   Need Clarity on Scheme Risks?
                 </span>
-                <h3 className="mt-3 text-lg font-extrabold text-white">
+                <h3 className="mt-3 text-lg font-extrabold text-ink">
                   Speak with Our Guidance Desk
                 </h3>
-                <p className="mt-1 text-xs text-white/75 leading-relaxed">
+                <p className="mt-1 text-xs text-body leading-relaxed">
                   We walk you through scheme riskometers, historical downside capture ratios, and asset allocation suitability before initiating your investments.
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/15 flex flex-col gap-2">
+              <div className="mt-4 pt-3 border-t border-line flex flex-col gap-2">
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl bg-white text-xs font-bold text-[#04261c] shadow-xs transition hover:bg-mint"
+                  className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl bg-brand text-xs font-bold text-white shadow-xs transition hover:bg-mint"
                 >
                   Request Risk Review Call
                 </Link>
                 <Link
                   href="/investor-grievance"
-                  className="text-center text-[11px] font-medium text-white/60 hover:text-white"
+                  className="text-center text-[11px] font-medium text-body hover:text-brand"
                 >
                   View Investor Grievance Mechanism →
                 </Link>

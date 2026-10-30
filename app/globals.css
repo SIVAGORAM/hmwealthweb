@@ -5,15 +5,15 @@
   --breakpoint-xs: 23.4375rem; /* 375px: enables existing xs: classes */
   --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #0f1f1a;          /* headings */
-  --color-body: #56665f;         /* body text */
-  --color-line: #e3ebe7;         /* borders */
-  --color-soft: #f4f8f6;         /* alternate section bg */
+  --color-ink: #15191e;          /* headings */
+  --color-body: #5b636e;         /* body text */
+  --color-line: #e8e8e4;         /* borders */
+  --color-soft: #f7f7f4;         /* alternate section bg */
   --color-brand: #0b7a55;        /* HM green — primary */
   --color-brand-dark: #075e41;   /* hover */
-  --color-brand-deep: #053b2a;   /* deep panels */
+  --color-brand-deep: #0a6a4a;   /* deep panels */
   --color-brand-bright: #19c38a; /* charts, highlights */
-  --color-mint: #e7f6ef;         /* tints */
+  --color-mint: #ebf6f0;         /* tints */
   --color-mint-2: #cfeedf;
   --color-gold: #f2b33d;         /* small accents */
   --color-gold-soft: #fff4dc;
@@ -24,8 +24,8 @@
   --color-lilac: #f1edfd;
   --color-lilac-ink: #6b4fd1;
 
-  --shadow-card: 0 1px 2px rgb(15 31 26 / 0.04), 0 8px 24px -12px rgb(15 31 26 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(15 31 26 / 0.04), 0 24px 48px -20px rgb(11 122 85 / 0.28);
+  --shadow-card: 0 1px 2px rgb(20 24 30 / 0.04), 0 8px 24px -12px rgb(20 24 30 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(20 24 30 / 0.04), 0 24px 48px -20px rgb(20 24 30 / 0.18);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 8s ease-in-out infinite;
@@ -44,8 +44,8 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { @apply bg-white font-sans text-ink; font-size: 16px; line-height: 1.6; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  body { @apply bg-white font-sans text-ink; font-size: 16px; line-height: 1.6; overflow-x: clip; }
   h1, h2, h3 { text-wrap: balance; letter-spacing: -0.025em; }
   ::selection { background: var(--color-mint-2); color: var(--color-ink); }
   :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; border-radius: 8px; }
@@ -80,20 +80,6 @@
 }
 
 
-/* footer wordmark: light travels letter by letter */
-.wm-letter {
-  color: rgb(127 240 196 / 0.12);
-  animation: wm-glow 4.2s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.22s);
-  transition: transform .5s cubic-bezier(.22,1,.36,1);
-}
-.wm-letter:hover { transform: translateY(-0.04em); }
-@keyframes wm-glow {
-  0%, 45%, 100% { color: rgb(127 240 196 / 0.12); text-shadow: none; }
-  14% { color: rgb(200 250 226 / 0.95); text-shadow: 0 0 28px rgb(25 195 138 / 0.65), 0 0 80px rgb(25 195 138 / 0.35); }
-  28% { color: rgb(127 240 196 / 0.35); text-shadow: 0 0 20px rgb(25 195 138 / 0.2); }
-}
-@media (prefers-reduced-motion: reduce) { .wm-letter { animation: none; color: rgb(127 240 196 / 0.18); } }
 
 /* Mobile-first swipe rail: below 640px a card grid becomes a snap-scrolling row
    (next card peeks in). From 640px up the original grid is untouched. */
