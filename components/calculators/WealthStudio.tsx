@@ -1443,8 +1443,9 @@ Modeled at: https://hmwealth.in/calculators`;
               showInflation={showInflation}
               inflationRate={inflationRate}
               isEMI={currentResult.isEMI}
-              capitalLabel={currentResult.isEMI ? "Principal Repaid" : "Total Capital Invested"}
-              wealthLabel={currentResult.isEMI ? "Remaining Loan Balance" : "Estimated Value"}
+              isSWP={currentResult.isSWP}
+              capitalLabel={currentResult.isEMI ? "Principal Repaid" : currentResult.isSWP ? "Total Withdrawn" : "Total Capital Invested"}
+              wealthLabel={currentResult.isEMI ? "Remaining Loan Balance" : currentResult.isSWP ? "Remaining Portfolio" : "Estimated Value"}
               height={250}
             />
           </div>

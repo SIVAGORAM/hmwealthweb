@@ -119,10 +119,14 @@ export function calculateSIP(
   const totalInvestmentRaw = P * n;
   const estimatedReturnsRaw = maturityValueRaw - totalInvestmentRaw;
 
+  const totalInvestment = Math.round(totalInvestmentRaw);
+  const maturityValue = Math.round(maturityValueRaw);
+  const estimatedReturns = maturityValue - totalInvestment;
+
   return {
-    totalInvestment: Math.round(totalInvestmentRaw),
-    maturityValue: Math.round(maturityValueRaw),
-    estimatedReturns: Math.round(estimatedReturnsRaw),
+    totalInvestment,
+    maturityValue,
+    estimatedReturns,
   };
 }
 
@@ -153,10 +157,14 @@ export function calculateStepUpSIP(
     totalInvestment += currentMonthly;
   }
 
+  const totalInvestmentRounded = Math.round(totalInvestment);
+  const maturityValueRounded = Math.round(balance);
+  const estimatedReturns = maturityValueRounded - totalInvestmentRounded;
+
   return {
-    totalInvestment: Math.round(totalInvestment),
-    maturityValue: Math.round(balance),
-    estimatedReturns: Math.round(balance - totalInvestment),
+    totalInvestment: totalInvestmentRounded,
+    maturityValue: maturityValueRounded,
+    estimatedReturns,
     finalMonthlySIP: Math.round(currentMonthly),
   };
 }
@@ -175,10 +183,14 @@ export function calculateLumpsum(
   const maturityValueRaw = P * Math.pow(1 + safeRate / 100, Y);
   const estimatedReturnsRaw = maturityValueRaw - P;
 
+  const investedAmount = Math.round(P);
+  const maturityValue = Math.round(maturityValueRaw);
+  const estimatedReturns = maturityValue - investedAmount;
+
   return {
-    investedAmount: Math.round(P),
-    maturityValue: Math.round(maturityValueRaw),
-    estimatedReturns: Math.round(estimatedReturnsRaw),
+    investedAmount,
+    maturityValue,
+    estimatedReturns,
   };
 }
 
@@ -238,10 +250,14 @@ export function calculateTargetLumpsum(
   const safeRate = Math.max(0, isNaN(annualRate) ? 0 : annualRate);
   const requiredLumpSumRaw = Y === 0 ? C : C / Math.pow(1 + safeRate / 100, Y);
 
+  const requiredLumpSum = Math.round(requiredLumpSumRaw);
+  const targetCorpusRounded = Math.round(C);
+  const estimatedReturns = Math.max(0, targetCorpusRounded - requiredLumpSum);
+
   return {
-    requiredLumpSum: Math.round(requiredLumpSumRaw),
-    targetCorpus: Math.round(C),
-    estimatedReturns: Math.round(Math.max(0, C - requiredLumpSumRaw)),
+    requiredLumpSum,
+    targetCorpus: targetCorpusRounded,
+    estimatedReturns,
   };
 }
 
@@ -268,18 +284,26 @@ export function calculateSWP(
   let exhaustedYear: number | null = null;
 
   for (let m = 1; m <= totalMonths; m++) {
-    const available = balance * (1 + r);
-    const actualW = Math.min(W, available);
-    balance = Math.max(0, available - actualW);
-    totalWithdrawn += actualW;
-
     if (balance <= 0) {
+      isExhausted = true;
+      exhaustedMonth = m - 1;
+      exhaustedYear = Number(((m - 1) / 12).toFixed(1));
+      break;
+    }
+
+    const actualW = Math.min(W, balance);
+    totalWithdrawn += actualW;
+    const remaining = balance - actualW;
+
+    if (remaining <= 0) {
       isExhausted = true;
       exhaustedMonth = m;
       exhaustedYear = Number((m / 12).toFixed(1));
       balance = 0;
       break;
     }
+
+    balance = remaining * (1 + r);
   }
 
   return {
@@ -550,8 +574,8 @@ export function generateSWPTrajectory(
   const points: TrajectoryPoint[] = [
     {
       year: 0,
-      investedCapital: principal,
-      totalValue: principal,
+      investedCapital: 0,
+      totalValue: Math.round(principal),
       wealthGain: 0,
     },
   ];
@@ -563,10 +587,10 @@ export function generateSWPTrajectory(
   for (let y = 1; y <= years; y++) {
     for (let m = 1; m <= 12; m++) {
       if (balance > 0) {
-        const available = balance * (1 + r);
-        const actualW = Math.min(monthlyWithdrawal, available);
-        balance = Math.max(0, available - actualW);
+        const actualW = Math.min(monthlyWithdrawal, balance);
         totalWithdrawn += actualW;
+        const remaining = balance - actualW;
+        balance = remaining <= 0 ? 0 : remaining * (1 + r);
       }
     }
     points.push({

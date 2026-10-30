@@ -20,6 +20,7 @@ interface WealthAreaChartProps {
   capitalLabel?: string;
   wealthLabel?: string;
   isEMI?: boolean;
+  isSWP?: boolean;
   height?: number;
 }
 
@@ -36,9 +37,10 @@ interface CustomTooltipProps {
   showInflation?: boolean;
   inflationRate?: number;
   isEMI?: boolean;
+  isSWP?: boolean;
 }
 
-function CustomTooltip({ active, payload, label, showInflation, inflationRate = 6, isEMI = false }: CustomTooltipProps) {
+function CustomTooltip({ active, payload, label, showInflation, inflationRate = 6, isEMI = false, isSWP = false }: CustomTooltipProps) {
   if (!active || !payload || !payload.length) return null;
 
   const point = payload[0].payload;
@@ -57,11 +59,11 @@ function CustomTooltip({ active, payload, label, showInflation, inflationRate = 
       </div>
 
       <div className="mt-3 flex flex-col gap-2 text-xs">
-        {/* Invested Capital / Principal Repaid */}
+        {/* Invested Capital / Principal Repaid / Total Withdrawn */}
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1.5 text-body">
             <span className="size-2 rounded-full bg-slate-700" />
-            {isEMI ? "Principal Repaid:" : "Invested Capital:"}
+            {isEMI ? "Principal Repaid:" : isSWP ? "Total Withdrawn:" : "Invested Capital:"}
           </span>
           <span className="font-bold text-ink tnum">
             {formatCurrencyExact(point.investedCapital)}
@@ -69,21 +71,23 @@ function CustomTooltip({ active, payload, label, showInflation, inflationRate = 
         </div>
 
         {/* Wealth Gain / Interest Paid */}
-        <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-body">
-            <span className="size-2 rounded-full bg-emerald-500" />
-            {isEMI ? "Cumulative Interest:" : "Estimated Gain:"}
-          </span>
-          <span className="font-bold text-brand tnum">
-            {isEMI ? formatCurrencyExact(point.wealthGain) : `+${formatCurrencyExact(point.wealthGain)}`}
-          </span>
-        </div>
+        {!isSWP && (
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-body">
+              <span className="size-2 rounded-full bg-emerald-500" />
+              {isEMI ? "Cumulative Interest:" : "Estimated Gain:"}
+            </span>
+            <span className="font-bold text-brand tnum">
+              {isEMI ? formatCurrencyExact(point.wealthGain) : `+${formatCurrencyExact(point.wealthGain)}`}
+            </span>
+          </div>
+        )}
 
         {/* Total Portfolio Value / Outstanding Balance */}
         <div className="flex items-center justify-between border-t border-line/60 pt-2 font-bold">
           <span className="flex items-center gap-1.5 text-ink">
             <Sparkles className="size-3.5 text-amber-500" />
-            {isEMI ? "Outstanding Balance:" : "Total Value:"}
+            {isEMI ? "Outstanding Balance:" : isSWP ? "Remaining Portfolio:" : "Total Value:"}
           </span>
           <span className="text-[14px] text-ink tnum">
             {formatCurrencyExact(point.totalValue)}
@@ -114,6 +118,7 @@ export function WealthAreaChart({
   capitalLabel = "Your Total Capital Invested",
   wealthLabel = "Accumulated Wealth & Returns",
   isEMI = false,
+  isSWP = false,
   height = 320,
 }: WealthAreaChartProps) {
   const [mounted, setMounted] = useState(false);
@@ -190,7 +195,7 @@ export function WealthAreaChart({
             />
 
             <Tooltip
-              content={<CustomTooltip showInflation={showInflation} inflationRate={inflationRate} isEMI={isEMI} />}
+              content={<CustomTooltip showInflation={showInflation} inflationRate={inflationRate} isEMI={isEMI} isSWP={isSWP} />}
               cursor={{ stroke: "#0b7a55", strokeWidth: 1.5, strokeDasharray: "4 4" }}
             />
 

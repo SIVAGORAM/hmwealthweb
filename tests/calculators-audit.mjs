@@ -146,6 +146,13 @@ assert(ret.requiredMonthlySIP > 0, "Retirement Required Monthly SIP is positive 
 // 8. SWP Calculator & Exhaustion Bug Fix
 // -----------------------------------------------------------------------------
 console.log("\n--- 8. SWP Calculator & Depletion Audit ---");
+// Standard Indian Industry Benchmark (AMFI / Groww / ClearTax / Integrated India):
+// 5 Lakhs corpus, 5,000/mo withdrawal, 8% return, 5 years
+const swpBenchmark = calculateSWP(5000000 * 0.1, 5000, 8, 5);
+assertClose(swpBenchmark.totalWithdrawn, 300000, 0.01, "SWP Industry Benchmark: Total Withdrawn = ₹3.00 Lakhs");
+assertClose(swpBenchmark.finalBalance, 375089, 0.01, "SWP Industry Benchmark: Final Balance matches ₹3,75,089 exactly");
+assert(swpBenchmark.isExhausted === false, "SWP Benchmark: Portfolio is not exhausted");
+
 // Portfolio with rapid depletion: 10 Lakhs corpus, 50,000/mo withdrawal, 8% return
 const swpDepleted = calculateSWP(1000000, 50000, 8, 5);
 assert(swpDepleted.isExhausted === true, "SWP correctly identifies portfolio depletion");
