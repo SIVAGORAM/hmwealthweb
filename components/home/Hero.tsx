@@ -119,6 +119,7 @@ export function Hero() {
                 alt={story.photo.alt}
                 fill
                 priority
+                loading="eager"
                 sizes="(min-width: 1024px) 66vw, 100vw"
                 className={`object-cover ${story.flip ? "-scale-x-100" : ""}`}
                 style={{ objectPosition: story.pos }}

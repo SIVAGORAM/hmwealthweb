@@ -19,11 +19,15 @@ export function ProtectedImage({
   draggable = false,
   onContextMenu,
   onDragStart,
+  priority,
+  loading,
   ...props
 }: ProtectedImageProps) {
   return (
     <Image
       {...props}
+      priority={priority}
+      loading={loading ?? (priority ? "eager" : undefined)}
       draggable={draggable}
       onContextMenu={(e) => {
         e.preventDefault();
