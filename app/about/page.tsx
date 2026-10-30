@@ -157,9 +157,9 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-2.5">
                   <div className="rounded-xl bg-soft/70 p-3">
-                    <span className="text-[10.5px] font-semibold text-body">AMFI Status</span>
-                    <p className="mt-0.5 text-[14px] font-extrabold text-brand">Registered MFD</p>
-                    <p className="text-[10px] text-body">Active &amp; Verified</p>
+                    <span className="text-[10.5px] font-semibold text-body">AMFI Registration</span>
+                    <p className="mt-0.5 text-[14px] font-extrabold text-brand">{site.arn}</p>
+                    <p className="text-[10px] font-medium text-body">Registered MFD</p>
                   </div>
                   <div className="rounded-xl bg-soft/70 p-3">
                     <span className="text-[10.5px] font-semibold text-body">Client Ownership</span>
