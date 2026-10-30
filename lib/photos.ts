@@ -19,4 +19,5 @@ export const photos = {
   graduate: { src: img("graduate"), alt: "Graduate smiling in cap and gown", credit: "Unsplash" },
   friendsPhone: { src: img("friends-phone"), alt: "Two people smiling while looking at a phone", credit: "Unsplash" },
   wealthCouple: { src: "/images/pages/inv-couple-tablet.jpg", alt: "Indian couple smiling while reviewing their investments on a tablet", credit: "Pexels" },
+  retirementHero: { src: "/images/pages/hero-retirement-tea.jpg", alt: "Retired couple enjoying tea together in their garden", credit: "Client supplied" },
 } as const;

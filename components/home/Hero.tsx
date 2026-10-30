@@ -23,7 +23,7 @@ const STORIES = [
     icon: Home, tint: "bg-[#e6f0ff] text-[#2f6fd6]", title: "Home down-payment fund", value: "₹15 L target", progress: 45,
   },
   {
-    goal: "a calm retirement", label: "Retirement", photo: photos.seniors, pos: "62% 30%", flip: false,
+    goal: "a calm retirement", label: "Retirement", photo: photos.retirementHero, pos: "68% 35%", flip: false,
     icon: Sunset, tint: "bg-[#fff0e8] text-[#d6662f]", title: "Retirement income", value: "Monthly SWP set up", progress: null,
   },
   {

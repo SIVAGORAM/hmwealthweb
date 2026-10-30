@@ -112,9 +112,7 @@ export default function AboutPage() {
                 </nav>
                 <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-brand/20 bg-white/95 px-3.5 py-1 text-[11.5px] font-bold uppercase tracking-wider text-brand shadow-xs whitespace-nowrap sm:text-xs">
                   <ShieldCheck className="size-3.5 shrink-0" />
-                  <span>AMFI-Registered MFD</span>
-                  <span className="hidden sm:inline text-brand/40">·</span>
-                  <span className="hidden sm:inline">{site.arn}</span>
+                  <span>AMFI-Registered Mutual Fund Distributor</span>
                 </div>
                 <h1 className="text-[30px] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink sm:text-[44px]">
                   Guiding your wealth.{" "}
@@ -159,9 +157,9 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-2.5">
                   <div className="rounded-xl bg-soft/70 p-3">
-                    <span className="text-[10.5px] font-semibold text-body">AMFI Registration</span>
-                    <p className="mt-0.5 text-[14px] font-extrabold text-brand tnum">{site.arn}</p>
-                    <p className="text-[10px] text-body">Registered MFD</p>
+                    <span className="text-[10.5px] font-semibold text-body">AMFI Status</span>
+                    <p className="mt-0.5 text-[14px] font-extrabold text-brand">Registered MFD</p>
+                    <p className="text-[10px] text-body">Active &amp; Verified</p>
                   </div>
                   <div className="rounded-xl bg-soft/70 p-3">
                     <span className="text-[10.5px] font-semibold text-body">Client Ownership</span>
@@ -323,7 +321,7 @@ export default function AboutPage() {
                 </span>
                 <div className="absolute bottom-3 left-4 right-4 text-center">
                   <p className="text-[16px] font-extrabold">{site.founder}</p>
-                  <p className="text-[11px] text-white/80">Founder &amp; Principal MFD · {site.arn}</p>
+                  <p className="text-[11px] text-white/80">Founder &amp; Principal MFD</p>
                 </div>
               </div>
 
@@ -389,7 +387,7 @@ export default function AboutPage() {
             </div>
             <div className="mt-3 rounded-xl border border-line bg-white p-3 text-[12px] sm:text-[12.5px] leading-relaxed text-body">
               <p>
-                <strong>Regulatory Clarification:</strong> HM Wealth is an AMFI-registered Mutual Fund Distributor ({site.arn}) engaged in the distribution of mutual fund schemes. We earn commission from Asset Management Companies (AMCs) on regular plans. We are not a SEBI-registered Investment Adviser and do not provide fee-based investment advice. Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
+                <strong>Regulatory Clarification:</strong> HM Wealth is an AMFI-registered Mutual Fund Distributor engaged in the distribution of mutual fund schemes. We earn commission from Asset Management Companies (AMCs) on regular plans. We are not a SEBI-registered Investment Adviser and do not provide fee-based investment advice. Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
               </p>
             </div>
           </div>
@@ -439,7 +437,7 @@ export default function AboutPage() {
             </div>
 
             <p className="mt-3 text-[11px] font-medium text-body/80">
-              AMFI ARN-341412 · Zero consultation fee · Transparent scheme review
+              AMFI-Registered MFD · Zero consultation fee · Transparent scheme review
             </p>
           </div>
         </Container>

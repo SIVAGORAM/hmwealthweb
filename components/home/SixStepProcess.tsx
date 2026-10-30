@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Handshake, ClipboardList, Search, Lightbulb, BadgeCheck, RefreshCw, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/kit";
 import { ProtectedImage } from "@/components/ui/ProtectedImage";
@@ -97,168 +97,193 @@ const SEGMENTS = STEPS.map((_, i) => {
   return { d, lx, ly, dx: (ox / len) * 9, dy: (oy / len) * 9 };
 });
 
-/* Desktop placement around the oval: 1-3 on the right (top to bottom), 6-4 on the left */
-const PLACE = [
-  "lg:col-start-3 lg:row-start-1",
-  "lg:col-start-3 lg:row-start-2",
-  "lg:col-start-3 lg:row-start-3",
-  "lg:col-start-1 lg:row-start-3",
-  "lg:col-start-1 lg:row-start-2",
-  "lg:col-start-1 lg:row-start-1",
-];
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function SixStepProcess() {
   const reduce = useReducedMotion();
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+
+  // Gently walk through the steps while the section is on screen, until the visitor interacts
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.35 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!auto || !inView || reduce) return;
+    const t = setInterval(() => setActive((a) => (a + 1) % STEPS.length), 4500);
+    return () => clearInterval(t);
+  }, [auto, inView, reduce]);
+
+  const pick = (i: number) => {
+    setAuto(false);
+    setActive(i);
+  };
 
   return (
-    <section aria-labelledby="six-step-title" className="py-8 sm:py-12">
+    <section ref={sectionRef} aria-labelledby="six-step-title" className="py-5 sm:py-8">
       <Container>
-        {/* heading */}
-        <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center gap-3 text-center sm:mb-12">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-white px-3.5 py-1.5 text-[12.5px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
-            <RefreshCw className="size-3.5" aria-hidden />How we work
-          </span>
-          <h2 id="six-step-title" className="text-[30px] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:text-[42px]">
-            Our <span className="bg-gradient-to-r from-brand to-brand-bright bg-clip-text text-transparent">Six-Step</span> Process
-          </h2>
-          <p className="text-[15.5px] leading-relaxed text-body sm:text-[17px]">
-            Every investment journey begins with understanding your needs and objectives. Our six-step process outlines a structured approach to exploring mutual fund investment options and supporting investors throughout their investment journey.
+        <div className="relative isolate overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,#f1f7f3_0%,#ffffff_55%,#fbf6ea_100%)] p-4 ring-1 ring-line sm:rounded-[32px] sm:p-7 lg:p-8">
+          <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 -z-10 size-72 rounded-full bg-brand-bright/10 blur-[90px]" />
+
+          <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-2 lg:gap-10">
+            {/* left: heading + oval */}
+            <div className="min-w-0">
+              <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand/15 bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
+                <RefreshCw className="size-3" aria-hidden />How we work
+              </span>
+              <h2 id="six-step-title" className="mt-2.5 text-[24px] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink sm:text-[32px]">
+                Our <span className="bg-gradient-to-r from-brand to-brand-bright bg-clip-text text-transparent">Six-Step</span> Process
+              </h2>
+              <p className="mt-2 max-w-[52ch] text-[13.5px] leading-relaxed text-body sm:text-[15px]">
+                Every investment journey begins with understanding your needs and objectives. Our six-step process outlines a structured approach to exploring mutual fund investment options and supporting investors throughout their investment journey.
+              </p>
+
+              {/* ---------- the oval diagram ---------- */}
+              <figure className="relative mx-auto mt-5 w-full max-w-[360px] sm:mt-6 sm:max-w-[440px] lg:mx-0">
+                <figcaption className="sr-only">
+                  A clockwise cycle of six steps: {STEPS.map((s, i) => `${i + 1}. ${s.title}`).join(", ")}, then back to step 1.
+                </figcaption>
+                <div className="relative aspect-[640/420] w-full">
+                  <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 size-full overflow-visible" aria-hidden>
+                    <defs>
+                      {SHADES.map((s, i) => (
+                        <linearGradient key={i} id={`six-g${i}`} x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stopColor={s.from} />
+                          <stop offset="1" stopColor={s.to} />
+                        </linearGradient>
+                      ))}
+                      <filter id="six-shadow" x="-10%" y="-10%" width="120%" height="130%">
+                        <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#0a3d2c" floodOpacity="0.16" />
+                      </filter>
+                      <filter id="six-oval" x="-20%" y="-20%" width="140%" height="150%">
+                        <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#0a3d2c" floodOpacity="0.12" />
+                      </filter>
+                    </defs>
+
+                    <ellipse cx={CX} cy={CY} rx={OUT.rx + 12} ry={OUT.ry + 12} fill="#ebf6f0" opacity="0.8" />
+
+                    <g filter="url(#six-shadow)">
+                      {SEGMENTS.map((s, i) => {
+                        const on = active === i;
+                        return (
+                          <motion.g
+                            key={i}
+                            initial={reduce ? false : { opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true, margin: "-60px" }}
+                            transition={{ duration: 0.45, delay: reduce ? 0 : 0.1 + i * 0.1, ease }}
+                            onMouseEnter={() => pick(i)}
+                            onClick={() => pick(i)}
+                            className="cursor-pointer"
+                          >
+                            <motion.path
+                              d={s.d}
+                              fill={`url(#six-g${i})`}
+                              stroke="#ffffff"
+                              strokeWidth={on ? 3 : 1.2}
+                              animate={{ x: on ? s.dx : 0, y: on ? s.dy : 0, opacity: on ? 1 : 0.82 }}
+                              transition={{ duration: reduce ? 0 : 0.3, ease }}
+                            />
+                            <motion.text
+                              x={s.lx}
+                              y={s.ly}
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                              fill={SHADES[i].text}
+                              animate={{ x: on ? s.dx : 0, y: on ? s.dy : 0 }}
+                              transition={{ duration: reduce ? 0 : 0.3, ease }}
+                              className="pointer-events-none select-none text-[34px] font-extrabold tabular-nums"
+                            >
+                              {i + 1}
+                            </motion.text>
+                          </motion.g>
+                        );
+                      })}
+                    </g>
+
+                    <ellipse cx={CX} cy={CY} rx={IN.rx - 14} ry={IN.ry - 12} fill="#ffffff" filter="url(#six-oval)" />
+                    <ellipse cx={CX} cy={CY} rx={IN.rx - 24} ry={IN.ry - 21} fill="none" stroke="#cfeedf" strokeWidth="1.5" strokeDasharray="3 6" />
+                  </svg>
+
+                  {/* centre: logo + the active step */}
+                  <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <div className="relative mb-[1.5%] aspect-[320/258] w-[8%] min-w-6">
+                      <ProtectedImage src="/images/brand/hm-wealth-icon-transparent.png" alt="" fill sizes="48px" className="object-contain" />
+                    </div>
+                    <p className="text-[clamp(10px,2.2vw,12px)] font-bold uppercase tracking-[0.16em] text-brand lg:text-[11px]">
+                      Step {String(active + 1).padStart(2, "0")} of 06
+                    </p>
+                    <p className="mt-[1%] max-w-[46%] text-[clamp(12px,3vw,17px)] font-extrabold leading-tight tracking-[-0.01em] text-ink lg:text-[16px]">
+                      {STEPS[active].title}
+                    </p>
+                  </div>
+                </div>
+              </figure>
+
+            </div>
+
+            {/* right: steps */}
+            {/* ---------- the six steps (one open at a time) ---------- */}
+            <ol className="flex flex-col gap-1.5" aria-label="Six-step process">
+              {STEPS.map((s, i) => {
+                const on = active === i;
+                return (
+                  <li key={s.title}>
+                    <button
+                      type="button"
+                      onClick={() => pick(i)}
+                      onMouseEnter={() => pick(i)}
+                      onFocus={() => pick(i)}
+                      aria-expanded={on}
+                      aria-controls={`six-step-${i}`}
+                      className={cn(
+                        "flex w-full items-start gap-3 rounded-2xl border px-3 py-2.5 text-left transition-[background-color,border-color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
+                        on ? "border-brand/30 bg-white shadow-[0_14px_34px_-18px_rgba(11,122,85,0.45)]" : "border-transparent hover:bg-white/70"
+                      )}
+                    >
+                      <span
+                        className="flex size-9 shrink-0 items-center justify-center rounded-[10px] text-[12.5px] font-extrabold tabular-nums"
+                        style={{ backgroundImage: `linear-gradient(135deg, ${SHADES[i].from}, ${SHADES[i].to})`, color: SHADES[i].text }}
+                        aria-hidden
+                      >
+                        {on ? <s.icon className="size-4" /> : String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="min-w-0 flex-1 pt-[7px]">
+                        <span className={cn("block text-[14.5px] font-bold leading-snug tracking-[-0.01em] sm:text-[15px]", on ? "text-ink" : "text-ink/80")}>
+                          {s.title}
+                        </span>
+                        <AnimatePresence initial={false}>
+                          {on && (
+                            <motion.span
+                              id={`six-step-${i}`}
+                              initial={reduce ? false : { height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={reduce ? undefined : { height: 0, opacity: 0 }}
+                              transition={{ duration: 0.28, ease }}
+                              className="block overflow-hidden"
+                            >
+                              <span className="block pb-0.5 pt-1 text-[13px] leading-relaxed text-body sm:text-[13.5px]">{s.desc}</span>
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          <p className="mt-5 border-t border-line/70 pt-3 text-center text-[11px] leading-relaxed text-body/80">
+            HM Wealth is an AMFI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks, read all scheme related documents carefully. The final investment decision is always yours.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)_minmax(0,1fr)] xl:gap-x-10 lg:grid-rows-3 lg:gap-y-6">
-          {/* ---------- the oval diagram ---------- */}
-          <figure className="relative mx-auto mb-4 w-full max-w-[560px] sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mb-0 lg:max-w-none lg:self-center">
-            <figcaption className="sr-only">
-              A clockwise cycle of six steps: {STEPS.map((s, i) => `${i + 1}. ${s.title}`).join(", ")}, then back to step 1.
-            </figcaption>
-            <div className="relative aspect-[640/420] w-full">
-              <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 size-full overflow-visible" aria-hidden>
-                <defs>
-                  {SHADES.map((s, i) => (
-                    <linearGradient key={i} id={`six-g${i}`} x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stopColor={s.from} />
-                      <stop offset="1" stopColor={s.to} />
-                    </linearGradient>
-                  ))}
-                  <filter id="six-shadow" x="-10%" y="-10%" width="120%" height="130%">
-                    <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#0a3d2c" floodOpacity="0.18" />
-                  </filter>
-                  <filter id="six-oval" x="-20%" y="-20%" width="140%" height="150%">
-                    <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#0a3d2c" floodOpacity="0.14" />
-                  </filter>
-                </defs>
-
-                {/* soft halo */}
-                <ellipse cx={CX} cy={CY} rx={OUT.rx + 12} ry={OUT.ry + 12} fill="#ebf6f0" opacity="0.7" />
-
-                {/* six segments */}
-                <g filter="url(#six-shadow)">
-                  {SEGMENTS.map((s, i) => {
-                    const on = active === i;
-                    const dim = active !== null && !on;
-                    return (
-                      <motion.g
-                        key={i}
-                        initial={reduce ? false : { opacity: 0, scale: 0.92 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-60px" }}
-                        transition={{ duration: 0.5, delay: reduce ? 0 : 0.15 + i * 0.12, ease }}
-                      >
-                        <motion.path
-                          d={s.d}
-                          fill={`url(#six-g${i})`}
-                          stroke="#ffffff"
-                          strokeWidth={on ? 2.5 : 1.2}
-                          animate={{ x: on ? s.dx : 0, y: on ? s.dy : 0, opacity: dim ? 0.55 : 1 }}
-                          transition={{ duration: reduce ? 0 : 0.25, ease }}
-                          onMouseEnter={() => setActive(i)}
-                          onMouseLeave={() => setActive(null)}
-                          className="cursor-pointer"
-                        />
-                        <motion.text
-                          x={s.lx}
-                          y={s.ly}
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                          fill={SHADES[i].text}
-                          animate={{ x: on ? s.dx : 0, y: on ? s.dy : 0, opacity: dim ? 0.6 : 1 }}
-                          transition={{ duration: reduce ? 0 : 0.25, ease }}
-                          className="pointer-events-none select-none text-[34px] font-extrabold tabular-nums"
-                        >
-                          {i + 1}
-                        </motion.text>
-                      </motion.g>
-                    );
-                  })}
-                </g>
-
-                {/* central oval */}
-                <ellipse cx={CX} cy={CY} rx={IN.rx - 14} ry={IN.ry - 12} fill="#ffffff" filter="url(#six-oval)" />
-                <ellipse cx={CX} cy={CY} rx={IN.rx - 24} ry={IN.ry - 21} fill="none" stroke="#cfeedf" strokeWidth="1.5" strokeDasharray="3 6" />
-              </svg>
-
-              {/* centre label (HTML so it stays crisp and uses the real logo) */}
-              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-                <div className="relative mb-[1.5%] aspect-[320/258] w-[9%] min-w-7">
-                  <ProtectedImage src="/images/brand/hm-wealth-icon-transparent.png" alt="" fill sizes="64px" className="object-contain" />
-                </div>
-                <p className="text-[clamp(13px,2.7vw,22px)] font-extrabold leading-tight tracking-[-0.02em] text-ink lg:text-[clamp(15px,1.55vw,22px)]">
-                  Our Six-Step<br />Process
-                </p>
-                <p className="mt-[1%] text-[clamp(9px,1.6vw,11.5px)] font-bold uppercase tracking-[0.18em] text-brand lg:text-[clamp(9px,0.8vw,11.5px)]">HM Wealth</p>
-              </div>
-            </div>
-          </figure>
-
-          {/* ---------- the six steps (DOM order 1→6) ---------- */}
-          <ol role="list" className="contents">
-            {STEPS.map((s, i) => {
-              const left = i >= 3; // steps 4-6 sit on the left of the oval on desktop
-              const on = active === i;
-              return (
-                <motion.li
-                  key={s.title}
-                  tabIndex={0}
-                  onMouseEnter={() => setActive(i)}
-                  onMouseLeave={() => setActive(null)}
-                  onFocus={() => setActive(i)}
-                  onBlur={() => setActive(null)}
-                  initial={reduce ? false : { opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.45, delay: reduce ? 0 : 0.2 + i * 0.08, ease }}
-                  className={cn(
-                    "group flex min-w-0 gap-3.5 rounded-[20px] border bg-white p-4 outline-none transition-[box-shadow,border-color] duration-200 focus-visible:ring-2 focus-visible:ring-brand sm:p-5 lg:self-center",
-                    PLACE[i],
-                    left && "lg:flex-row-reverse lg:text-right",
-                    on ? "border-brand/40 shadow-[0_18px_40px_-20px_rgba(11,122,85,0.45)]" : "border-line shadow-[0_1px_2px_rgba(20,24,30,0.04)]"
-                  )}
-                >
-                  <span
-                    className="flex size-11 shrink-0 items-center justify-center rounded-xl text-white shadow-[0_8px_16px_-8px_rgba(11,122,85,0.6)]"
-                    style={{ backgroundImage: `linear-gradient(135deg, ${SHADES[i].from}, ${SHADES[i].to})`, color: SHADES[i].text }}
-                    aria-hidden
-                  >
-                    <s.icon className="size-5" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[11.5px] font-extrabold uppercase tracking-[0.16em] text-brand">Step {String(i + 1).padStart(2, "0")}</p>
-                    <h3 className="mt-0.5 text-[16px] font-extrabold leading-snug tracking-[-0.01em] text-ink">{s.title}</h3>
-                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-body">{s.desc}</p>
-                  </div>
-                </motion.li>
-              );
-            })}
-          </ol>
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl text-center text-[12px] leading-relaxed text-body/80">
-          HM Wealth is an AMFI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks, read all scheme related documents carefully. The final investment decision is always yours.
-        </p>
       </Container>
     </section>
   );

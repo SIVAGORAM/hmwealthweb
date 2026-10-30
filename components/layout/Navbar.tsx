@@ -12,7 +12,7 @@ import {
   Mail,
   ChevronDown,
   ArrowRight,
-  Apple,
+
   User,
 } from "lucide-react";
 import { nav, site, registrations } from "@/lib/site";
@@ -27,72 +27,52 @@ const menuIntro = {
   services: "Simple, no-pressure help with your family’s money goals.",
 };
 
-/* Official 4-color Google Play glyph */
-function PlayStoreGlyph({ className }: { className?: string }) {
+/* Official Apple logo */
+function AppleGlyph({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden>
-      <path
-        fill="#4285F4"
-        d="M3.6 2.3c-.2.2-.4.6-.4 1.1v17.2c0 .5.2.9.4 1.1l9.3-9.7L3.6 2.3z"
-      />
-      <path
-        fill="#FBBC04"
-        d="M16.6 15.7l-3.7-3.7 3.7-3.7 4.2 2.4c1.2.7 1.2 1.9 0 2.6l-4.2 2.4z"
-      />
-      <path
-        fill="#EA4335"
-        d="M3.6 2.3l9.3 9.7 3.7-3.7-10.8-6.2c-.8-.5-1.7-.3-2.2.2z"
-      />
-      <path
-        fill="#34A853"
-        d="M3.6 21.7c.5.5 1.4.7 2.2.2l10.8-6.2-3.7-3.7-9.3 9.7z"
-      />
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <path d="M16.37 12.62c-.03-2.53 2.06-3.75 2.15-3.81-1.17-1.72-3-1.95-3.64-1.98-1.55-.16-3.03.91-3.81.91-.79 0-2.01-.89-3.29-.87-1.69.03-3.25.99-4.12 2.51-1.76 3.06-.45 7.6 1.26 10.08.84 1.21 1.83 2.58 3.14 2.53 1.27-.05 1.74-.82 3.27-.82 1.52 0 1.95.82 3.29.79 1.36-.02 2.22-1.24 3.05-2.46.96-1.4 1.35-2.76 1.38-2.83-.03-.01-2.65-1.02-2.68-4.05zM13.86 5.2c.69-.84 1.16-2.01 1.03-3.18-1 .04-2.21.67-2.93 1.5-.64.74-1.2 1.93-1.05 3.08 1.12.09 2.26-.57 2.95-1.4z" />
     </svg>
   );
 }
 
-/* Executive Apple App Store Badge */
+/* Official 4-colour Google Play logo */
+function PlayStoreGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path fill="#00D7FE" d="M3.61 1.81 13.79 12 3.61 22.19a1.2 1.2 0 0 1-.36-.87V2.68c0-.34.13-.65.36-.87z" />
+      <path fill="#FFCE00" d="m17.18 15.39-3.39-3.39 3.39-3.39 4.09 2.33c1.17.66 1.17 1.74 0 2.4l-4.09 2.33z" />
+      <path fill="#FF3A44" d="M17.18 15.39 13.79 12 3.61 22.19c.38.4 1 .45 1.71.05l11.86-6.85z" />
+      <path fill="#00F076" d="M17.18 8.61 5.32 1.76c-.71-.4-1.33-.35-1.71.05L13.79 12l3.39-3.39z" />
+    </svg>
+  );
+}
+
+const storeBadge =
+  "group flex h-9 items-center gap-2 rounded-[10px] bg-black pl-2.5 pr-3 text-white ring-1 ring-white/10 shadow-[0_6px_16px_-8px_rgba(0,0,0,0.6)] transition hover:-translate-y-px hover:bg-[#111] active:translate-y-0";
+
+/* App Store badge */
 function AppleStoreBadge({ className }: { className?: string }) {
   return (
-    <a
-      href={site.appStoreUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Download on Apple App Store"
-      title="Download on Apple App Store"
-      className={cn(
-        "group flex h-[38px] items-center gap-2 rounded-xl bg-[#0b1320] px-3 text-white shadow-xs transition hover:bg-black hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border border-slate-700/60",
-        className
-      )}
-    >
-      <Apple className="size-[17px] text-white shrink-0 transition-transform group-hover:scale-110" />
-      <div className="flex flex-col text-left leading-none">
-        <span className="text-[8px] font-medium uppercase tracking-wider text-slate-400">Download on</span>
-        <span className="text-[11.5px] font-bold text-white tracking-tight">App Store</span>
-      </div>
+    <a href={site.appStoreUrl} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store" title="Download on the App Store" className={cn(storeBadge, className)}>
+      <AppleGlyph className="size-[19px] shrink-0 -translate-y-px" />
+      <span className="flex flex-col text-left leading-none">
+        <span className="text-[7.5px] font-medium tracking-[0.04em] text-white/75">Download on the</span>
+        <span className="mt-[2px] text-[13px] font-semibold tracking-[-0.01em]">App Store</span>
+      </span>
     </a>
   );
 }
 
-/* Executive Google Play Store Badge */
+/* Google Play badge */
 function PlayStoreBadge({ className }: { className?: string }) {
   return (
-    <a
-      href={site.playStoreUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Get it on Google Play"
-      title="Get it on Google Play"
-      className={cn(
-        "group flex h-[38px] items-center gap-2 rounded-xl bg-[#0b1320] px-3 text-white shadow-xs transition hover:bg-black hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border border-slate-700/60",
-        className
-      )}
-    >
-      <PlayStoreGlyph className="size-[16px] shrink-0 transition-transform group-hover:scale-110" />
-      <div className="flex flex-col text-left leading-none">
-        <span className="text-[8px] font-medium uppercase tracking-wider text-slate-400">Get it on</span>
-        <span className="text-[11.5px] font-bold text-white tracking-tight">Google Play</span>
-      </div>
+    <a href={site.playStoreUrl} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play" title="Get it on Google Play" className={cn(storeBadge, className)}>
+      <PlayStoreGlyph className="size-[18px] shrink-0" />
+      <span className="flex flex-col text-left leading-none">
+        <span className="text-[7.5px] font-medium uppercase tracking-[0.08em] text-white/75">Get it on</span>
+        <span className="mt-[2px] text-[13px] font-semibold tracking-[-0.01em]">Google Play</span>
+      </span>
     </a>
   );
 }
@@ -500,8 +480,8 @@ export function Navbar() {
               <div className="mt-3 flex flex-col gap-2 rounded-2xl border border-line/70 bg-[#f7f9f8] p-3.5">
                 <span className="text-xs font-bold text-ink">Download Our Mobile App</span>
                 <div className="grid grid-cols-2 gap-2">
-                  <AppleStoreBadge className="h-10 justify-center !flex" />
-                  <PlayStoreBadge className="h-10 justify-center !flex" />
+                  <AppleStoreBadge className="h-11 justify-center !flex" />
+                  <PlayStoreBadge className="h-11 justify-center !flex" />
                 </div>
               </div>
 
