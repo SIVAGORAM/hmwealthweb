@@ -229,7 +229,7 @@ function DesktopRegBlock({ className }: { className?: string }) {
         className
       )}
     >
-      <p className="text-[10px] xl:text-[10.5px] font-bold tracking-[0.06em] text-slate-900">
+      <p className="text-[10px] xl:text-[10.5px] font-extrabold tracking-[0.06em] text-slate-900">
         {registrations.lines[0]}
       </p>
       <p className="mt-1 text-[12px] xl:text-[12.5px] font-black tracking-wide text-slate-900">
@@ -256,7 +256,7 @@ function MobileRegBanner({ className }: { className?: string }) {
       )}
     >
       <div className="mx-auto flex max-w-lg flex-col items-center justify-center gap-0.5 xs:gap-1 uppercase">
-        <p className="text-[9.5px] xs:text-[10.5px] font-bold tracking-[0.04em] xs:tracking-[0.06em] text-slate-900 leading-tight">
+        <p className="text-[9.5px] xs:text-[10.5px] font-extrabold tracking-[0.04em] xs:tracking-[0.06em] text-slate-900 leading-tight">
           {registrations.lines[0]}
         </p>
         <p className="text-[11px] xs:text-[12px] font-black tracking-wide text-slate-900 leading-tight">
