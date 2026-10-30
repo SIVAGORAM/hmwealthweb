@@ -68,21 +68,21 @@ export const metadata: Metadata = {
     locale: "en_IN",
     images: [
       {
-        url: toAbsoluteUrl("/og-image.jpg"),
-        secureUrl: toAbsoluteUrl("/og-image.jpg"),
-        width: 1200,
-        height: 630,
-        type: "image/jpeg",
-        alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
+        url: toAbsoluteUrl("/og-image.png"),
+        secureUrl: toAbsoluteUrl("/og-image.png"),
+        width: 600,
+        height: 600,
+        type: "image/png",
+        alt: "HM Wealth Brand Icon",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
     description:
       "Explore mutual funds, SIP investments and insurance with HM Wealth.",
-    images: [toAbsoluteUrl("/og-image.jpg")],
+    images: [toAbsoluteUrl("/og-image.png")],
   },
 };
 

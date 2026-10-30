@@ -42,13 +42,13 @@ export const SITE_CONFIG = {
   arn: "ARN-341412",
   locale: "en_IN",
   type: "website" as const,
-  twitterCard: "summary_large_image" as const,
+  twitterCard: "summary" as const,
   defaultOgImage: {
-    url: "/og-image.jpg",
-    width: 1200,
-    height: 630,
-    type: "image/jpeg",
-    alt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
+    url: "/og-image.png",
+    width: 600,
+    height: 600,
+    type: "image/png",
+    alt: "HM Wealth Brand Icon",
   },
 };
 
@@ -92,7 +92,7 @@ export const CORE_ROUTES_SEO = {
     path: "/",
     priority: 1.0,
     changeFrequency: "daily" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   about: {
@@ -102,7 +102,7 @@ export const CORE_ROUTES_SEO = {
     path: "/about",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "About HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   calculators: {
@@ -112,7 +112,7 @@ export const CORE_ROUTES_SEO = {
     path: "/calculators",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Financial SIP & Wealth Calculators Online — HM Wealth",
   },
   contact: {
@@ -122,7 +122,7 @@ export const CORE_ROUTES_SEO = {
     path: "/contact",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Contact HM Wealth Support Desk",
   },
   investments: {
@@ -132,7 +132,7 @@ export const CORE_ROUTES_SEO = {
     path: "/investments",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Mutual Fund Investment Schemes and SIP Plans — HM Wealth",
   },
   insurance: {
@@ -142,7 +142,7 @@ export const CORE_ROUTES_SEO = {
     path: "/insurance",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Family and Business Insurance Protection — HM Wealth",
   },
   products: {
@@ -152,7 +152,7 @@ export const CORE_ROUTES_SEO = {
     path: "/products",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Investment and Insurance Products Catalog — HM Wealth",
   },
   productMutualFunds: {
@@ -202,7 +202,7 @@ export const CORE_ROUTES_SEO = {
     path: "/services",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Mutual Fund Distribution and Client Guidance Services — HM Wealth",
   },
   serviceFinancialEducation: {
@@ -262,7 +262,7 @@ export const CORE_ROUTES_SEO = {
     path: "/important-links",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Important Investor Links Directory — HM Wealth",
   },
   investorGrievance: {
@@ -272,7 +272,7 @@ export const CORE_ROUTES_SEO = {
     path: "/investor-grievance",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Investor Grievance Redressal Mechanism — HM Wealth",
   },
   riskFactors: {
@@ -282,7 +282,7 @@ export const CORE_ROUTES_SEO = {
     path: "/risk-factors",
     priority: 0.6,
     changeFrequency: "monthly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "Mandatory Statutory Investment Risk Factors — HM Wealth",
   },
   privacyPolicy: {
@@ -292,7 +292,7 @@ export const CORE_ROUTES_SEO = {
     path: "/privacy-policy",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "HM Wealth Privacy Policy and Data Security",
   },
   termsConditions: {
@@ -302,7 +302,7 @@ export const CORE_ROUTES_SEO = {
     path: "/terms-conditions",
     priority: 0.4,
     changeFrequency: "yearly" as ChangeFrequency,
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.png",
     ogImageAlt: "HM Wealth Terms and Conditions of Service",
   },
 } as const satisfies Record<string, RouteSeoConfig>;
@@ -387,8 +387,8 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
         {
           url: ogImageUrl,
           secureUrl: ogImageUrl,
-          width: 1200,
-          height: 630,
+          width: 600,
+          height: 600,
           type: isPng ? "image/png" : "image/jpeg",
           alt: ogImageAlt,
         },
