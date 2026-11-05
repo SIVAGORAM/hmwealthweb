@@ -88,7 +88,7 @@ export default function RiskFactorsPage() {
       points: [
         "Adverse regulatory, taxation, or technological disruptions in that sector affect the entire scheme.",
         "Lack of cross-sector diversification magnifies drawdown magnitude.",
-        "Recommended primarily as tactical satellite allocations for seasoned investors.",
+        "Typically suitable only as tactical satellite allocations for seasoned investors.",
       ],
     },
     {
@@ -291,7 +291,7 @@ export default function RiskFactorsPage() {
                   Always Review Scheme Information Document (SID) &amp; KIM
                 </h3>
                 <p className="mt-1 text-[13.5px] leading-relaxed text-body">
-                  Before applying for units in any mutual fund scheme, investors are legally advised to read the:
+                  Before applying for units in any mutual fund scheme, investors are strongly encouraged to read the:
                 </p>
 
                 <div className="mt-3 grid gap-2.5 sm:grid-cols-3 text-xs">

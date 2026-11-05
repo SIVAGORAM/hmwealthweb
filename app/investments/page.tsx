@@ -243,7 +243,7 @@ export default function InvestmentsPage() {
 
               {/* sub-headline */}
               <p className="max-w-[54ch] text-[15px] leading-relaxed text-body sm:text-[18px]">
-                Whether you want to buy a home, plan for your child&apos;s education, or retire comfortably, we explain mutual fund options in plain words, without confusing financial terms.
+                Whether you want to buy a home, prepare for your child&apos;s education, or retire comfortably, we explain mutual fund options in plain words, without confusing financial terms.
               </p>
 
               {/* CTA actions */}
@@ -258,7 +258,7 @@ export default function InvestmentsPage() {
                   href="#options"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/80 px-5 text-[15px] sm:min-h-14 sm:px-7 sm:text-[15.5px] font-bold text-ink shadow-sm backdrop-blur transition hover:border-brand/40 hover:bg-white"
                 >
-                  <span>Explore Plans</span>
+                  <span>Explore Options</span>
                   <ChevronRight className="size-4 text-body" />
                 </a>
               </div>
@@ -315,23 +315,23 @@ export default function InvestmentsPage() {
 
 
       {/* =========================================================================
-          SECTION 3: SIMPLE INVESTMENT OPTIONS (Interactive Plan Navigator)
+          SECTION 3: SIMPLE INVESTMENT OPTIONS (Interactive Category Navigator)
       ========================================================================== */}
       <section id="options" className="relative overflow-hidden bg-soft py-6 sm:py-9 lg:py-11">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white px-4 py-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand shadow-sm">
-              <Sparkles className="size-3.5" /> PLAN SELECTOR
+              <Sparkles className="size-3.5" /> CATEGORY SELECTOR
             </span>
             <h2 className="mt-1 text-[28px] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:mt-1.5 sm:text-[38px]">
-              Choose the Plan That Fits Your Life
+              Choose the Investment Category That Fits Your Goals
             </h2>
             <p className="mt-1 text-[15px] sm:text-[16px] leading-relaxed text-body">
               Pick based on when you need your money and what you want to achieve.
             </p>
           </div>
 
-          {/* Interactive Plan Switcher Bar */}
+          {/* Interactive Category Switcher Bar */}
           <div className="mt-2 sm:mt-2.5 flex items-center justify-center">
             <div
               role="tablist"
@@ -367,7 +367,7 @@ export default function InvestmentsPage() {
             </div>
           </div>
 
-          {/* Featured Plan Spotlight Card */}
+          {/* Featured Category Spotlight Card */}
           <div className="mt-3 sm:mt-3.5">
             <AnimatePresence mode="wait">
               <motion.div
@@ -437,7 +437,7 @@ export default function InvestmentsPage() {
                   {/* Right Column: Visual Breakdown Card */}
                   <div className="flex flex-col justify-between gap-4 rounded-2xl sm:rounded-3xl border border-line bg-gradient-to-br from-soft to-white p-4 sm:p-5">
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-body">Plan Architecture</p>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-body">Investment Structure</p>
                       <p className="mt-0.5 text-lg font-extrabold text-ink">Asset Composition</p>
 
                       {/* Bar Allocation */}
@@ -473,7 +473,7 @@ export default function InvestmentsPage() {
                       {/* Features list */}
                       <ul className="mt-4 flex flex-col gap-2 border-t border-line pt-3 text-[13px]">
                         <li className="flex items-center gap-2 text-ink font-medium">
-                          <Check className="size-3.5 text-brand" /> Zero lock-in on standard open-ended plans
+                          <Check className="size-3.5 text-brand" /> Zero lock-in on standard open-ended schemes
                         </li>
                         <li className="flex items-center gap-2 text-ink font-medium">
                           <Check className="size-3.5 text-brand" /> Units credited directly in your own folio
@@ -493,7 +493,7 @@ export default function InvestmentsPage() {
             </AnimatePresence>
           </div>
 
-          {/* Quick-browse cards for remaining plans */}
+          {/* Quick-browse cards for other categories */}
           <div className="m-rail mt-3.5 sm:mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {plans
               .filter((p) => p.id !== activePlanId)
@@ -715,7 +715,7 @@ export default function InvestmentsPage() {
                   Talk to HM Wealth today. The first call is free and friendly.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-body">
-                  <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Free 15-Minute Consultation</span>
+                  <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Free 15-Minute Discussion</span>
                   <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> Zero Obligations</span>
                   <span className="flex items-center gap-1.5"><Check className="size-4 text-brand" /> AMFI Registered MFD</span>
                 </div>

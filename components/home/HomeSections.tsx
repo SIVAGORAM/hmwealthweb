@@ -222,7 +222,7 @@ export function InsuranceBand() {
           <div aria-hidden className="absolute -right-20 -top-20 size-96 rounded-full bg-brand-bright/10 blur-3xl" />
           <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_1.3fr]">
             <div className="flex flex-col gap-4 sm:gap-5">
-              <SectionTitle badge="Insurance" title="Protect your family first, then invest" intro="Compare plans from multiple insurers. We explain the fine print and help you at claim time." />
+              <SectionTitle badge="Insurance" title="Protect your family first, then invest" intro="Compare policies from multiple insurers. We explain the fine print and assist you at claim time." />
               <Link href="/products/life-insurance" className="inline-flex min-h-11 w-fit items-center gap-2 rounded-xl bg-brand px-5 text-[14.5px] font-bold text-white transition hover:bg-brand-dark">Explore insurance <ArrowRight className="size-4" /></Link>
             </div>
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3">

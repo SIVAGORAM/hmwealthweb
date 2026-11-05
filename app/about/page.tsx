@@ -51,7 +51,7 @@ const pillars = [
     icon: Stethoscope,
     tint: "lilac" as const,
     title: "4. Portfolio Health Checks & Audits",
-    desc: "Reviewing existing investments and insurance policies to eliminate overlapping schemes and dangerous coverage gaps with zero consultation fee.",
+    desc: "Reviewing existing investments and insurance policies to eliminate overlapping schemes and dangerous coverage gaps with zero platform fee.",
     tag: "Free Review",
   },
 ];
@@ -66,7 +66,7 @@ const values = [
   {
     icon: Compass,
     title: "Goal-First, Not Product-First",
-    desc: "We never push random financial products. Every distribution recommendation is tailored strictly to your timeline and risk comfort.",
+    desc: "We never push random financial products. Every scheme selection is tailored strictly to your timeline and risk comfort.",
     badge: "Bespoke Fit",
   },
   {
@@ -172,7 +172,7 @@ export default function AboutPage() {
                     <p className="text-[10px] text-body">Fast online setup</p>
                   </div>
                   <div className="rounded-xl bg-soft/70 p-3">
-                    <span className="text-[10.5px] font-semibold text-body">Consultation Fee</span>
+                    <span className="text-[10.5px] font-semibold text-body">Client Service Fee</span>
                     <p className="mt-0.5 text-[14px] font-extrabold text-brand">₹0 Direct</p>
                     <p className="text-[10px] text-body">Commission from AMCs</p>
                   </div>
@@ -198,7 +198,7 @@ export default function AboutPage() {
             </span>
             <h2 className={`${h2} mt-2`}>Our Mission &amp; Vision</h2>
             <p className="mx-auto mt-1.5 max-w-xl text-[14.5px] leading-relaxed text-body sm:text-[15.5px]">
-              The bedrock principles that govern every client interaction, scheme recommendation, and service touchpoint.
+              The bedrock principles that govern every client interaction, scheme facilitation, and service touchpoint.
             </p>
           </div>
 
@@ -334,7 +334,7 @@ export default function AboutPage() {
                   “We treat your hard-earned money with the exact same discipline as our own.”
                 </h2>
                 <blockquote className="rounded-xl border-l-4 border-brand bg-soft/80 p-3.5 text-[14px] italic leading-relaxed text-body">
-                  “My personal commitment to every client is simple: we never suggest an investment scheme or insurance plan that I would not comfortably recommend to my own family. Finance is about trust, patience, and lifelong partnership.”
+                  “My personal commitment to every client is simple: we never distribute an investment scheme or insurance policy that I would not comfortably choose for my own family. Finance is about trust, patience, and lifelong partnership.”
                 </blockquote>
                 <p className="text-[13.5px] leading-relaxed text-body sm:text-[14px]">
                   People don’t trust faceless corporate algorithms with their life savings—they trust real, dedicated specialists who answer their calls when market volatility spikes or when a family member is hospitalized. At HM Wealth, you have a direct relationship with a licensed professional who knows your story, your children’s dreams, and your retirement goals.
@@ -437,7 +437,7 @@ export default function AboutPage() {
             </div>
 
             <p className="mt-3 text-[12px] font-semibold text-slate-700">
-              AMFI-Registered MFD · Zero consultation fee · Transparent scheme review
+              AMFI-Registered MFD · Zero platform fee · Transparent scheme review
             </p>
           </div>
         </Container>

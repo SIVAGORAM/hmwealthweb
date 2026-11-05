@@ -355,7 +355,7 @@ export function calculateEMI(
 }
 
 /* ==========================================================================
-   8. Retirement Planning Engine
+   8. Retirement Goal Estimation Engine
    ========================================================================== */
 export function calculateRetirement(params: RetirementParams): RetirementResult {
   const {

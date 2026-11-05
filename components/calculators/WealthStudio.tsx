@@ -88,7 +88,7 @@ type CalcGroup = "invest" | "goals" | "income";
 const CALC_FILTERS: { id: "all" | CalcGroup; label: string }[] = [
   { id: "all", label: "All" },
   { id: "invest", label: "Investing" },
-  { id: "goals", label: "Goal planning" },
+  { id: "goals", label: "Goal calculators" },
   { id: "income", label: "Income & loans" },
 ];
 
@@ -172,7 +172,7 @@ export function WealthStudio() {
   const [targetRate, setTargetRate] = useState(12);
   const [targetYears, setTargetYears] = useState(10);
 
-  // 6. Retirement Planning
+  // 6. Retirement Goal Estimation
   const [currentAge, setCurrentAge] = useState(30);
   const [retirementAge, setRetirementAge] = useState(60);
   const [lifeExpectancy, setLifeExpectancy] = useState(85);
@@ -531,7 +531,7 @@ Modeled at: https://hmwealth.in/calculators`;
   };
 
   const shareWhatsAppUrl = `${site.whatsappHref}?text=${encodeURIComponent(
-    `Hi HM Wealth, I modeled a plan in the Wealth Studio:\n\n` +
+    `Hi HM Wealth, I modeled a calculation in the Wealth Studio:\n\n` +
       `📌 Model: ${currentResult.primaryLabel}\n` +
       `💰 Capital: ${formatCurrencyExact(currentResult.investedCapital)}\n` +
       `📈 Projected Wealth: ${formatCurrencyExact(currentResult.primaryValue)}\n` +
@@ -926,7 +926,7 @@ Modeled at: https://hmwealth.in/calculators`;
               </>
             )}
 
-            {/* 6. Retirement Planning Controls */}
+            {/* 6. Retirement Goal Estimation Controls */}
             {activeCalcKey === "retirement" && (
               <>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -955,7 +955,7 @@ Modeled at: https://hmwealth.in/calculators`;
 
                 <DualControl
                   id="life-expectancy"
-                  label="Life Expectancy (Planning Age)"
+                  label="Life Expectancy (Target Age)"
                   value={lifeExpectancy}
                   min={Math.max(70, retirementAge + 5)}
                   max={100}

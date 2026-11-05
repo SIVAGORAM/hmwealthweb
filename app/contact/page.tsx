@@ -67,8 +67,8 @@ const quickChannels = [
 
 const faqs = [
   {
-    q: "Is the first consultation really free?",
-    a: "Yes, 100% complimentary. We understand your goals, answer your questions, and explain your options with zero fees and no pressure.",
+    q: "Is speaking with your team really free?",
+    a: "Yes, 100% complimentary. We understand your goals, answer your questions, and explain scheme and policy options with zero fees and no pressure.",
   },
   {
     q: "How quickly will someone contact me?",
@@ -118,7 +118,7 @@ export default function ContactPage() {
 
             {/* Main Heading */}
             <h1 className="mt-2 text-[30px] font-extrabold leading-[1.1] tracking-tight text-ink sm:text-[40px] lg:text-[46px]">
-              Let’s Plan Your Financial{" "}
+              Let’s Build Your Financial{" "}
               <span className="bg-gradient-to-r from-brand via-brand to-brand-bright bg-clip-text text-transparent">
                 Future Together.
               </span>
@@ -126,13 +126,13 @@ export default function ContactPage() {
 
             {/* Sub-headline */}
             <p className="mt-1.5 text-[15px] leading-relaxed text-body sm:text-[16.5px]">
-              Have a question about starting an SIP, planning for retirement, or finding the right insurance cover? Our team is here to help with honest, friendly guidance.
+              Have a question about starting an SIP, preparing for retirement, or finding the right insurance cover? Our team is here to help with honest, friendly guidance.
             </p>
 
             {/* Confidence Callout */}
             <div className="mt-3.5 sm:mt-4 inline-flex items-center gap-2 rounded-2xl border border-brand/20 bg-mint/60 px-4 py-2 text-xs font-bold text-ink shadow-2xs backdrop-blur-xs sm:text-[13px]">
               <span className="text-base">💡</span>
-              <span>First consultations are always 100% free with zero sales pressure.</span>
+              <span>Discussions with our team are always 100% free with zero sales pressure.</span>
             </div>
 
             {/* Social media */}
@@ -292,7 +292,7 @@ export default function ContactPage() {
           <SectionTitle
             badge="FAQ"
             title="Before You Reach Out"
-            intro="Common questions about consultations, response times and NRI investing."
+            intro="Common questions about our services, response times and NRI investing."
             center
           />
           <div className="w-full max-w-3xl">

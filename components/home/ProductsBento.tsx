@@ -145,7 +145,7 @@ export function ProductsBento() {
                   <Go />
                 </div>
                 <div className="mt-auto max-w-[12.5rem] pt-8 sm:max-w-[19rem] sm:pt-10">
-                  <h3 className="text-[22px] font-extrabold leading-tight tracking-[-0.02em] sm:text-[28px]">If you&apos;re not there, your plans still are.</h3>
+                  <h3 className="text-[22px] font-extrabold leading-tight tracking-[-0.02em] sm:text-[28px]">If you&apos;re not there, their goals still are.</h3>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-body sm:mt-2 sm:text-[15px]">Term cover compared across insurers, with help when your family needs to claim.</p>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export function ProductsBento() {
               </svg>
               <div className="mt-auto pt-3 sm:pt-4">
                 <h3 className="text-[15px] font-bold text-ink sm:text-lg">Health insurance</h3>
-                <p className="mt-1 text-[12px] leading-snug text-body sm:text-[14px] sm:leading-relaxed">Family floater and top-up plans, with cashless claim help.</p>
+                <p className="mt-1 text-[12px] leading-snug text-body sm:text-[14px] sm:leading-relaxed">Family floater and top-up policies, with cashless claim support.</p>
               </div>
             </Link>
           </Reveal>

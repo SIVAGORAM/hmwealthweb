@@ -29,13 +29,13 @@ const STEPS: Step[] = [
     icon: Search,
   },
   {
-    title: "Develop Recommendations",
-    desc: "Based on the information available, we present relevant mutual fund options and explain their investment objectives, features, potential risks, and other important considerations.",
+    title: "Identify Suitable Options",
+    desc: "Based on the information available, we present relevant mutual fund scheme categories and explain their investment objectives, features, potential risks, and other important considerations.",
     icon: Lightbulb,
   },
   {
-    title: "Implement Recommendations",
-    desc: "Once you have reviewed the available information and made your investment decision, we help facilitate the applicable mutual fund investment process through our available services.",
+    title: "Facilitate Execution",
+    desc: "Once you have reviewed the available scheme details and made your independent investment decision, we help facilitate the applicable mutual fund investment process through our available services.",
     icon: BadgeCheck,
   },
   {

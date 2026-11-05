@@ -131,7 +131,7 @@ export const CORE_ROUTES_SEO = {
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
     ogImage: "/og-image.png",
-    ogImageAlt: "Mutual Fund Investment Schemes and SIP Plans — HM Wealth",
+    ogImageAlt: "Mutual Fund Investment Schemes and SIP Options — HM Wealth",
   },
   insurance: {
     title: "Family & Business Insurance Protection | HM Wealth",
@@ -164,7 +164,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "A small plant growing from a jar of coins",
   },
   productLifeInsurance: {
-    title: "Life Insurance & Term Protection Plans | HM Wealth",
+    title: "Life Insurance & Term Protection Policies | HM Wealth",
     description:
       "Protect family financial security with pure term life insurance and critical illness riders facilitated through leading IRDAI-registered insurance partners.",
     path: "/products/life-insurance",
@@ -174,7 +174,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Indian parents smiling with their baby",
   },
   productHealthInsurance: {
-    title: "Health & Medical Insurance Coverage Plans | HM Wealth",
+    title: "Health & Medical Insurance Coverage Policies | HM Wealth",
     description:
       "Comprehensive individual and family floater health insurance policies with cashless hospitalisation and dedicated claims support from licensed insurers.",
     path: "/products/health-insurance",
@@ -196,7 +196,7 @@ export const CORE_ROUTES_SEO = {
   services: {
     title: "Mutual Fund Distribution & Services Desk | HM Wealth",
     description:
-      "Explore our mutual fund distribution, portfolio review assistance, retirement goal planning, NRI investor desk, and financial education initiatives.",
+      "Explore our mutual fund distribution, portfolio review assistance, retirement goal assessment, NRI investor desk, and financial education initiatives.",
     path: "/services",
     priority: 0.8,
     changeFrequency: "weekly" as ChangeFrequency,
@@ -214,7 +214,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Young Indian couple learning about money on a laptop",
   },
   serviceInsurancePlanning: {
-    title: "Insurance Planning & Policy Facilitation | HM Wealth",
+    title: "Insurance Solutions & Policy Facilitation | HM Wealth",
     description:
       "Identify your family and business protection gaps. Evaluate adequate term life and health cover requirements facilitated through licensed insurance providers.",
     path: "/services/insurance-planning",
@@ -224,7 +224,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Three generations of an Indian family relaxing in their garden with their dog",
   },
   serviceWealthManagement: {
-    title: "Wealth Distribution & Portfolio Tracking | HM Wealth",
+    title: "Portfolio Tracking & Scheme Distribution | HM Wealth",
     description:
       "Consolidate and track your family mutual fund investments with regular portfolio reviews, goal tracking, and transparent distribution support from HM Wealth.",
     path: "/services/wealth-management",
@@ -234,7 +234,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Laptop showing an investment portfolio dashboard on a sunlit desk",
   },
   serviceChildEducation: {
-    title: "Child Education Planning & SIP Strategies | HM Wealth",
+    title: "Child Education Goals & SIP Distribution | HM Wealth",
     description:
       "Calculate future higher education costs and build a disciplined mutual fund investment portfolio for your children through systematic monthly SIP investments.",
     path: "/services/child-education",
@@ -244,14 +244,14 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Indian parents helping their daughter study at home",
   },
   serviceRetirement: {
-    title: "Retirement Planning & Corpus Distribution | HM Wealth",
+    title: "Retirement Goals & Corpus Distribution | HM Wealth",
     description:
-      "Plan for a financially secure retirement. Distribute long-term mutual fund schemes and systematic withdrawal plans (SWP) to build a sustainable post-work life.",
+      "Prepare for a financially secure retirement. Distribute long-term mutual fund schemes and systematic withdrawal options (SWP) to build a sustainable post-work life.",
     path: "/services/retirement",
     priority: 0.85,
     changeFrequency: "weekly" as ChangeFrequency,
     ogImage: "/images/pages/ret-fund-desk.jpg",
-    ogImageAlt: "Retirement fund jar with coins, a planning notebook and a calculator on a desk",
+    ogImageAlt: "Retirement fund jar with coins, a notebook and a calculator on a desk",
   },
   importantLinks: {
     title: "Important Investor Links & Official Portals | HM Wealth",

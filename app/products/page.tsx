@@ -81,7 +81,7 @@ export default function ProductsPage() {
         </Container>
       </section>
 
-      <CtaBand title="Need guidance choosing the right schemes?" intro="Book a free consultation with HM Wealth. No sales pressure, honest assistance aligned with your goals." />
+      <CtaBand title="Need guidance choosing the right schemes?" intro="Connect with our distribution desk. No sales pressure, honest assistance aligned with your goals." />
     </>
   );
 }

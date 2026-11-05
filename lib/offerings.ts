@@ -67,10 +67,10 @@ export const products: Offering[] = [
     group: "products",
     slug: "life-insurance",
     title: "Life Insurance",
-    seoTitle: "Life Insurance & Term Protection Plans | HM Wealth",
+    seoTitle: "Life Insurance & Term Protection Policies | HM Wealth",
     seoDescription:
       "Protect family financial security with pure term life insurance and critical illness riders facilitated through leading IRDAI-registered insurance partners.",
-    menu: "Term and family protection plans",
+    menu: "Term and family protection coverage",
     icon: ShieldCheck,
     tint: "sky",
     hero: p("life-parents-baby", "Indian parents smiling with their baby", "50% 35%"),
@@ -81,7 +81,7 @@ export const products: Offering[] = [
         title: "What is life insurance?",
         paras: [
           "Life insurance protects your family from financial loss caused by the unexpected or early death of the insured person.",
-          "You pay a premium to the insurance company. In return, the insurer promises to pay an agreed sum to your nominee or legal heir if the insured person passes away during the policy term. The amount depends on the plan, the cover chosen and the policy terms.",
+          "You pay a premium to the insurance company. In return, the insurer promises to pay an agreed sum to your nominee or legal heir if the insured person passes away during the policy term. The amount depends on the policy, the cover chosen and the policy terms.",
           "Talk to us to understand life insurance options for you and your family.",
         ],
         visual: p("life-father-daughter", "Father lifting his happy young daughter", "50% 35%"),
@@ -94,7 +94,7 @@ export const products: Offering[] = [
     group: "products",
     slug: "health-insurance",
     title: "Health Insurance",
-    seoTitle: "Health & Medical Insurance Coverage Plans | HM Wealth",
+    seoTitle: "Health & Medical Insurance Coverage Policies | HM Wealth",
     seoDescription:
       "Comprehensive individual and family floater health insurance policies with cashless hospitalisation and dedicated claims support from licensed insurers.",
     menu: "Mediclaim and critical illness cover",
@@ -108,7 +108,7 @@ export const products: Offering[] = [
         title: "What is health insurance?",
         paras: [
           "Health insurance, also called a mediclaim policy, protects you from medical emergencies and the hospitalisation expenses that come with them. In today’s busy life, every family should have one.",
-          "Plans offer cashless treatment at network hospitals or reimbursement, and some plans include international treatment, a doctor’s second opinion and a yearly health check-up at panel centres, as per policy terms.",
+          "Policies offer cashless treatment at network hospitals or reimbursement, and some policies include international treatment, a doctor’s second opinion and a yearly health check-up at panel centres, as per policy terms.",
           "Critical illness cover works differently: it pays a fixed lump sum if you are diagnosed with a covered serious illness, much like you insure your car or home.",
         ],
         visual: art("health-claim", "Illustration of a health insurance policy with a stethoscope"),
@@ -206,7 +206,7 @@ export const services: Offering[] = [
         title: "What is financial education?",
         paras: [
           "Financial education is the knowledge and skills needed to manage money wisely. It helps people understand how to earn, save, spend, invest, borrow and protect money effectively.",
-          "With financial education, you can make informed decisions, avoid unnecessary debt, plan for future goals, handle emergencies and build long-term financial security. It plays a key role in reducing financial stress and improving overall quality of life.",
+          "With financial education, you can make informed decisions, avoid unnecessary debt, prepare for future goals, handle emergencies and build long-term financial security. It plays a key role in reducing financial stress and improving overall quality of life.",
         ],
         visual: p("edu-coins-plants", "Stacks of coins with small plants growing", "50% 55%"),
       },
@@ -221,25 +221,25 @@ export const services: Offering[] = [
   {
     group: "services",
     slug: "insurance-planning",
-    title: "Insurance Planning",
-    seoTitle: "Insurance Planning & Policy Facilitation | HM Wealth",
+    title: "Insurance Solutions",
+    seoTitle: "Insurance Solutions & Policy Facilitation | HM Wealth",
     seoDescription:
       "Identify your family and business protection gaps. Evaluate adequate term life and health cover requirements facilitated through licensed insurance providers.",
-    menu: "Review and organise your family’s cover",
+    menu: "Review and organize your family’s cover",
     icon: Umbrella,
     tint: "sky",
     hero: p("ins-family-garden", "Three generations of an Indian family relaxing in their garden with their dog", "50% 40%"),
-    headline: "Insurance Planning",
+    headline: "Insurance Solutions",
     intro: "Protect yourself, your family, your home, your assets and your business against unexpected events.",
     blocks: [
       {
-        title: "Why insurance planning matters",
+        title: "Why insurance protection matters",
         paras: [
           "Insurance is a contract where the insurer agrees to pay the insured a certain sum when a covered event happens. It is a protective step that gives peace of mind.",
           "The idea is simple: many people contribute to a common fund that helps individuals recover from an unexpected loss. In this way, insurance eases the financial burden when something goes wrong.",
           "We work with you to understand your risks and explain cost-effective cover options that suit your circumstances.",
         ],
-        visual: p("ins-advisor-family", "Indian family going through an insurance plan with an advisor at home", "42% 50%"),
+        visual: p("ins-advisor-family", "Indian family reviewing insurance options at home", "42% 50%"),
       },
       {
         title: "Insurance we help you with",
@@ -249,7 +249,7 @@ export const services: Offering[] = [
         title: "Already have policies?",
         paras: [
           "Both over-insuring and under-insuring can be costly. We review your existing policies with you, so you understand whether your cover is adequate for risks like loss of income, critical illness or disability.",
-          "Remember, insurance is mainly for protection, not an investment. Keeping the two separate helps you plan both better.",
+          "Remember, insurance is mainly for protection, not an investment. Keeping the two separate helps you organize both better.",
         ],
       },
     ],
@@ -259,21 +259,21 @@ export const services: Offering[] = [
   {
     group: "services",
     slug: "wealth-management",
-    title: "Wealth Management",
-    seoTitle: "Wealth Distribution & Portfolio Tracking | HM Wealth",
+    title: "Portfolio Tracking & Reviews",
+    seoTitle: "Portfolio Tracking & Scheme Distribution | HM Wealth",
     seoDescription:
       "Consolidate and track your family mutual fund investments with regular portfolio reviews, goal tracking, and transparent distribution support from HM Wealth.",
-    menu: "Your investments organised and reviewed",
+    menu: "Your investments organized and reviewed",
     icon: Briefcase,
     tint: "green",
     hero: p("inv-portfolio-laptop", "Laptop showing an investment portfolio dashboard on a sunlit desk", "50% 55%"),
-    headline: "Wealth Management",
+    headline: "Portfolio Tracking & Reviews",
     intro: "Grow, protect and keep track of your family’s wealth in one place, with simple yearly reviews.",
     blocks: [
       {
-        title: "What is wealth management at HM Wealth?",
+        title: "What is portfolio tracking at HM Wealth?",
         paras: [
-          "Wealth management means looking after your money as a whole: investing for your goals, protecting your family with the right insurance, and reviewing everything regularly so you stay on track.",
+          "Portfolio tracking means looking after your investments as a whole: investing for your goals, protecting your family with the right insurance, and reviewing everything regularly so you stay on track.",
           "As an AMFI-registered Mutual Fund Distributor, we help you invest in mutual fund schemes, arrange insurance through licensed insurers, and keep all of it organised in one place. We explain options with their risks and costs, and the final decision is always yours.",
           "Your units are held in your own name with the fund house, and HM Wealth never holds your money. We are not a SEBI-registered Investment Adviser or Portfolio Manager and do not provide investment advice.",
         ],
@@ -291,7 +291,7 @@ export const services: Offering[] = [
     group: "services",
     slug: "child-education",
     title: "Child Education Goals",
-    seoTitle: "Child Education Planning & SIP Strategies | HM Wealth",
+    seoTitle: "Child Education Goals & SIP Distribution | HM Wealth",
     seoDescription:
       "Calculate future higher education costs and build a disciplined mutual fund investment portfolio for your children through systematic monthly SIP investments.",
     menu: "Prepare for school and college costs",
@@ -321,13 +321,13 @@ export const services: Offering[] = [
     group: "services",
     slug: "retirement",
     title: "Retirement Goals",
-    seoTitle: "Retirement Planning & Corpus Distribution | HM Wealth",
+    seoTitle: "Retirement Goals & Corpus Distribution | HM Wealth",
     seoDescription:
-      "Plan for a financially secure retirement. Distribute long-term mutual fund schemes and systematic withdrawal plans (SWP) to build a sustainable post-work life.",
+      "Prepare for a financially secure retirement. Distribute long-term mutual fund schemes and systematic withdrawal options (SWP) to build a sustainable post-work life.",
     menu: "Build savings for a calm retirement",
     icon: Sunset,
     tint: "peach",
-    hero: p("ret-fund-desk", "Retirement fund jar with coins, a planning notebook and a calculator on a desk", "62% 50%"),
+    hero: p("ret-fund-desk", "Retirement fund jar with coins, a notebook and a calculator on a desk", "62% 50%"),
     headline: "Retirement Goals",
     intro: "Work out what you may need after you stop working, and start preparing in simple steps.",
     blocks: [

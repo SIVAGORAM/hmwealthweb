@@ -105,19 +105,19 @@ const professionals = [
     tint: "peach" as Tint,
   },
   {
-    role: "IT Consultants & Agencies",
+    role: "IT Firms & Agencies",
     icon: Laptop,
     desc: "Covers software bugs, milestone delays, intellectual property issues, or server data claims.",
     tint: "sky" as Tint,
   },
   {
-    role: "CAs & Tax Consultants",
+    role: "CAs & Tax Professionals",
     icon: Calculator,
     desc: "Protects against inadvertent calculation errors, tax filing disputes, and audit liabilities.",
     tint: "gold" as Tint,
   },
   {
-    role: "Lawyers & Legal Advisors",
+    role: "Advocates & Legal Professionals",
     icon: Scale,
     desc: "Covers legal defense costs, client disputes, and breach of professional duty allegations.",
     tint: "lilac" as Tint,
@@ -251,7 +251,7 @@ export default function InsurancePage() {
                   </span>
                 </div>
 
-                {/* Plan Highlights inside visual */}
+                {/* Policy Highlights inside visual */}
                 <div className="mt-5 flex flex-col gap-3">
                   <div className="rounded-2xl border border-line bg-soft/70 p-4 transition hover:bg-soft">
                     <div className="flex items-center justify-between">
@@ -340,10 +340,10 @@ export default function InsurancePage() {
               <ShieldCheck className="size-3.5" /> PERSONAL &amp; FAMILY
             </span>
             <h2 className="mt-1 text-[28px] font-extrabold leading-[1.08] tracking-[-0.035em] text-ink sm:mt-1.5 sm:text-[38px]">
-              Protection Plans for You and Your Family
+              Protection Policies for You and Your Family
             </h2>
             <p className="mt-1 text-[15px] sm:text-[16px] leading-relaxed text-body">
-              Simple, affordable plans that give you complete peace of mind.
+              Simple, affordable policies that give you complete peace of mind.
             </p>
           </div>
 
@@ -412,7 +412,7 @@ export default function InsurancePage() {
               Take Care of Your Team. Protect Your Business.
             </h2>
             <p className="mt-1 text-[15px] sm:text-[16px] leading-relaxed text-body">
-              Affordable group insurance plans for teams of 5 to 500+ employees.
+              Affordable group insurance policies for teams of 5 to 500+ employees.
             </p>
           </div>
 
@@ -712,7 +712,7 @@ export default function InsurancePage() {
                   <ShieldCheck className="size-3.5 text-brand" /> FREE POLICY CHECKUP
                 </span>
                 <h2 className="mt-2.5 text-[28px] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[40px]">
-                  Not sure which insurance plan is right for you?
+                  Not sure which insurance policy is right for you?
                 </h2>
                 <p className="mt-1.5 text-[15px] sm:text-[16px] leading-relaxed text-body">
                   Let our friendly team review your existing policies for free and explain cover options that fit your budget.

@@ -140,7 +140,7 @@ export function ContactForm() {
         <div className="flex items-center justify-between">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-mint px-3 py-1 text-xs font-bold text-brand">
             <Sparkles className="size-3 text-brand" />
-            Free Consultation
+            Direct Assistance
           </span>
           <span className="text-xs font-semibold text-body">
             We reply on working days

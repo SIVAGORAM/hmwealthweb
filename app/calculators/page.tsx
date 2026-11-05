@@ -41,7 +41,7 @@ export default function CalculatorsPage() {
             </nav>
             <h1 className="text-[28px] font-extrabold tracking-tight text-ink sm:text-[38px] lg:text-[44px]">Calculators</h1>
             <p className="max-w-2xl text-[14px] leading-relaxed text-body sm:text-[15.5px]">
-              Plan for your goals with simple calculators. Move the sliders to see an illustration instantly.
+              Estimate your goals with simple calculators. Move the sliders to see an illustration instantly.
             </p>
           </div>
         </Container>
@@ -60,7 +60,7 @@ export default function CalculatorsPage() {
           <div className="mt-8 rounded-2xl border border-line bg-mint/50 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-sm font-bold text-ink">Ready to align your calculation with actual mutual fund schemes?</p>
-              <p className="text-xs text-body">Explore our scheme catalog or consult our mutual fund distribution desk.</p>
+              <p className="text-xs text-body">Explore our scheme catalog or connect with our mutual fund distribution desk.</p>
             </div>
             <div className="flex flex-wrap items-center gap-2.5 shrink-0">
               <Link
@@ -73,7 +73,7 @@ export default function CalculatorsPage() {
                 href="/contact"
                 className="rounded-xl bg-brand px-4 py-2 text-xs font-bold text-white transition hover:bg-brand-dark"
               >
-                Book Free Consultation
+                Book a Call
               </Link>
             </div>
           </div>
