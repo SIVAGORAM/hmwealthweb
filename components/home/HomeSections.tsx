@@ -7,11 +7,9 @@ import {
 import { Badge, Card, Container, IconBox, Section, SectionTitle, type Tint } from "@/components/ui/kit";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProtectedImage } from "@/components/ui/ProtectedImage";
-import { Steps } from "@/components/sections/Steps";
 import { SipCalculatorCard } from "./SipCalculatorCard";
 import { ProductsBento } from "./ProductsBento";
 import { GoalsExplorer } from "./GoalsExplorer";
-import { HowItWorksTrack } from "./HowItWorksTrack";
 import { site } from "@/lib/site";
 
 export function TrustStrip() {
@@ -109,10 +107,6 @@ const goals: { icon: typeof HomeIcon; tint: Tint; t: string; time: string; d: st
 
 export function Goals() {
   return <GoalsExplorer />;
-}
-
-export function HowItWorks() {
-  return <HowItWorksTrack />;
 }
 
 export function WhyUs() {
