@@ -297,7 +297,7 @@ export function ChatWidget() {
 
                 {/* Animated Typing Indicator */}
                 {typing && (
-                  <div className="flex justify-start" aria-label="typing">
+                  <div role="status" aria-label="Assistant is typing" className="flex justify-start">
                     <span className="flex gap-1 rounded-2xl rounded-tl-xs border border-line/70 bg-white px-3 py-2 shadow-2xs">
                       {[0, 1, 2].map((d) => (
                         <motion.span
@@ -442,6 +442,7 @@ export function ChatWidget() {
                 setTeaser(false);
                 setOpen(true);
               }}
+              aria-label="Open HM Wealth Desk chat"
               className="text-left"
             >
               <p className="text-[12px] font-extrabold text-ink flex items-center gap-1">
@@ -470,6 +471,7 @@ export function ChatWidget() {
               setTeaser(false);
               setOpen(true);
             }}
+            aria-label="Ask HM Wealth assistance"
             className="hidden sm:inline-flex items-center gap-2 rounded-full border border-line/80 bg-white/98 px-3.5 py-1.5 text-xs font-bold text-ink shadow-[0_4px_16px_rgba(0,0,0,0.08)] backdrop-blur-xs transition hover:border-brand/40 hover:bg-white active:scale-95"
           >
             <span className="flex size-5 items-center justify-center rounded-full bg-mint text-brand">

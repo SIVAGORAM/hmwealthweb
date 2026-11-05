@@ -142,6 +142,7 @@ export function Hero() {
               <button
                 key={s.label}
                 role="tab"
+                aria-label={s.label}
                 aria-selected={i === index}
                 onClick={() => setIndex(i)}
                 className="group flex flex-col gap-2 text-left"
@@ -158,7 +159,7 @@ export function Hero() {
                     />
                   )}
                 </span>
-                <span className={`hidden text-xs font-semibold transition sm:block ${i === index ? "text-white" : "text-white/50 group-hover:text-white/80"}`}>{s.label}</span>
+                <span className={`hidden text-xs font-semibold transition sm:block ${i === index ? "text-white" : "text-white/85 group-hover:text-white"}`}>{s.label}</span>
               </button>
             ))}
           </div>
@@ -214,6 +215,7 @@ export function Hero() {
                   <button
                     key={s.label}
                     role="tab"
+                    aria-label={s.label}
                     aria-selected={i === index}
                     onClick={() => setIndex(i)}
                     className="group flex flex-col gap-2 text-left"

@@ -175,9 +175,9 @@ export function Footer() {
             <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between border-b border-line/60 pb-3 sm:pb-4">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="size-4 text-brand shrink-0" />
-                <h4 className="text-[13px] font-extrabold uppercase tracking-wider text-ink sm:text-[13.5px]">
+                <p className="text-[13px] font-extrabold uppercase tracking-wider text-ink sm:text-[13.5px]">
                   Legal, Regulatory &amp; Compliance Links
-                </h4>
+                </p>
               </div>
               <span className="text-[11.5px] font-semibold text-body sm:text-[12px]">
                 AMFI MFD Status: <strong className="font-bold text-brand-dark">Active &amp; Verified</strong>

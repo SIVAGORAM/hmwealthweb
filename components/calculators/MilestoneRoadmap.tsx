@@ -70,10 +70,10 @@ export function MilestoneRoadmap({
   return (
     <div className={cn("flex flex-col gap-3", className)}>
       <div className="flex items-center justify-between">
-        <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-body">
+        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-body">
           <Sparkles className="size-3.5 text-brand" />
           Milestone Growth Roadmap
-        </h4>
+        </p>
         <span className="text-[11px] font-semibold text-body/70">
           3-Phase Wealth Journey
         </span>

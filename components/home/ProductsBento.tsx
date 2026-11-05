@@ -160,8 +160,7 @@ export function ProductsBento() {
                 <Go />
               </div>
               <svg viewBox="0 0 200 40" className="mt-4 h-8 w-full sm:mt-6 sm:h-10 text-[#d6662f]" aria-hidden>
-                <path d="M0 22 H60 L72 6 L86 36 L98 14 L106 22 H200" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  strokeDasharray="260" className="animate-[dash_3s_ease-in-out_infinite]" />
+                <path d="M0 22 H60 L72 6 L86 36 L98 14 L106 22 H200" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div className="mt-auto pt-3 sm:pt-4">
                 <h3 className="text-[15px] font-bold text-ink sm:text-lg">Health insurance</h3>

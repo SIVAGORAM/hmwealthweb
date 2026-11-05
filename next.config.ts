@@ -10,8 +10,10 @@ const nextConfig: NextConfig = {
   // Lets phones on the same Wi-Fi load the dev server (dev only, no effect on production).
   allowedDevOrigins: ["192.168.0.106"],
   images: {
-    loader: "custom",
-    loaderFile: "./lib/imageLoader.ts",
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [360, 414, 640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
   },
   async redirects() {
     return [

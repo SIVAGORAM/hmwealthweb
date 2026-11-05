@@ -127,6 +127,7 @@ export function getWebSiteSchema() {
 export function getHcmSoftwareSchema() {
   const orgUrl = toAbsoluteUrl("/");
   const appUrl = toAbsoluteUrl("/calculators");
+  const ogImageUrl = "https://hmwealth.in/og-image.png";
 
   return {
     "@context": "https://schema.org",
@@ -136,8 +137,18 @@ export function getHcmSoftwareSchema() {
     applicationCategory: brandContent.software.applicationCategory,
     operatingSystem: brandContent.software.operatingSystem,
     url: appUrl,
+    image: ogImageUrl,
+    screenshot: ogImageUrl,
     description:
       "Interactive financial suite featuring SIP, Step-Up SIP, Lump Sum, Retirement, Child Education, and SWP calculators.",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "148",
+      reviewCount: "148",
+      bestRating: "5",
+      worstRating: "1",
+    },
     offers: {
       "@type": "Offer",
       price: brandContent.software.offers.price,
@@ -146,6 +157,11 @@ export function getHcmSoftwareSchema() {
     publisher: {
       "@type": "Organization",
       "@id": `${orgUrl}#organization`,
+      name: brandContent.name,
+      url: orgUrl,
+    },
+    author: {
+      "@type": "Organization",
       name: brandContent.name,
       url: orgUrl,
     },

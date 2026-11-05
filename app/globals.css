@@ -6,7 +6,7 @@
   --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
 
   --color-ink: #15191e;          /* headings */
-  --color-body: #5b636e;         /* body text */
+  --color-body: #3e4753;         /* body text — high WCAG AA/AAA contrast */
   --color-line: #e8e8e4;         /* borders */
   --color-soft: #f7f7f4;         /* alternate section bg */
   --color-brand: #0b7a55;        /* HM green — primary */
@@ -100,11 +100,7 @@
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 
-@keyframes dash {
-  0% { stroke-dashoffset: 260; }
-  55%, 85% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -260; }
-}
+
 
 
 

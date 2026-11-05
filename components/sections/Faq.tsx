@@ -22,7 +22,7 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
             <h3>
               <button type="button" aria-expanded={isOpen} aria-controls={id} onClick={() => setOpen(isOpen ? null : i)}
                 className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-4 py-5 text-left sm:gap-6 sm:py-6">
-                <span className={cn("text-[13px] font-extrabold tabular-nums transition-colors", isOpen ? "text-brand" : "text-ink/25 group-hover:text-brand/60")}>
+                <span className={cn("text-[13px] font-extrabold tabular-nums transition-colors", isOpen ? "text-brand" : "text-slate-600 group-hover:text-brand")}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className={cn("text-[16.5px] font-bold tracking-[-0.01em] transition-colors sm:text-[18px]", isOpen ? "text-ink" : "text-ink/80 group-hover:text-ink")}>

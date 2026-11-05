@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@fontsource-variable/plus-jakarta-sans/wght.css";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
@@ -106,12 +107,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-IN" data-scroll-behavior="smooth">
       <head>
+        <JsonLd data={globalSchemas} />
+      </head>
+      <body className="min-h-screen overflow-x-clip">
         {/* Google Tag (gtag.js) for GTM-KM3RXTZ6 */}
-        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KM3RXTZ6" />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-KM3RXTZ6"
+        />
         {/* Google Tag (gtag.js) for GTM-WZVXPBCV */}
-        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WZVXPBCV" />
-        <script
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WZVXPBCV"
+        />
+        <Script
           id="google-tag-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -120,9 +131,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             `,
           }}
         />
-        <JsonLd data={globalSchemas} />
-      </head>
-      <body className="min-h-screen overflow-x-clip">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

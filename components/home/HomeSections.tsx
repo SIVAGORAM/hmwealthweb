@@ -134,7 +134,6 @@ export function WhyUs() {
                 src={photos.professional.src}
                 alt={photos.professional.alt}
                 fill
-                loading="eager"
                 sizes="(min-width:1024px) 45vw, 100vw"
                 className="object-cover object-[50%_30%]"
               />

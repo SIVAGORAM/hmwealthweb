@@ -299,6 +299,7 @@ export function DualControl({
                 <button
                   key={idx}
                   type="button"
+                  aria-label={`Add ${chip.label}`}
                   onClick={() => handleAddChip(chip.addValue)}
                   className="inline-flex items-center gap-0.5 rounded-full border border-line bg-soft px-2.5 py-0.5 text-[11px] font-bold text-body transition-colors hover:border-brand hover:bg-mint hover:text-brand active:scale-95"
                 >

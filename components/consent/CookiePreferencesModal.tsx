@@ -198,6 +198,7 @@ export function CookiePreferencesModal() {
                       <button
                         type="button"
                         role="switch"
+                        aria-label={`Toggle ${cat.title}`}
                         aria-checked={isEnabled}
                         disabled={cat.required}
                         onClick={() => toggleCategory(cat.key)}
