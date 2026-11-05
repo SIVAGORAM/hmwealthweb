@@ -106,9 +106,40 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-IN" data-scroll-behavior="smooth">
       <head>
+        {/* Google Tag (gtag.js) for GTM-KM3RXTZ6 */}
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KM3RXTZ6" />
+        {/* Google Tag (gtag.js) for GTM-WZVXPBCV */}
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WZVXPBCV" />
+        <script
+          id="google-tag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            `,
+          }}
+        />
         <JsonLd data={globalSchemas} />
       </head>
       <body className="min-h-screen overflow-x-clip">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KM3RXTZ6"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WZVXPBCV"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <CookieConsentProvider>
           <GoogleAnalytics />
           <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
