@@ -23,11 +23,13 @@ export function ProtectedImage({
   loading,
   ...props
 }: ProtectedImageProps) {
+  const effectiveLoading = priority ? "eager" : loading;
+
   return (
     <Image
       {...props}
       priority={priority}
-      loading={loading ?? (priority ? "eager" : undefined)}
+      loading={effectiveLoading}
       draggable={draggable}
       onContextMenu={(e) => {
         e.preventDefault();

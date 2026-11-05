@@ -6,11 +6,11 @@ import { ProtectedImage } from "@/components/ui/ProtectedImage";
 import { photos } from "@/lib/photos";
 
 const GOALS = [
-  { icon: GraduationCap, t: "Child’s education", time: "5 to 15 years", photo: photos.family, pos: "45% 30%",
+  { icon: GraduationCap, t: "Child’s education", time: "5 to 15 years", photo: photos.students, pos: "50% 30%",
     d: "Start early with equity funds and move to safer funds as admission year nears.", calc: "education", accent: "#6b4fd1", soft: "#f0ecff" },
   { icon: HomeIcon, t: "Dream home", time: "3 to 7 years", photo: photos.home, pos: "60% 40%",
     d: "Build your down-payment with a mix that stays steady as the date comes closer.", calc: "goal", accent: "#2f6fd6", soft: "#e8f1ff" },
-  { icon: Sunset, t: "Retirement", time: "15+ years", photo: photos.retirementHero, pos: "64% 40%",
+  { icon: Sunset, t: "Retirement", time: "15+ years", photo: photos.seniors, pos: "50% 30%",
     d: "Grow a corpus with SIPs now, then draw a monthly income with SWP.", calc: "retirement", accent: "#d6662f", soft: "#fff0e8" },
   { icon: LifeBuoy, t: "Emergency fund", time: "Any time", photo: photos.motherDaughter, pos: "50% 25%",
     d: "Keep about 6 months of expenses in funds you can access quickly.", calc: "lumpsum", accent: "#0b7a55", soft: "#e7f6ef" },
