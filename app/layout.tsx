@@ -87,6 +87,9 @@ export const metadata: Metadata = {
       "Explore mutual funds, SIP investments and insurance with HM Wealth.",
     images: [toAbsoluteUrl("/og-image.png")],
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
 };
 
 export const viewport: Viewport = {

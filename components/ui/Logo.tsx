@@ -25,12 +25,13 @@ export function Logo({
       aria-label={`${site.name}, home`}
       className={cn("group inline-flex shrink-0 items-center transition-opacity hover:opacity-95", className)}
     >
-      <div className={cn("relative h-7 xs:h-8 sm:h-9 lg:h-10 xl:h-11 w-auto aspect-[980/191] shrink-0", light && "brightness-0 invert")}>
+      <div className={cn("relative h-7 xs:h-8 sm:h-9 lg:h-10 xl:h-11 w-auto aspect-[2193/384] shrink-0", light && "brightness-0 invert")}>
         <ProtectedImage
           src="/images/brand/hm-wealth-logo.png"
           alt="HM Wealth - Helps You Manage & Multiply"
           fill
-          sizes="(min-width: 1280px) 240px, (min-width: 640px) 190px, 150px"
+          unoptimized
+          sizes="(min-width: 1280px) 480px, (min-width: 640px) 380px, 280px"
           className="size-full object-contain object-left transition-transform duration-300 group-hover:scale-[1.02]"
           priority={priority}
         />
@@ -42,12 +43,13 @@ export function Logo({
 /** Full horizontal banner logo with divider and motto */
 export function FullBrandLogo({ className }: { className?: string }) {
   return (
-    <div className={cn("relative h-10 sm:h-11 w-auto aspect-[980/191]", className)}>
+    <div className={cn("relative h-10 sm:h-11 w-auto aspect-[2193/384]", className)}>
       <ProtectedImage
         src="/images/brand/hm-wealth-logo.png"
         alt="HM Wealth - Helps You Manage & Multiply"
         fill
-        sizes="240px"
+        unoptimized
+        sizes="480px"
         className="size-full object-contain object-left"
         priority
       />
