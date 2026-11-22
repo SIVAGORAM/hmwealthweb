@@ -168,6 +168,12 @@ export function Hero() {
         {/* ---------- content ---------- */}
         <Container className="relative flex flex-1 flex-col justify-end gap-3 pb-5 pt-[180px] xs:pt-[210px] sm:pt-[280px] sm:gap-4 sm:pb-7 lg:justify-center lg:pb-12 lg:pt-8">
           <div className="max-w-[680px]">
+            <motion.div {...enter(0.08)} className="mb-2 sm:mb-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand shadow-xs backdrop-blur-sm sm:text-xs">
+                <ShieldCheck className="size-3.5 text-brand shrink-0" />
+                <span>HM Wealth · AMFI Registered MFD ({site.arn})</span>
+              </span>
+            </motion.div>
             <h1 className="text-[26px] xs:text-[32px] sm:text-[56px] xl:text-[68px] font-extrabold leading-[1.04] tracking-[-0.04em] text-ink">
               <motion.span {...enter(0.15)} className="block">Invest today for</motion.span>
               <motion.span {...enter(0.25)} className="relative block max-w-full overflow-hidden pb-[0.12em] text-[0.82em] sm:text-[1em]">

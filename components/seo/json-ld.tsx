@@ -119,6 +119,28 @@ export function getFinancialServiceSchema() {
       { "@type": "AdministrativeArea", name: "Telangana" },
       { "@type": "Country", name: "India" },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Financial Distribution Offerings",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Mutual Fund & SIP Distribution",
+            description: "Distribution of equity, debt, and hybrid mutual fund schemes across leading AMCs.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Insurance Facilitation",
+            description: "Term life, family health, and general insurance facilitation through licensed insurance partners.",
+          },
+        },
+      ],
+    },
   };
 }
 

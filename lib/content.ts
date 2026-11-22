@@ -19,7 +19,12 @@ export const brandContent = {
     postalCode: "500032",
     addressCountry: "IN",
   },
-  sameAs: Object.values(socials).filter(Boolean),
+  sameAs: [
+    ...Object.values(socials).filter(Boolean),
+    site.playStoreUrl,
+    site.appStoreUrl,
+    site.loginUrl,
+  ],
   software: {
     name: "HM Wealth Studio & Financial Calculators",
     operatingSystem: "All (Web Browser, iOS, Android, Windows, macOS)",

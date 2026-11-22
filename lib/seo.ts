@@ -84,19 +84,19 @@ export function toAbsoluteUrl(pathOrUrl: string): string {
 // 2. Central registry mapping route paths to target titles, descriptions, priorities, and change frequencies
 export const CORE_ROUTES_SEO = {
   home: {
-    title: "HM Wealth | AMFI-Registered Mutual Fund Distributor",
+    title: "HM Wealth — AMFI Registered Mutual Fund Distributor (ARN-341412)",
     description:
-      "Explore mutual funds, SIP investments and insurance with HM Wealth. Discover investment options and explore tools to help you understand your financial goals.",
+      "Official portal of HM Wealth, AMFI-registered Mutual Fund Distributor (ARN-341412) in Hyderabad. Plan SIPs, mutual funds & family insurance with ethical support.",
     path: "/",
     priority: 1.0,
     changeFrequency: "daily" as ChangeFrequency,
     ogImage: "/og-image.png",
-    ogImageAlt: "HM Wealth — Mutual Funds, SIP Investments and Insurance",
+    ogImageAlt: "HM Wealth — AMFI Registered Mutual Fund Distributor",
   },
   about: {
     title: "About HM Wealth | AMFI Mutual Fund Distributor ARN-341412",
     description:
-      "Learn about HM Wealth, an AMFI-registered Mutual Fund Distributor based in Hyderabad, committed to ethical mutual fund distribution and insurance support.",
+      "Learn about HM Wealth, an AMFI-registered Mutual Fund Distributor in Hyderabad (ARN-341412), dedicated to ethical mutual fund distribution and insurance support.",
     path: "/about",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
@@ -104,9 +104,9 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "About HM Wealth — Mutual Funds, SIP Investments and Insurance",
   },
   calculators: {
-    title: "Financial SIP & Wealth Calculators Online | HM Wealth",
+    title: "SIP & Wealth Calculators Online | HM Wealth ARN-341412",
     description:
-      "Explore free SIP, step-up SIP, lump sum, retirement, child education, and SWP calculators. Accurate illustrations for informed mutual fund investment decisions.",
+      "Free SIP, Step-Up SIP, Lump Sum, Retirement, and SWP calculators by HM Wealth. Plan mutual fund investments with real compounding illustrations.",
     path: "/calculators",
     priority: 0.9,
     changeFrequency: "weekly" as ChangeFrequency,
@@ -114,9 +114,9 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Financial SIP & Wealth Calculators Online — HM Wealth",
   },
   contact: {
-    title: "Contact HM Wealth | Connect with Our Mutual Fund Desk",
+    title: "Contact HM Wealth Desk | Hyderabad · +91 96181 01040",
     description:
-      "Get in touch with HM Wealth for mutual fund distribution, SIP assistance, and insurance support. Reach us via direct phone, WhatsApp chat, or email inquiry.",
+      "Connect with HM Wealth in Hyderabad for mutual fund distribution, SIP assistance & insurance support. Reach us via phone, WhatsApp (+91 96181 01040) or email.",
     path: "/contact",
     priority: 0.8,
     changeFrequency: "monthly" as ChangeFrequency,
@@ -124,7 +124,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Contact HM Wealth Support Desk",
   },
   investments: {
-    title: "Mutual Fund Schemes & Disciplined SIPs | HM Wealth",
+    title: "Mutual Funds & SIP Distribution | HM Wealth ARN-341412",
     description:
       "Invest in equity, hybrid, and debt mutual funds through disciplined monthly SIPs or lump sum with transparent distributor support from HM Wealth ARN-341412.",
     path: "/investments",
@@ -134,7 +134,7 @@ export const CORE_ROUTES_SEO = {
     ogImageAlt: "Mutual Fund Investment Schemes and SIP Options — HM Wealth",
   },
   insurance: {
-    title: "Family & Business Insurance Protection | HM Wealth",
+    title: "Family & Business Insurance Protection | HM Wealth Desk",
     description:
       "Facilitating term life, family health, motor, and commercial insurance coverage through licensed insurance partners with dedicated claims support assistance.",
     path: "/insurance",
@@ -413,6 +413,23 @@ export function constructMetadata(config: RouteSeoConfig): Metadata {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
+    },
+    keywords: [
+      "HM Wealth",
+      "HM Wealth Hyderabad",
+      "HM Wealth ARN 341412",
+      "HM Wealth Mutual Fund",
+      "Mutual Fund Distributor Hyderabad",
+      "SIP Investment Hyderabad",
+      "AMFI Registered Mutual Fund Distributor",
+      "Hari Sarvotham HM Wealth",
+      "Financial Services Gachibowli",
+    ],
+    other: {
+      "geo.region": "IN-TG",
+      "geo.placename": "Hyderabad",
+      "geo.position": "17.4156;78.3478",
+      "ICBM": "17.4156, 78.3478",
     },
   };
 }
