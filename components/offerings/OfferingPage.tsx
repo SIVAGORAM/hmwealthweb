@@ -4,7 +4,7 @@ import { Container, IconBox } from "@/components/ui/kit";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { ProtectedImage } from "@/components/ui/ProtectedImage";
-import { JsonLd, getBreadcrumbSchema } from "@/components/seo/json-ld";
+import { JsonLd, getBreadcrumbSchema, getOfferingSchema } from "@/components/seo/json-ld";
 import { disclosures, site } from "@/lib/site";
 import type { Block, Offering, Visual } from "@/lib/offerings";
 import { cn } from "@/lib/utils";
@@ -74,7 +74,7 @@ export function OfferingPage({ o }: { o: Offering }) {
 
   return (
     <>
-      <JsonLd data={getBreadcrumbSchema(breadcrumbs)} />
+      <JsonLd data={[getBreadcrumbSchema(breadcrumbs), getOfferingSchema(o)]} />
       {/* ---------- hero ---------- */}
       <section className="pb-4 pt-4 sm:pb-8 sm:pt-6">
         <Container>

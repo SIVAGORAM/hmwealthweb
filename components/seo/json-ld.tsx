@@ -253,3 +253,47 @@ export function getFaqSchema(faqs: Array<{ q: string; a: string }>) {
     })),
   };
 }
+
+export interface OfferingSchemaInput {
+  group: "products" | "services";
+  slug: string;
+  title: string;
+  headline?: string;
+  intro: string;
+  seoDescription?: string;
+}
+
+/**
+ * Generates Schema.org FinancialProduct or Service structured data for offering pages.
+ */
+export function getOfferingSchema(o: OfferingSchemaInput) {
+  const pageUrl = toAbsoluteUrl(`/${o.group}/${o.slug}`);
+  const isProduct = o.group === "products";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": isProduct ? "FinancialProduct" : "Service",
+    "@id": `${pageUrl}#${isProduct ? "product" : "service"}`,
+    name: o.title,
+    description: o.seoDescription || o.intro,
+    url: pageUrl,
+    provider: {
+      "@type": "FinancialService",
+      name: "HM Wealth",
+      url: toAbsoluteUrl("/"),
+      telephone: brandContent.phone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: brandContent.address.streetAddress,
+        addressLocality: brandContent.address.addressLocality,
+        addressRegion: brandContent.address.addressRegion,
+        postalCode: brandContent.address.postalCode,
+        addressCountry: brandContent.address.addressCountry,
+      },
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+  };
+}
